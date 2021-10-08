@@ -647,26 +647,26 @@
                         <div class="col-12 grid-margin stretch-card">
                           <div class="card">
                             <div class="card-body">
-                              <h4 class="card-title">Basic form elements</h4>
+                              <h4 class="card-title">Full Body Check Up</h4>
                               <p class="card-description">
-                                Basic form elements
+                                Enter your health Status
                               </p>
-                              <form class="forms-sample">
+                              <form class="forms-sample" action="/fullbodychckup" method="POST">
                                 <div class="form-group">
                                   <label for="exampleInputName1">Name</label>
-                                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                                  <input type="username" class="form-control" name="Name" placeholder="Enter Full Name">
                                 </div>
                                 <div class="form-group">
                                   <label for="exampleInputEmail3">Heart Rate</label>
-                                  <input type="heartrate" class="form-control" id="bpm" placeholder="Heart Rate">
+                                  <input type="number" class="form-control" name="bpm" placeholder="Enter Heart Rate">
                                 </div>
                                 <div class="form-group">
                                   <label for="exampleInputPassword4">SpO<sub>2</sub></label>
-                                  <input type="oxygen" class="form-control" id="percentO2" placeholder="SpO2">
+                                  <input type="number" class="form-control" name="percentO2" placeholder="Enter SpO2 in percentage">
                                 </div>
                                 <div class="form-group">
                                   <label for="exampleInputCity1">Sleep duration</label>
-                                  <input type="sleep" class="form-control" id="sleepcycle" placeholder="Sleep duration">
+                                  <input type="number" class="form-control" name="sleepcycle" placeholder="Enter Sleep duration in hours">
                                 </div>
 
                                 <div class="form-group">
@@ -674,28 +674,23 @@
                                   <div class="form-check">
                                     <label class="form-check-label">
                                       <input type="radio" class="form-check-input" name="DiabetesY" id="DiabetesY"
-                                        value="option1">
+                                        value="Yes">
                                       Yes
                                       <i class="input-helper">
                                       </i>
                                     </label>
 
                                   </div>
-                                </div>
-
-                                <div class="form-check">
-                                  <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="DiabetesY" id="DiabetesN"
-                                      value="option2">
-                                    No
-                                    <i class="input-helper">
-                                    </i>
-                                  </label>
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="exampleInputPassword4">Date</label>
-                                  <input type="date" class="form-control" id="date" placeholder="SpO2">
+                                  
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input type="radio" class="form-check-input" name="DiabetesY" id="DiabetesN"
+                                      value="No">
+                                      No
+                                      <i class="input-helper">
+                                      </i>
+                                    </label>
+                                  </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                                 <button class="btn btn-light">Cancel</button>
