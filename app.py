@@ -1,3 +1,4 @@
+from os import name
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory, session
 import requests
 from flask_sqlalchemy import SQLAlchemy
@@ -57,6 +58,17 @@ def bodycheck():
 def home():
     return render_template('indexcopy.html')
 
+@app.route('/fullbodychckup', methods=['GET', 'POST'])
+def fullbodychckup():
+    Name = request.form.get('Name')
+    Bpm = request.form.get('bpm')
+    Spo2 = request.form.get('percentO2')
+    Sleep =  request.form.get('sleepcycle')
+    diabetesY = request.form.get('DiabetesY')
+    print(Name,Bpm,Spo2,Sleep,diabetesY)
+        # return render_template('indexcopy.html')
+
+    return render_template('indexcopy.html')
 
 
 if __name__ == "__main__":
