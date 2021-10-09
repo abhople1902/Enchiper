@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = 'thisissecret'
 db = SQLAlchemy(app)
 
 
-class bodycheckup(UserMixin, db.Model):
+class bodycheckup(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(30))
     Heartbeat = db.Column(db.String(30))
@@ -21,7 +21,10 @@ class bodycheckup(UserMixin, db.Model):
     # Spo2 = db.Column(db.Integer)
     sleep = db.Column(db.String(100))
     diabetes = db.Column(db.String(30))
-    date = db.Column(db.DateTime, default=datetime.utcnow)
+    date = db.Column(db.DateTime, default=date.today())
+
+    def __repr__(self) -> str:
+        return f"{self.sno} - {self.Name}"
 
 
 class Registration(db.Model):
@@ -39,49 +42,58 @@ class Registration(db.Model):
     guardianaddress = db.Column(db.String(200))
     guardianage = db.Column(db.Integer)
     guardianphone = db.Column(db.String(200))
-    datejoined = db.Column(db.DateTime, default=datetime.utcnow)
+    datejoined = db.Column(db.DateTime, default=date.today())
 
     def __repr__(self) -> str:
         return f"{self.sno} - {self.name}"
 
 
-@app.route('/bodycheck')
-def bodycheck():
-    data = bodycheckup(Name='Ayush', Heartbeat='22', Spo2='12', sleep='7 hours', diabetes='no')
+def funbodycheckup():
+    data = bodycheckup(Name='Rohan', Heartbeat='69',
+                       Spo2='99', sleep='7 hours', diabetes='no')
     db.session.add(data)
     db.session.commit()
-    Rdata = Registration(name='Ayush', age=22, email='123@gmail.com', dob='16 sept', gender='qwertt',address='1234rtgfdertgvfdertgbvdergv',phone="1234546789",guardianName='qwerty',guardianage=11,guardianRelation='qwert',guardianaddress='wqerfgh',guardianphone='asdf')
+    Rdata = Registration(name='Rohan', age=22, email='rohan22@gmail.com', dob='16 jan', gender='male', address='123 Main Street, New York, NY 10030', phone="9561236038",
+                         guardianName='feddrick', guardianage=50, guardianRelation='Father', guardianaddress='123 Main Street, New York, NY 10030', guardianphone='9561236037')
     db.session.add(Rdata)
     db.session.commit()
     return flask.redirect("/")
 
+
 @app.route('/')
 def home():
     Users = Registration.query.all()
-    print(Users)
-    return render_template('indexcopy.html',Users=Users)
+    Patientupdatedata = bodycheckup.query.all()
+    try:
+        print(Users[0])
+        return render_template('indexcopy.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+    except:
+        funbodycheckup()
+        return render_template('indexcopy.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+    
 
 @app.route('/fullbodychckup', methods=['GET', 'POST'])
 def fullbodychckup():
     Name = request.form.get('Name')
     Bpm = request.form.get('bpm')
     Spo2 = request.form.get('percentO2')
-    Sleep =  request.form.get('sleepcycle')
+    Sleep = request.form.get('sleepcycle')
     diabetesY = request.form.get('DiabetesY')
-    print(Name,Bpm,Spo2,Sleep,diabetesY)
-        # return render_template('indexcopy.html')
-    data = bodycheckup(Name=Name, Heartbeat=Bpm, Spo2=Spo2, sleep=Sleep, diabetes=diabetesY)
+    print(Name, Bpm, Spo2, Sleep, diabetesY)
+
+    # return render_template('indexcopy.html')
+    data = bodycheckup(Name=Name, Heartbeat=Bpm, Spo2=Spo2,
+                       sleep=Sleep, diabetes=diabetesY)
     db.session.add(data)
     db.session.commit()
-    
-    return flask.redirect("/")
 
+    return flask.redirect("/")
 
 
 @app.route('/newregister', methods=['GET', 'POST'])
 def newregister():
     name = request.form.get('name')
-    age = request.form.get('age') 
+    age = request.form.get('age')
     email = request.form.get('email')
     dob = request.form.get('dob')
     gender = request.form.get('gender')
@@ -92,10 +104,12 @@ def newregister():
     guardianRelation = request.form.get('guardianRelation')
     guardianaddress = request.form.get('guardianaddress')
     guardianphone = request.form.get('guardianphone')
-    Rdata = Registration(name=name, age=age, email=email, dob=dob, gender=gender,address=address,phone=phone,guardianName=guardianName,guardianage=guardianage,guardianRelation=guardianRelation,guardianaddress=guardianaddress,guardianphone=guardianphone)
+    Rdata = Registration(name=name, age=age, email=email, dob=dob, gender=gender, address=address, phone=phone, guardianName=guardianName,
+                         guardianage=guardianage, guardianRelation=guardianRelation, guardianaddress=guardianaddress, guardianphone=guardianphone)
     db.session.add(Rdata)
-    db.session.commit()     
-    return render_template('bodycheck.html')
+    db.session.commit()
+    return render_template('bodycheck.html', patiantname=name)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
