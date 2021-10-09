@@ -25,63 +25,78 @@
 </head>
 
 <style>
-     .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0, 0, 0);
-      background-color: rgba(0, 0, 0, 0.4);
-    }
+  .modalcheck {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 
-    .modal-content {
-      background-color: #fefefe;
-      margin: 6% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-    }
+  .modalregister {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 
-    /* Close Button */
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
+  .modal-content {
+    background-color: #fefefe;
+    margin: 6% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
 
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
 </style>
 <script>
-  var modal = document.getElementById("myModal");
+  function Manuallybodycheckup() {
+    document.getElementsByClassName('modalcheck')[0].style.display = 'block';
 
-  var btn = document.getElementById("myBtn");
-  var span = document.getElementsByClassName("close")[0];
+  }
+  function newRegistermodal() {
+    document.getElementsByClassName('modalregister')[0].style.display = 'block';
 
-  function popup() {
-    document.getElementsByClassName('modal')[0].style.display= 'block';
-    
   }
   function Modalclose() {
-    document.getElementsByClassName("modal")[0].style.display = "none";
+    document.getElementsByClassName("modalcheck")[0].style.display = "none";
+    document.getElementsByClassName("modalregister")[0].style.display = "none";
   }
 
-
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      document.getElementsByClassName('modal')[0].style.display = "none";
-    }
-  }
 </script>
+<!-- <button onclick="popup()" >Popup</button> -->
+<!-- Modal -->
+<!-- <div class="modal">
+      <div class="modal-content" style="height: -webkit-fill-available;">
+        <span onclick=Modalclose() class="close">&times;</span>
+        
+      </div>
+      </div>  -->
 
 <body>
   <div class="container-scroller">
@@ -109,20 +124,6 @@
             <h3 class="welcome-sub-text">Welcome to the WellEazy app </h3>
           </li>
         </ul>
- <li class="tm-nav-item">
-            <a rel="nofollow" id="myBtn" href="#" class="tm-nav-link external">Resume</a>
-          </li>
-          <button onclick="popup()" >Popup</button>
-  <!-- Modal -->
-      <div id="myModal" class="modal">
-
-        <div class="modal-content" style="height: -webkit-fill-available;">
-          <span onclick=Modalclose() class="close">&times;</span>
-          Embed PDF
-
-        </div> 
-
-      </div> 
         <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown d-none d-lg-block">
             <a class="mdi mdi-assistant" id="messageDropdown" href="#" data-bs-toggle="dropdown"
@@ -235,7 +236,8 @@
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
                 Messages</a>
               <a class="dropdown-item"><i
-                  class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
+                  class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
+                Activity</a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
                 FAQ</a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
@@ -436,6 +438,12 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a style="cursor: pointer;" class="nav-link" onclick="newRegistermodal()">
+              <i class="mdi mdi-account-plus menu-icon"></i>
+              <span class="menu-title">New Register</span>
+            </a>
+          </li>
           <li class="nav-item nav-category">UI Elements</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
@@ -537,8 +545,8 @@
                         aria-controls="overview" aria-selected="true">Overview</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab"
-                        aria-selected="false">Audiences</a>
+                      <a style="cursor: pointer;" class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                        onclick="Manuallybodycheckup()" role="tab" aria-selected="false">Check Manually</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab"
@@ -717,256 +725,274 @@
                             </div>
                           </div>
                         </div>
-                        <div class="col-12 grid-margin stretch-card">
-                          <div class="card">
-                            <div class="card-body">
-                              <h4 class="card-title">Full Body Check Up</h4>
-                              <p class="card-description">
-                                Enter your health Status
-                              </p>
-                              <form class="forms-sample" action="/fullbodychckup" method="POST">
-                                <div class="form-group">
-                                  <label for="exampleInputName1">Name</label>
-                                  <input type="username" class="form-control" name="Name" placeholder="Enter Full Name">
-                                </div>
-                                <div class="form-group">
-                                  <label for="exampleInputEmail3">Heart Rate</label>
-                                  <input type="number" class="form-control" name="bpm" placeholder="Enter Heart Rate">
-                                </div>
-                                <div class="form-group">
-                                  <label for="exampleInputPassword4">SpO<sub>2</sub></label>
-                                  <input type="number" class="form-control" name="percentO2" placeholder="Enter SpO2 in percentage">
-                                </div>
-                                <div class="form-group">
-                                  <label for="exampleInputCity1">Sleep duration</label>
-                                  <input type="number" class="form-control" name="sleepcycle" placeholder="Enter Sleep duration in hours">
-                                </div>
+                        <div class="modalcheck" style="z-index: 9999 !important;">
+                          <div class="modal-content" style="height: initial;">
+                            <span onclick=Modalclose() class="close">&times;</span>
 
-                                <div class="form-group">
-                                  <label for="Diabetes">Diabetes</label>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input type="radio" class="form-check-input" name="DiabetesY" id="DiabetesY"
-                                        value="Yes">
-                                      Yes
-                                      <i class="input-helper">
-                                      </i>
-                                    </label>
 
-                                  </div>
-                                  
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input type="radio" class="form-check-input" name="DiabetesY" id="DiabetesN"
-                                      value="No">
-                                      No
-                                      <i class="input-helper">
-                                      </i>
-                                    </label>
-                                  </div>
+                            <div class="col-12 grid-margin stretch-card">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h4 class="card-title">Full Body Check Up</h4>
+                                  <p class="card-description">
+                                    Enter your health Status
+                                  </p>
+                                  <form class="forms-sample" action="/fullbodychckup" method="POST">
+                                    <div class="form-group">
+                                      <label for="exampleInputName1">Name</label>
+                                      <input type="username" class="form-control" name="Name"
+                                        placeholder="Enter Full Name">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputEmail3">Heart Rate</label>
+                                      <input type="number" class="form-control" name="bpm"
+                                        placeholder="Enter Heart Rate">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword4">SpO<sub>2</sub></label>
+                                      <input type="number" class="form-control" name="percentO2"
+                                        placeholder="Enter SpO2 in percentage">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputCity1">Sleep duration</label>
+                                      <input type="number" class="form-control" name="sleepcycle"
+                                        placeholder="Enter Sleep duration in hours">
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="Diabetes">Diabetes</label>
+                                      <div class="form-check">
+                                        <label class="form-check-label">
+                                          <input type="radio" class="form-check-input" name="DiabetesY" id="DiabetesY"
+                                            value="Yes">
+                                          Yes
+                                          <i class="input-helper">
+                                          </i>
+                                        </label>
+
+                                      </div>
+
+                                      <div class="form-check">
+                                        <label class="form-check-label">
+                                          <input type="radio" class="form-check-input" name="DiabetesY" id="DiabetesN"
+                                            value="No">
+                                          No
+                                          <i class="input-helper">
+                                          </i>
+                                        </label>
+                                      </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                    <button class="btn btn-light">Cancel</button>
+                                  </form>
                                 </div>
-                                <button type="submit" class="btn btn-primary me-2">Submit</button>
-                                <button class="btn btn-light">Cancel</button>
-                              </form>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div class="col-12 grid-margin">
-                          <div class="card">
-                            <div class="card-body">
-                              <h4 class="card-title">User Registration</h4>
-                              <form class="form-sample">
-                                <p class="card-description">
-                                  Personal info
-                                </p>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">First Name</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Email address</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Gender</label>
-                                      <div class="col-sm-9">
-                                        <select class="form-control">
-                                          <option>Male</option>
-                                          <option>Female</option>
-                                        </select>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Date of Birth</label>
-                                      <div class="col-sm-9">
-                                        <input type="date" class="form-control" placeholder="dd/mm/yyyy" />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">age</label>
-                                      <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Enter your age" />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Guardian</label>
-                                      <div class="col-sm-4">
-                                        <div class="form-check">
-                                          <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="membershipRadios"
-                                              id="membershipRadios1" value="" checked>
-                                            Family Member
-                                          </label>
+                        <div class="modalregister" style="z-index: 9999 !important;">
+                          <div class="modal-content" style="height: initial;">
+                            <span onclick=Modalclose() class="close">&times;</span>
+
+                            <div class="col-12 grid-margin">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h4 class="card-title">User Registration</h4>
+                                  <form class="form-sample">
+                                    <p class="card-description">
+                                      Personal info
+                                    </p>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">First Name</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
                                         </div>
                                       </div>
-                                      <div class="col-sm-5">
-                                        <div class="form-check">
-                                          <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="membershipRadios"
-                                              id="membershipRadios2" value="option2">
-                                            Other than Family Member
-                                          </label>
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Email address</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </div>
-                                <p class="card-description">
-                                  User Address
-                                </p>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Address 1</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Gender</label>
+                                          <div class="col-sm-9">
+                                            <select class="form-control">
+                                              <option>Male</option>
+                                              <option>Female</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Date of Birth</label>
+                                          <div class="col-sm-9">
+                                            <input type="date" class="form-control" placeholder="dd/mm/yyyy" />
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">State</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">age</label>
+                                          <div class="col-sm-9">
+                                            <input type="number" class="form-control" placeholder="Enter your age" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Guardian</label>
+                                          <div class="col-sm-4">
+                                            <div class="form-check">
+                                              <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="membershipRadios"
+                                                  id="membershipRadios1" value="" checked>
+                                                Family Member
+                                              </label>
+                                            </div>
+                                          </div>
+                                          <div class="col-sm-5">
+                                            <div class="form-check">
+                                              <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="membershipRadios"
+                                                  id="membershipRadios2" value="option2">
+                                                Other than Family Member
+                                              </label>
+                                            </div>
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Address 2</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
+                                    <p class="card-description">
+                                      User Address
+                                    </p>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Address 1</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">State</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Postcode</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Address 2</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Postcode</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">City</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">City</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Country</label>
+                                          <div class="col-sm-9">
+                                            <select class="form-control">
+                                              <option>America</option>
+                                              <option>Italy</option>
+                                              <option>Russia</option>
+                                              <option>Britain</option>
+                                            </select>
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Country</label>
-                                      <div class="col-sm-9">
-                                        <select class="form-control">
-                                          <option>America</option>
-                                          <option>Italy</option>
-                                          <option>Russia</option>
-                                          <option>Britain</option>
-                                        </select>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
 
 
-                                <p class="card-description">
-                                  Guardian information
-                                </p>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Name</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
+                                    <p class="card-description">
+                                      Guardian information
+                                    </p>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Name</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Age</label>
+                                          <div class="col-sm-9">
+                                            <input type="number" class="form-control" placeholder="Enter your age" />
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Age</label>
-                                      <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Enter your age" />
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Relation</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Address</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </div>  
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Relation</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Phone no.</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" />
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Address</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
-                                      </div>
-                                    </div>
-                                  </div>
+                                  </form>
                                 </div>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group row">
-                                      <label class="col-sm-3 col-form-label">Phone no.</label>
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </form>
+                              </div>
                             </div>
                           </div>
+
                         </div>
                         <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
