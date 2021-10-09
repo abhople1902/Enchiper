@@ -1,8 +1,6 @@
 from os import name, spawnl
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory, session
-import requests
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from datetime import datetime, timedelta, date
 import flask
 
@@ -70,7 +68,7 @@ def home():
     except:
         funbodycheckup()
         return render_template('indexcopy.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
-    
+
 
 @app.route('/fullbodychckup', methods=['GET', 'POST'])
 def fullbodychckup():
