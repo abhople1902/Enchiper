@@ -50,14 +50,16 @@ def bodycheck():
     data = bodycheckup(Name='Ayush', Heartbeat='22', Spo2='12', sleep='7 hours', diabetes='no')
     db.session.add(data)
     db.session.commit()
-    Rdata = Registration(name='Ayush', age=22, email='123@gmail.com', dob='16 sept', gender='qwertt',address='1234rtgfdertgvfdertgbvdergv',phone="1234546789",guardianName='qwerty',guardianage=11,guardianRelation='qwert',guardianarress='wqerfgh',guardianphone='asdf')
+    Rdata = Registration(name='Ayush', age=22, email='123@gmail.com', dob='16 sept', gender='qwertt',address='1234rtgfdertgvfdertgbvdergv',phone="1234546789",guardianName='qwerty',guardianage=11,guardianRelation='qwert',guardianaddress='wqerfgh',guardianphone='asdf')
     db.session.add(Rdata)
     db.session.commit()
     return flask.redirect("/")
 
 @app.route('/')
 def home():
-    return render_template('indexcopy.html')
+    Users = Registration.query.all()
+    print(Users)
+    return render_template('indexcopy.html',Users=Users)
 
 @app.route('/fullbodychckup', methods=['GET', 'POST'])
 def fullbodychckup():
@@ -71,6 +73,7 @@ def fullbodychckup():
     data = bodycheckup(Name=Name, Heartbeat=Bpm, Spo2=Spo2, sleep=Sleep, diabetes=diabetesY)
     db.session.add(data)
     db.session.commit()
+    
     return flask.redirect("/")
 
 
@@ -89,7 +92,7 @@ def newregister():
     guardianRelation = request.form.get('guardianRelation')
     guardianaddress = request.form.get('guardianaddress')
     guardianphone = request.form.get('guardianphone')
-    Rdata = Registration(name=name, age=age, email=email, dob=dob, gender=gender,address=address,phone=phone,guardianName=guardianName,guardianage=guardianage,guardianRelation=guardianRelation,guardianarress=guardianaddress,guardianphone=guardianphone)
+    Rdata = Registration(name=name, age=age, email=email, dob=dob, gender=gender,address=address,phone=phone,guardianName=guardianName,guardianage=guardianage,guardianRelation=guardianRelation,guardianaddress=guardianaddress,guardianphone=guardianphone)
     db.session.add(Rdata)
     db.session.commit()     
     return render_template('bodycheck.html')
