@@ -64,10 +64,10 @@ def home():
     Patientupdatedata = bodycheckup.query.all()
     try:
         print(Users[0])
-        return render_template('indexcopy.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
     except:
         funbodycheckup()
-        return render_template('indexcopy.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
 
 
 @app.route('/fullbodychckup', methods=['GET', 'POST'])
@@ -79,7 +79,7 @@ def fullbodychckup():
     diabetesY = request.form.get('DiabetesY')
     print(Name, Bpm, Spo2, Sleep, diabetesY)
 
-    # return render_template('indexcopy.html')
+    # return render_template('index.html')
     data = bodycheckup(Name=Name, Heartbeat=Bpm, Spo2=Spo2,
                        sleep=Sleep, diabetes=diabetesY)
     db.session.add(data)
