@@ -1,9 +1,10 @@
-from os import name
+from os import name, spawnl
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory, session
 import requests
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from datetime import datetime, timedelta, date
+import flask
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -32,11 +33,11 @@ class Registration(db.Model):
     gender = db.Column(db.String(200))
     address = db.Column(db.String(200))
     phone = db.Column(db.String(200))
-    guardian = db.Column(db.String(200))
     guardianName = db.Column(db.String(200))
     guardianage = db.Column(db.Integer)
     guardianRelation = db.Column(db.String(200))
-    guardianarress = db.Column(db.String(200))
+    guardianaddress = db.Column(db.String(200))
+    guardianage = db.Column(db.Integer)
     guardianphone = db.Column(db.String(200))
     datejoined = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -49,10 +50,10 @@ def bodycheck():
     data = bodycheckup(Name='Ayush', Heartbeat='22', Spo2='12', sleep='7 hours', diabetes='no')
     db.session.add(data)
     db.session.commit()
-    Rdata = Registration(name='Ayush', age=22, email='123@gmail.com', dob='16 sept', gender='qwertt',address='1234rtgfdertgvfdertgbvdergv',phone="1234546789",guardian='family',guardianName='qwerty',guardianage=11,guardianRelation='qwert',guardianarress='wqerfgh',guardianphone='asdf')
+    Rdata = Registration(name='Ayush', age=22, email='123@gmail.com', dob='16 sept', gender='qwertt',address='1234rtgfdertgvfdertgbvdergv',phone="1234546789",guardianName='qwerty',guardianage=11,guardianRelation='qwert',guardianarress='wqerfgh',guardianphone='asdf')
     db.session.add(Rdata)
     db.session.commit()
-    return render_template('indexcopy.html')
+    return flask.redirect("/")
 
 @app.route('/')
 def home():
@@ -67,9 +68,31 @@ def fullbodychckup():
     diabetesY = request.form.get('DiabetesY')
     print(Name,Bpm,Spo2,Sleep,diabetesY)
         # return render_template('indexcopy.html')
+    data = bodycheckup(Name=Name, Heartbeat=Bpm, Spo2=Spo2, sleep=Sleep, diabetes=diabetesY)
+    db.session.add(data)
+    db.session.commit()
+    return flask.redirect("/")
 
-    return render_template('indexcopy.html')
 
+
+@app.route('/newregister', methods=['GET', 'POST'])
+def newregister():
+    name = request.form.get('name')
+    age = request.form.get('age') 
+    email = request.form.get('email')
+    dob = request.form.get('dob')
+    gender = request.form.get('gender')
+    address = request.form.get('address')
+    phone = request.form.get('phone')
+    guardianName = request.form.get('guardianName')
+    guardianage = request.form.get('guardianage')
+    guardianRelation = request.form.get('guardianRelation')
+    guardianaddress = request.form.get('guardianaddress')
+    guardianphone = request.form.get('guardianphone')
+    Rdata = Registration(name=name, age=age, email=email, dob=dob, gender=gender,address=address,phone=phone,guardianName=guardianName,guardianage=guardianage,guardianRelation=guardianRelation,guardianarress=guardianaddress,guardianphone=guardianphone)
+    db.session.add(Rdata)
+    db.session.commit()     
+    return render_template('bodycheck.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
