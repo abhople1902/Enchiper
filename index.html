@@ -71,9 +71,8 @@
     document.getElementsByClassName('modal')[0].style.display= 'block';
     
   }
-  function close() {
-    alert()
-    // document.getElementsByClassName("modal")[0].style.display = "none";
+  function Modalclose() {
+    document.getElementsByClassName("modal")[0].style.display = "none";
   }
 
 
@@ -118,7 +117,7 @@
       <div id="myModal" class="modal">
 
         <div class="modal-content" style="height: -webkit-fill-available;">
-          <span onclick="close()" class="close">&times;</span>
+          <span onclick=Modalclose() class="close">&times;</span>
           Embed PDF
 
         </div> 
