@@ -1,37 +1,82 @@
-
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-</script>
 <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
 <script>
-    var xValues = ['sun','mon','tue','wed','thu','fri','sat'];
-    
-    
 
 
+  const hb = [];
+  const spo2 = [];
+  spo2[0] = hb[0] = 0
+  spo2[1] = hb[1] = 0
+  spo2[2] = hb[2] = 0
+  spo2[3] = hb[3] = 0
+  spo2[4] = hb[4] = 0
+  spo2[5] = hb[5] = 0
+  spo2[6] = hb[6] = 0
+  spo2[7] = hb[7] = 0
+  spo2[8] = hb[8] = 0
+  spo2[9] = hb[9] = 0
+  count = 0;
+
+  bpgraph()
+  function bpgraph() {
+
+
+    for (let i = 0; i < 10; i++) {
+      hb[10 - i - 1] = hb[10 - i - 2]
+    }
+    for (let i = 0; i < 10; i++) {
+      spo2[10 - i - 1] = spo2[10 - i - 2]
+    }
+    var theRandomNumber1 = Math.floor(Math.random() * (75 - 65 + 1) + 65);
+    hb[0] = theRandomNumber1;
+    var theRandomNumber2 = Math.floor(Math.random() * (100 - 95 + 1) + 95);
+    spo2[0] = theRandomNumber2;
+
+    var xValues = ['1 sec', '2 sec', '3 sec', '4 sec', '5 sec', '6 sec', '7 sec', '8 sec', '9 sec', '10 sec'];
     new Chart("myChart", {
       type: "line",
       data: {
         labels: xValues,
         datasets: [{
-            
-        
-          data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+
+
+          label:'Heart Rate',
+          data: [hb[0], hb[1], hb[2], hb[3], hb[4], hb[5], hb[6], hb[7], hb[8], hb[9]],
           borderColor: "red",
           fill: false
-        },{
-          data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
-          borderColor: "green",
-          fill: false
-        },{
-          data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
-          borderColor: "blue",
-          fill: false
-        }]
+        },
+        //   {
+          //     data: [10, 17, 17, 19, 20, 20, 40, 50, 60, 100],
+          //     borderColor: "green",
+          //     fill: false
+          //   },
+          {
+          label:'Oxygen Level',
+          data: [spo2[0], spo2[1], spo2[2], spo2[3], spo2[4], spo2[5], spo2[6], spo2[7], spo2[8], spo2[9]],
+          borderColor: 'green',
+          fill: false,
+
+        }
+        ]
       },
       options: {
-        legend: {display: false}
+        // legend: { display: false }
+
+        title: {
+          display: true,
+          text: "Quick Body Scan in 10 sec"
+        }
       }
     });
+    if (count < 10) {
+      count = count + 1;
+      setTimeout(bpgraph, 1000);
+    }
+    else {
+      avghb = hb[0] + hb[1] + hb[2] + hb[3] + hb[4] + hb[5] + hb[6] + hb[7] + hb[8] + hb[9]
+      avgspo2 = spo2[0] + spo2[1] + spo2[2] + spo2[3] + spo2[4] + spo2[5] + spo2[6] + spo2[7] + spo2[8] + spo2[9]
 
+    }
+  }
 </script>

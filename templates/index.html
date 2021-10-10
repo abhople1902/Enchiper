@@ -129,102 +129,12 @@
           </li>
           <div style="    font-size: 25px;
           margin-left: 20px;" id="txt"></div>
-          <script>
-            startTime()
-            function startTime() {
-              const today = new Date();
-              let h = today.getHours();
-              let m = today.getMinutes();
-              let s = today.getSeconds();
-              m = checkTime(m);
-              s = checkTime(s);
 
-              var element = document.getElementById("greeting");
-              Before = '<span><i id="greetingicon" class="mdi '
-              After = '"></i></span>'
-
-              if (h < 6) {
-                greeting = 'Good Night!! '
-                message = 'mdi-weather-night'
-              }
-              else if (h < 9) {
-                greeting = 'Good Morning!! '
-                message = 'mdi mdi-weather-sunset-up'
-
-              }
-              else if (h < 12) {
-                greeting = 'Good Morning!! '
-                message = 'mdi mdi-weather-sunny'
-
-              }
-              else if (h < 17) {
-                greeting = 'Good Afternoon!! '
-                message = 'mdi mdi-white-balance-sunny'
-              }
-              else if (h < 18) {
-                greeting = 'Good Afternoon!! '
-                message = 'mdi mdi-weather-sunset'
-              }
-              else if (h < 21) {
-                greeting = 'Good Evening!! '
-                message = 'mdi mdi-weather-sunset-down'
-              }
-              else if (h < 24) {
-                greeting = 'Good Night!! '
-                message = 'mdi-weather-night'
-              }
-
-              element.innerHTML = greeting + Before + message + After;
-              document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
-              
-              
-              
-              setTimeout(startTime, 1000);
-            }
-
-            function checkTime(i) {
-              if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
-              return i;
-            }
-          </script>
         </ul>
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown d-none d-lg-block">
-            <a class="mdi mdi-wechat" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false"></a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-              aria-labelledby="messageDropdown">
-              <a class="dropdown-item py-3">
-                <p class="mb-0 font-weight-medium float-left">Select category</p>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle
-                  </p>
-                  <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards
-                  </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Angular Bundle</p>
-                  <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular
-                    projects</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">VUE Bundle</p>
-                  <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">React Bundle</p>
-                  <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
-                </div>
-              </a>
-            </div>
+          <li href="/bot" class="nav-item dropdown d-none d-lg-block">
+            <a class="mdi mdi-wechat" style="font-size: 40px;"  href="/bot" ></a>
+           
           </li>
           <li class="nav-item d-none d-lg-block">
             <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
@@ -498,8 +408,10 @@
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
+        <ul class="nav" style="
+    position: fixed;
+">
+          <li class="nav-item active">
             <a class="nav-link" href="index.html">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Dashboard</span>
@@ -881,12 +793,18 @@
                         <div class="statistics-details d-flex align-items-center justify-content-between">
 
 
+
+
                           <div>
                             <p class="statistics-title">Heart Rate</p>
-                            <h3 class="rate-percentage" id="Heartbeatnumber">{{lastcheckupdata.Heartbeat}}</h3>
+                            <h3 id="randomheartrate">--</h3>
+                            <!-- <h3 id="randomheartrate">{{lastcheckupdata.Heartbeat}}</h3> -->
                             <p class="text-danger d-flex"><i
                                 class="mdi mdi-heart"></i><span>{{lastcheckupdata.date}}</span></p>
                           </div>
+
+
+
                           <div>
                             <p class="statistics-title">Sleep Cycle</p>
                             <h3 class="rate-percentage">Normal</h3>
@@ -896,7 +814,8 @@
                           </div>
                           <div>
                             <p class="statistics-title">SpO<sub>2</sub></p>
-                            <h3 class="rate-percentage">{{lastcheckupdata.Spo2}}</h3>
+                            <h3 id="randomspo2">--</h3>
+                            <!-- <h3 class="rate-percentage">{{lastcheckupdata.Spo2}}</h3> -->
                             <p class="text-danger d-flex"><i class="mdi mdi-chart-bubble"></i><span>-1%</span></p>
                           </div>
                           <div class="d-none d-md-block">
@@ -905,6 +824,7 @@
                             <p class="text-success d-flex"><i class="mdi mdi-heart-pulse"></i><span>ST-T changes</span>
                             </p>
                           </div>
+
                           <div class="d-none d-md-block">
                             <p class="statistics-title">Lab Tests</p>
                             <h3 class="rate-percentage">3 Reports</h3>
@@ -927,7 +847,8 @@
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
-                                    <h4 class="card-title card-title-dash">Your Health Performance</h4>
+                                    <h4 class="card-title card-title-dash" id='randomheartbeatgraph'>Your Health
+                                      Performance</h4>
                                     <h5 class="card-subtitle card-subtitle-dash">The chart shows your overall health
                                     </h5>
                                   </div>
@@ -969,22 +890,25 @@
                                   <div class="col-sm-6">
                                     <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
                                       <div class="circle-progress-width">
-                                        <div id="totalVisitors" class="progressbar-js-circle pr-2"></div>
+                                        <div id="batterypercent1" style="      display: flex;  font-size: 50px;"
+                                          class="progressbar-js-circle pr-2"></div>
                                       </div>
                                       <div>
                                         <p class="text-small mb-2">Pendant Battery</p>
-                                        <h4 class="mb-0 fw-bold">66.80%</h4>
+                                        <h4 class="mb-0 fw-bold" id="batterypercent">%</h4>
                                       </div>
                                     </div>
                                   </div>
                                   <div class="col-sm-6">
                                     <div class="d-flex justify-content-between align-items-center">
                                       <div class="circle-progress-width">
-                                        <div id="visitperday" class="progressbar-js-circle pr-2"></div>
+                                        <div class='mdi mdi-bluetooth-audio'
+                                          style="    display: flex; font-size: 50px; margin: -3px;"
+                                          class="progressbar-js-circle pr-2"></div>
                                       </div>
                                       <div>
-                                        <p class="text-small mb-2">Battery health degraded</p>
-                                        <h4 class="mb-0 fw-bold">40%</h4>
+                                        <p class="text-small mb-2">Device Connected</p>
+                                        <h4 class="mb-0 fw-bold">None</h4>
                                       </div>
                                     </div>
                                   </div>
@@ -997,6 +921,38 @@
                     </div>
                     <div class="row">
                       <div class="col-lg-8 d-flex flex-column">
+                        <div class="row flex-grow">
+                          <div class="col-12 grid-margin stretch-card">
+                            <div class="card card-rounded">
+                              <div class="card-body">
+                                <div class="d-sm-flex justify-content-between align-items-start">
+                                  <div>
+                                    <h4 class="card-title card-title-dash">Live Reading Quick Scan (10 sec)</h4>
+                                  </div>
+                                  <div>
+                                    <div class="dropdown">
+                                      <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0"
+                                        type="button" onClick="window.location.reload();" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        Quick Check</button>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="d-sm-flex align-items-center mt-1 justify-content-between">
+                                  <div class="me-3">
+                                    <div id="end"></div>
+                                  </div>
+                                </div>
+
+                                <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+                                <div class="chartjs-bar-wrapper mt-3">
+                                  <!-- <canvas id="marketingOverview"></canvas> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -1041,6 +997,7 @@
                             </div>
                           </div>
                         </div>
+
                         <div class="modalcheck" style="z-index: 9999 !important;">
                           <div class="modal-content" style="height: initial;">
                             <span onclick=Modalclose() class="close">&times;</span>
@@ -1603,52 +1560,57 @@
                                         <li class="d-block">
                                           <div class="form-check w-100">
                                             <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text
-                                              of the printing <i class="input-helper rounded"></i>
+                                              <input class="checkbox" type="checkbox"> Amylinomimetic <i
+                                              class="input-helper rounded"></i>
+                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">Taken</div>
                                             </label>
-                                            <div class="d-flex mt-2">
-                                              <div class="ps-4 text-small me-3">24 June 2020</div>
-                                              <div class="badge badge-opacity-warning me-3">Due tomorrow</div>
-                                              <i class="mdi mdi-flag ms-2 flag-color"></i>
+                                            <div class="d-flex mt-2"  style="justify-content: space-between ;">
+                                              <div class="ps-4 text-small me-3">9 A.M. / 3 P.M. / 9 P.M.</div>
+                                              <div class="badge badge-opacity-warning me-3">10 Remaining</div>
+                                              
                                             </div>
                                           </div>
                                         </li>
                                         <li class="d-block">
                                           <div class="form-check w-100">
                                             <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text
-                                              of the printing <i class="input-helper rounded"></i>
+                                              <input class="checkbox" type="checkbox"> Biguanides <i
+                                              class="input-helper rounded"></i>
+                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">Reminding soon</div>
                                             </label>
-                                            <div class="d-flex mt-2">
-                                              <div class="ps-4 text-small me-3">23 June 2020</div>
-                                              <div class="badge badge-opacity-success me-3">Done</div>
+                                            <div class="d-flex mt-2" style="justify-content: space-between;">
+                                              <div class="ps-4 text-small me-3">9 A.M. / 9 P.M.</div>
+                                              <div class="badge badge-opacity-warning me-3">5 Remaining</div>
                                             </div>
                                           </div>
                                         </li>
                                         <li>
                                           <div class="form-check w-100">
                                             <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text
-                                              of the printing <i class="input-helper rounded"></i>
+                                              <input class="checkbox" type="checkbox"> GLP-1 receptor agonists <i
+                                                class="input-helper rounded"></i>
+                                                <div class="badge badge-opacity-success me-3" style="display: table-row;">Reminding soon</div>
                                             </label>
-                                            <div class="d-flex mt-2">
-                                              <div class="ps-4 text-small me-3">24 June 2020</div>
-                                              <div class="badge badge-opacity-success me-3">Done</div>
+                                            <div class="d-flex mt-2"  style="justify-content: space-between;">
+                                              <div class="ps-4 text-small me-3">9 P.M.</div>
+                                              <div class="badge badge-opacity-warning me-3">10 Remaining</div>
                                             </div>
                                           </div>
                                         </li>
-                                        <li class="border-bottom-0">
+                                        <li>
                                           <div class="form-check w-100">
                                             <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Lorem Ipsum is simply dummy text
-                                              of the printing <i class="input-helper rounded"></i>
+                                              <input class="checkbox" type="checkbox"> Sulfonylureas <i
+                                              class="input-helper rounded"></i>
+                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">Dose Completed</div>
                                             </label>
-                                            <div class="d-flex mt-2">
-                                              <div class="ps-4 text-small me-3">24 June 2020</div>
-                                              <div class="badge badge-opacity-danger me-3">Expired</div>
+                                            <div class="d-flex mt-2"  style="justify-content: space-between;">
+                                              <div class="ps-4 text-small me-3">9 A.M. / 3 P.M. / 9 P.M.</div>
+                                              <div class="badge badge-opacity-warning me-3">0 Remaining</div>
                                             </div>
                                           </div>
                                         </li>
+
                                       </ul>
                                     </div>
                                   </div>
@@ -1790,6 +1752,201 @@
   <script src="static/js/dashboard.js"></script>
   <script src="static/js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  <script>
+
+
+    startTime()
+    function startTime() {
+      const today = new Date();
+      let h = today.getHours();
+      let m = today.getMinutes();
+      let s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+
+      var element = document.getElementById("greeting");
+      Before = '<span><i id="greetingicon" class="mdi '
+      After = '"></i></span>'
+
+      if (h < 6) {
+        greeting = 'Good Night!! '
+        message = 'mdi-weather-night'
+      }
+      else if (h < 9) {
+        greeting = 'Good Morning!! '
+        message = 'mdi mdi-weather-sunset-up'
+
+      }
+      else if (h < 12) {
+        greeting = 'Good Morning!! '
+        message = 'mdi mdi-weather-sunny'
+
+      }
+      else if (h < 17) {
+        greeting = 'Good Afternoon!! '
+        message = 'mdi mdi-white-balance-sunny'
+      }
+      else if (h < 18) {
+        greeting = 'Good Afternoon!! '
+        message = 'mdi mdi-weather-sunset'
+      }
+      else if (h < 21) {
+        greeting = 'Good Evening!! '
+        message = 'mdi mdi-weather-sunset-down'
+      }
+      else if (h < 24) {
+        greeting = 'Good Night!! '
+        message = 'mdi-weather-night'
+      }
+
+      element.innerHTML = greeting + Before + message + After;
+      document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+
+      // #batterypercent
+      if (h == 1 || h == 0 || h == 2 || h == 4 || h == 5 || h == 6) {
+        document.getElementById('batterypercent').innerHTML = 10 + '%';
+        document.getElementById('batterypercent1').className = 'mdi mdi-battery-10';
+      }
+      else if (h == 7 || h == 8) {
+        document.getElementById('batterypercent').innerHTML = 20 + '%';
+        document.getElementById('batterypercent1').className = 'mdi mdi-battery-20';
+      }
+      else if (h == 9 || h == 10) {
+        document.getElementById('batterypercent').innerHTML = 30 + '%';
+        document.getElementById('batterypercent1').className = 'mdi mdi-battery-30';
+      }
+      else if (h == 11 || h == 12) {
+        document.getElementById('batterypercent').innerHTML = 40 + '%';
+        document.getElementById('batterypercent1').className = 'mdi mdi-battery-40';
+      }
+      else if (h == 13 || h == 14) {
+        document.getElementById('batterypercent').innerHTML = 50 + '%';
+        document.getElementById('batterypercent1').className = 'mdi mdi-battery-50';
+      }
+      else if (h == 15 || h == 16) {
+        document.getElementById('batterypercent').innerHTML = 60 + '%';
+        document.getElementById('batterypercent1').className = 'mdi mdi-battery-60';
+      }
+      else if (h == 17 || h == 18) {
+        document.getElementById('batterypercent').innerHTML = 70 + '%';
+        document.getElementById('batterypercent1').className = 'mdi mdi-battery-70';
+      }
+      else if (h == 19 || h == 20) {
+        document.getElementById('batterypercent').innerHTML = 80 + '%';
+        document.getElementById('batterypercent1').className = 'mdi mdi-battery-80';
+      }
+      else if (h == 21 || h == 22) {
+        document.getElementById('batterypercent').innerHTML = 90 + '%';
+        document.getElementById('batterypercent1').className = 'mdi mdi-battery-90';
+      }
+      else if (h == 23 || h == 24) {
+        document.getElementById('batterypercent').innerHTML = 100 + '%';
+        document.getElementById('batterypercent1').className = 'mdi mdi-battery';
+      }
+
+
+      var theRandomNumber = Math.floor(Math.random() * (75 - 65 + 1) + 65);
+      if (theRandomNumber % 2 == 0) {
+        document.getElementById("randomheartrate").innerHTML = `<b>${theRandomNumber} BPM</b>`;
+        document.getElementById("randomheartbeatgraph").innerHTML = `Your Health Performance - ${theRandomNumber} BPM`;
+      }
+
+      var theRandomNumber = Math.floor(Math.random() * (100 - 98 + 1) + 98);
+      if (theRandomNumber % 2 == 0) {
+        document.getElementById("randomspo2").innerHTML = `<b>${theRandomNumber}%</b>`;
+      }
+      setTimeout(startTime, 1000);
+    }
+
+    function checkTime(i) {
+      if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+      return i;
+    }
+
+
+
+  </script>
+  <script>
+
+
+    const hb = [];
+    const spo2 = [];
+    spo2[0] = hb[0] = 0
+    spo2[1] = hb[1] = 0
+    spo2[2] = hb[2] = 0
+    spo2[3] = hb[3] = 0
+    spo2[4] = hb[4] = 0
+    spo2[5] = hb[5] = 0
+    spo2[6] = hb[6] = 0
+    spo2[7] = hb[7] = 0
+    spo2[8] = hb[8] = 0
+    spo2[9] = hb[9] = 0
+    count = 0;
+
+    bpgraph()
+    function bpgraph() {
+
+
+      for (let i = 0; i < 10; i++) {
+        hb[10 - i - 1] = hb[10 - i - 2]
+      }
+      for (let i = 0; i < 10; i++) {
+        spo2[10 - i - 1] = spo2[10 - i - 2]
+      }
+      var theRandomNumber1 = Math.floor(Math.random() * (75 - 65 + 1) + 65);
+      hb[0] = theRandomNumber1;
+      var theRandomNumber2 = Math.floor(Math.random() * (100 - 95 + 1) + 95);
+      spo2[0] = theRandomNumber2;
+
+      var xValues = ['1 sec', '2 sec', '3 sec', '4 sec', '5 sec', '6 sec', '7 sec', '8 sec', '9 sec', '10 sec'];
+      new Chart("myChart", {
+        type: "line",
+        data: {
+          labels: xValues,
+          datasets: [{
+
+
+            label: 'Heart Rate',
+            data: [hb[0], hb[1], hb[2], hb[3], hb[4], hb[5], hb[6], hb[7], hb[8], hb[9]],
+            borderColor: "red",
+            fill: false
+          },
+          {
+            label: '',
+            data: [0],
+            borderColor: "white",
+            fill: false
+          },
+          {
+            label: 'Oxygen Level',
+            data: [spo2[0], spo2[1], spo2[2], spo2[3], spo2[4], spo2[5], spo2[6], spo2[7], spo2[8], spo2[9]],
+            borderColor: 'green',
+            fill: false,
+
+          }
+          ]
+        },
+        options: {
+          // legend: { display: false }
+
+          title: {
+            display: true,
+            text: "Quick Body Scan in 10 sec"
+          }
+        }
+      });
+      if (count < 10) {
+        count = count + 1;
+        setTimeout(bpgraph, 1000);
+      }
+      else {
+        avghb = hb[0] + hb[1] + hb[2] + hb[3] + hb[4] + hb[5] + hb[6] + hb[7] + hb[8] + hb[9]
+        avgspo2 = spo2[0] + spo2[1] + spo2[2] + spo2[3] + spo2[4] + spo2[5] + spo2[6] + spo2[7] + spo2[8] + spo2[9]
+
+      }
+    }
+  </script>
 </body>
 
 </html>

@@ -89,7 +89,7 @@ class MainWindow(QMainWindow):
             qurl = 'http://www.google.com'
 
         browser = QWebEngineView()
-        browser.setUrl(QUrl('http://127.0.0.1:5000/bot'))
+        browser.setUrl(QUrl('http://127.0.0.1:5000'))
 
         i = self.TabBar.addTab(browser, label) 
         self.TabBar.setCurrentIndex(i)

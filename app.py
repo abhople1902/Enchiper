@@ -17,7 +17,7 @@ class bodycheckup(db.Model):
     Heartbeat = db.Column(db.String(30))
     Spo2 = db.Column(db.String(30))
     # Spo2 = db.Column(db.Integer)
-    sleep = db.Column(db.String(100))
+    sleep = db.Column(db.String(100))   
     diabetes = db.Column(db.String(30))
     date = db.Column(db.DateTime, default=date.today())
 
