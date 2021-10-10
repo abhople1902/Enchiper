@@ -70,6 +70,12 @@ def home():
         return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
 
 
+@app.route('/bot', methods=['GET', 'POST'])
+def bot():
+    Users = Registration.query.all()
+    Patientupdatedata = bodycheckup.query.all()
+    return render_template('chattingbot.html',Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+
 @app.route('/fullbodychckup', methods=['GET', 'POST'])
 def fullbodychckup():
     Name = request.form.get('Name')

@@ -24,6 +24,9 @@
   <link rel="shortcut icon" href="static/images/favicon.png" />
 </head>
 
+<!-- Heart beat -->
+
+
 <style>
   .modalcheck {
     display: none;
@@ -98,7 +101,7 @@
       </div>
       </div>  -->
 
-<body onload="startTime()" >
+<body onload="startTime()">
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
@@ -127,6 +130,7 @@
           <div style="    font-size: 25px;
           margin-left: 20px;" id="txt"></div>
           <script>
+            startTime()
             function startTime() {
               const today = new Date();
               let h = today.getHours();
@@ -172,6 +176,9 @@
 
               element.innerHTML = greeting + Before + message + After;
               document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+              
+              
+              
               setTimeout(startTime, 1000);
             }
 
@@ -183,8 +190,7 @@
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown d-none d-lg-block">
-            <a class="mdi mdi-wechat" id="messageDropdown" href="#" data-bs-toggle="dropdown"
-              aria-expanded="false"></a>
+            <a class="mdi mdi-wechat" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false"></a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="messageDropdown">
               <a class="dropdown-item py-3">
@@ -193,14 +199,17 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle </p>
-                  <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards</p>
+                  <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle
+                  </p>
+                  <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards
+                  </p>
                 </div>
               </a>
               <a class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
                   <p class="preview-subject ellipsis font-weight-medium text-dark">Angular Bundle</p>
-                  <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular projects</p>
+                  <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular
+                    projects</p>
                 </div>
               </a>
               <a class="dropdown-item preview-item">
@@ -232,7 +241,8 @@
             </form>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link count-indicator" id="notificationDropdown" onclick="newRegistermodal()" style="cursor: pointer;" data-bs-toggle="dropdown">
+            <a class="nav-link count-indicator" id="notificationDropdown" onclick="newRegistermodal()"
+              style="cursor: pointer;" data-bs-toggle="dropdown">
               <i class="mdi mdi-plus "></i>
             </a>
 
@@ -281,7 +291,8 @@
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
             <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class="img-xs rounded-circle" src="static/images/faces/face8.jpg" alt="Profile image"> </a>
+              <img class="img-xs rounded-circle" src="static/images/faces/face8.jpg" alt="Profile image">
+            </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
                 <img class="img-md rounded-circle" src="static/images/faces/face8.jpg" alt="Profile image">
@@ -418,7 +429,8 @@
           <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
             <div class="d-flex align-items-center justify-content-between border-bottom">
               <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 fw-normal">See All</small>
+              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 fw-normal">See
+                All</small>
             </div>
             <ul class="chat-list">
               <li class="list active">
@@ -565,7 +577,8 @@
             </a>
             <div class="collapse" id="icons">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="static/pages/icons/mdi.html">Mdi icons</a></li>
+                <li class="nav-item"> <a class="nav-link" href="static/pages/icons/mdi.html">Mdi
+                    icons</a></li>
               </ul>
             </div>
           </li>
@@ -578,7 +591,8 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="static/pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="static/pages/samples/login.html"> Login
+                  </a></li>
               </ul>
             </div>
           </li>
@@ -608,36 +622,277 @@
                         onclick="Manuallybodycheckup()" role="tab" aria-selected="false">Check Manually</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab"
-                        aria-selected="false">Demographics</a>
+                      <a class="nav-link" href="/bot">Bot Assistant</a>
+
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab"
+                      <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="/" role="tab"
                         aria-selected="false">More</a>
                     </li>
                   </ul>
                   <div>
                     <div class="btn-wrapper">
-                      <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
-                      <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
+                      <a href="whatsapp://send?text=This is WhatsApp sharing example using link"
+                        data-action="share/whatsapp/share" class="btn btn-otline-dark align-items-center"><i
+                          class="icon-share"></i> Share</a>
+                      <a onclick="window.print()" class="btn btn-otline-dark"><i class="icon-printer"></i>
+                        Print</a>
                       <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
                     </div>
                   </div>
                 </div>
+
+                <script src="//d3js.org/d3.v3.min.js"></script>
+
+                <style>
+                  #svg-wrapper {
+                    height: 160px;
+                    margin: 2em auto;
+                  }
+
+                  svg path {
+                    fill: none;
+                    stroke: #000;
+                    stroke-width: 1.5px;
+                  }
+
+                  svg .axis {
+                    font-size: 12px;
+                  }
+
+                  svg .axis path {
+                    display: none;
+                  }
+                </style>
+
+                <script type="text/javascript">
+
+                  window.onload = function () {
+
+                    var svg = null;
+                    var circle = null;
+                    var circleTransition = null;
+                    var latestBeat = null;
+                    var insideBeat = false;
+                    var data = [];
+
+                    var SECONDS_SAMPLE = 5;
+                    var BEAT_TIME = 400;
+                    var TICK_FREQUENCY = SECONDS_SAMPLE * 1000 / BEAT_TIME;
+                    var BEAT_VALUES = [0, 0, 3, -4, 10, -7, 3, 0, 0];
+
+                    var CIRCLE_FULL_RADIUS = 20;
+                    var MAX_LATENCY = 5000;
+
+                    var colorScale = d3.scale.linear()
+                      .domain([BEAT_TIME, (MAX_LATENCY - BEAT_TIME) / 2, MAX_LATENCY])
+                      .range(["#6D9521", "#D77900", "#CD3333"]);
+
+                    var radiusScale = d3.scale.linear()
+                      .range([5, CIRCLE_FULL_RADIUS])
+                      .domain([MAX_LATENCY, BEAT_TIME]);
+
+                    function beat() {
+
+                      if (insideBeat) return;
+                      insideBeat = true;
+
+                      var now = new Date();
+                      var nowTime = now.getTime();
+
+                      if (data.length > 0 && data[data.length - 1].date > now) {
+                        data.splice(data.length - 1, 1);
+                      }
+
+                      data.push({
+                        date: now,
+                        value: 0
+                      });
+
+                      var step = BEAT_TIME / BEAT_VALUES.length - 2;
+                      for (var i = 1; i < BEAT_VALUES.length; i++) {
+                        data.push({
+                          date: new Date(nowTime + i * step),
+                          value: BEAT_VALUES[i]
+                        });
+                      }
+
+                      latestBeat = now;
+
+                      circleTransition = circle.transition()
+                        .duration(BEAT_TIME)
+                        .attr("r", CIRCLE_FULL_RADIUS)
+                        .attr("fill", "#6D9521");
+
+                      setTimeout(function () {
+                        insideBeat = false;
+                      }, BEAT_TIME);
+                    }
+
+                    var svgWrapper = document.getElementById("svg-wrapper");
+                    var margin = { left: 10, top: 10, right: CIRCLE_FULL_RADIUS * 3, bottom: 10 },
+                      width = svgWrapper.offsetWidth - margin.left - margin.right,
+                      height = svgWrapper.offsetHeight - margin.top - margin.bottom;
+
+                    // create SVG
+                    svg = d3.select('#svg-wrapper').append("svg")
+                      .attr("width", width + margin.left + margin.right)
+                      .attr("height", height + margin.bottom + margin.top)
+                      .append("g")
+                      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                    circle = svg
+                      .append("circle")
+                      .attr("fill", "#6D9521")
+                      .attr("cx", width + margin.right / 2)
+                      .attr("cy", height / 2)
+                      .attr("r", CIRCLE_FULL_RADIUS);
+
+                    // init scales
+                    var now = new Date(),
+                      fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
+
+                    // create initial set of data
+                    data.push({
+                      date: now,
+                      value: 0
+                    });
+
+                    var x = d3.time.scale()
+                      .domain([fromDate, new Date(now.getTime())])
+                      .range([0, width]),
+                      y = d3.scale.linear()
+                        .domain([-10, 10])
+                        .range([height, 0]);
+
+                    var line = d3.svg.line()
+                      .interpolate("basis")
+                      .x(function (d) {
+                        return x(d.date);
+                      })
+                      .y(function (d) {
+                        return y(d.value);
+                      });
+
+                    var xAxis = d3.svg.axis()
+                      .scale(x)
+                      .orient("bottom")
+                      .ticks(d3.time.seconds, 1)
+                      .tickFormat(function (d) {
+                        var seconds = d.getSeconds() === 0 ? "00" : d.getSeconds();
+                        return seconds % 10 === 0 ? d.getMinutes() + ":" + seconds : ":" + seconds;
+                      });
+
+                    // add clipPath
+                    svg.append("defs").append("clipPath")
+                      .attr("id", "clip")
+                      .append("rect")
+                      .attr("width", width)
+                      .attr("height", height);
+
+                    var axis = d3.select("svg").append("g")
+                      .attr("class", "axis")
+                      .attr("transform", "translate(0," + height + ")")
+                      .call(xAxis);
+
+                    var path = svg.append("g")
+                      .attr("clip-path", "url(#clip)")
+                      .append("path")
+                      .attr("class", "line");
+
+                    svg.select(".line")
+                      .attr("d", line(data));
+
+                    var transition = d3.select("path").transition()
+                      .duration(100)
+                      .ease("linear");
+
+                    (function tick() {
+
+                      transition = transition.each(function () {
+
+                        // update the domains
+                        now = new Date();
+                        fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
+                        x.domain([fromDate, new Date(now.getTime() - 100)]);
+
+                        var translateTo = x(new Date(fromDate.getTime()) - 100);
+
+                        // redraw the line
+                        svg.select(".line")
+                          .attr("d", line(data))
+                          .attr("transform", null)
+                          .transition()
+                          .attr("transform", "translate(" + translateTo + ")");
+
+                        // slide the x-axis left
+                        axis.call(xAxis);
+
+                      }).transition().each("start", tick);
+                    })();
+
+                    setInterval(function () {
+
+                      now = new Date();
+                      fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
+
+                      for (var i = 0; i < data.length; i++) {
+                        if (data[i].date < fromDate) {
+                          data.shift();
+                        } else {
+                          break;
+                        }
+                      }
+
+                      if (insideBeat) return;
+
+                      data.push({
+                        date: now,
+                        value: 0
+                      });
+
+                      if (circleTransition != null) {
+
+                        var diff = now.getTime() - latestBeat.getTime();
+
+                        if (diff < MAX_LATENCY) {
+                          circleTransition = circle.transition()
+                            .duration(TICK_FREQUENCY)
+                            .attr("r", radiusScale(diff))
+                            .attr("fill", colorScale(diff));
+                        }
+                      }
+
+
+                    }, TICK_FREQUENCY);
+
+                    setInterval(function () {
+                      beat();
+                    }, 1000);
+                    beat();
+                  };
+
+                </script>
+
                 <div class="tab-content tab-content-basic">
                   <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="statistics-details d-flex align-items-center justify-content-between">
+
+
                           <div>
                             <p class="statistics-title">Heart Rate</p>
-                            <h3 class="rate-percentage">{{lastcheckupdata.Heartbeat}}</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-heart"></i><span>{{lastcheckupdata.date}}</span></p>
+                            <h3 class="rate-percentage" id="Heartbeatnumber">{{lastcheckupdata.Heartbeat}}</h3>
+                            <p class="text-danger d-flex"><i
+                                class="mdi mdi-heart"></i><span>{{lastcheckupdata.date}}</span></p>
                           </div>
                           <div>
                             <p class="statistics-title">Sleep Cycle</p>
                             <h3 class="rate-percentage">Normal</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-weather-night"></i><span>{{lastcheckupdata.sleep}} hrs</span></p>
+                            <p class="text-success d-flex"><i
+                                class="mdi mdi-weather-night"></i><span>{{lastcheckupdata.sleep}}
+                                hrs</span></p>
                           </div>
                           <div>
                             <p class="statistics-title">SpO<sub>2</sub></p>
@@ -678,8 +933,9 @@
                                   </div>
                                   <div id="performance-line-legend"></div>
                                 </div>
-                                <div class="chartjs-wrapper mt-5">
-                                  <canvas id="performaneLine"></canvas>
+                                <div class="chartjs-wrapper mt-5" style="  margin-top: 1rem !important;">
+
+                                  <div id="svg-wrapper" class="stretch-card" style="margin: 1px !important;"></div>
                                 </div>
                               </div>
                             </div>
@@ -755,7 +1011,8 @@
                                     <div class="dropdown">
                                       <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0"
                                         type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false"> This month </button>
+                                        aria-haspopup="true" aria-expanded="false">
+                                        This month </button>
                                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                         <h6 class="dropdown-header">Settings</h6>
                                         <a class="dropdown-item" href="#">Action</a>
@@ -800,6 +1057,7 @@
                                       <input type="username" class="form-control" name="Name"
                                         placeholder="Enter Full Name">
                                     </div>
+
                                     <div class="form-group">
                                       <label for="exampleInputEmail3">Heart Rate</label>
                                       <input type="number" class="form-control" name="bpm"
@@ -1044,20 +1302,21 @@
 
                         </div>
 
-                        
+
                         <div class="col-12 grid-margin">
                           <div class="card">
                             <div class="card-body">
                               <h4 class="card-title">WellEazy Gallery</h4>
-                                <p class="card-description">
-                                  The Pendant
-                                </p>
+                              <p class="card-description">
+                                The Pendant
+                              </p>
                               <div class="row">
                                 <div class="col-md-6">
                                   <div class="g1-group row">
                                     <label class="col-sm-3 col-design-label">Design</label>
                                     <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg" alt="pendant">
+                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
+                                        alt="pendant">
                                     </div>
                                   </div>
                                 </div>
@@ -1065,7 +1324,8 @@
                                   <div class="g1-group row">
                                     <label class="col-sm-3 col-design-label">Structure</label>
                                     <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg" alt="pendant">
+                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
+                                        alt="pendant">
                                     </div>
                                   </div>
                                 </div>
@@ -1075,7 +1335,8 @@
                                   <div class="g1-group row">
                                     <label class="col-sm-3 col-design-label">Interior</label>
                                     <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg" alt="pendant">
+                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
+                                        alt="pendant">
                                     </div>
                                   </div>
                                 </div>
@@ -1083,7 +1344,8 @@
                                   <div class="g1-group row">
                                     <label class="col-sm-3 col-design-label">Looks</label>
                                     <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg" alt="pendant">
+                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
+                                        alt="pendant">
                                     </div>
                                   </div>
                                 </div>
@@ -1093,7 +1355,8 @@
                                   <div class="g1-group row">
                                     <label class="col-sm-3 col-design-label">Features</label>
                                     <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg" alt="pendant">
+                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
+                                        alt="pendant">
                                     </div>
                                   </div>
                                 </div>
@@ -1101,7 +1364,8 @@
                                   <div class="g1-group row">
                                     <label class="col-sm-3 col-design-label">Colour</label>
                                     <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg" alt="pendant">
+                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
+                                        alt="pendant">
                                     </div>
                                   </div>
                                 </div>
@@ -1116,7 +1380,8 @@
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
                                     <h4 class="card-title card-title-dash">Guardian information</h4>
-                                    <p class="card-subtitle card-subtitle-dash">We remind you as well as guardian also</p>
+                                    <p class="card-subtitle card-subtitle-dash">We remind you as well as guardian also
+                                    </p>
                                   </div>
                                   <div>
                                     <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i
@@ -1154,7 +1419,7 @@
                                             <img src="static/images/faces/face1.jpg" alt="">
                                             <div>
                                               <h6>{{userlogin.guardianName}}</h6>
-                                              
+
                                             </div>
                                           </div>
                                         </td>
@@ -1165,18 +1430,18 @@
                                         <td>
                                           <div>
                                             <div
-                                            class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                            
-                                            <p>{{userlogin.guardianRelation}}e</p>
+                                              class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+
+                                              <p>{{userlogin.guardianRelation}}e</p>
                                             </div>
-                                           
+
                                           </div>
                                         </td>
                                         <td>
                                           <div class="badge badge-opacity-warning">{{userlogin.guardianphone}}</div>
                                         </td>
                                       </tr>
-                                      
+
                                     </tbody>
                                   </table>
                                 </div>
@@ -1485,6 +1750,7 @@
             </div>
           </div>
         </div>
+
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
