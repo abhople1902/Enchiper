@@ -113,10 +113,12 @@
         </div>
         <div>
           <a class="navbar-brand brand-logo" href="index.html">
-            <img src="static/images/logo.svg" alt="logo" />
+            <img src="static\images\logo.png" style="    height: auto;
+            margin: 20px;
+            margin-top: 56px;" alt="logo" />
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.html">
-            <img src="static/images/logo-mini.svg" alt="logo" />
+            <img src="static/images/logo.png" alt="logo" />
           </a>
         </div>
       </div>
@@ -133,8 +135,8 @@
         </ul>
         <ul class="navbar-nav ms-auto">
           <li href="/bot" class="nav-item dropdown d-none d-lg-block">
-            <a class="mdi mdi-wechat" style="font-size: 40px;"  href="/bot" ></a>
-           
+            <a class="mdi mdi-wechat" style="font-size: 40px;" href="/bot"></a>
+
           </li>
           <li class="nav-item d-none d-lg-block">
             <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
@@ -229,7 +231,7 @@
       </div>
     </nav>
     <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
+    <div class="container-fluid page-body-wrapper" style="background-color: #f4f5f7;">
       <!-- partial:partials/_settings-panel.html -->
       <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="ti-settings"></i></div>
@@ -407,7 +409,7 @@
       </div>
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <nav class="sidebar sidebar-offcanvas" style="margin-top: 20px;" id="sidebar">
         <ul class="nav" style="
     position: fixed;
 ">
@@ -908,7 +910,7 @@
                                       </div>
                                       <div>
                                         <p class="text-small mb-2">Device Connected</p>
-                                        <h4 class="mb-0 fw-bold">None</h4>
+                                        <h4 class="mb-0 fw-bold">Yes</h4>
                                       </div>
                                     </div>
                                   </div>
@@ -931,9 +933,8 @@
                                   </div>
                                   <div>
                                     <div class="dropdown">
-                                      <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0"
-                                        type="button" onClick="window.location.reload();" aria-haspopup="true"
-                                        aria-expanded="false">
+                                      <button class="btn btn-secondary  toggle-dark btn-lg mb-0 me-0" type="button"
+                                        onClick="window.location.reload();" aria-haspopup="true" aria-expanded="false">
                                         Quick Check</button>
 
                                     </div>
@@ -1561,13 +1562,14 @@
                                           <div class="form-check w-100">
                                             <label class="form-check-label">
                                               <input class="checkbox" type="checkbox"> Amylinomimetic <i
-                                              class="input-helper rounded"></i>
-                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">Taken</div>
+                                                class="input-helper rounded"></i>
+                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">
+                                                Taken</div>
                                             </label>
-                                            <div class="d-flex mt-2"  style="justify-content: space-between ;">
+                                            <div class="d-flex mt-2" style="justify-content: space-between ;">
                                               <div class="ps-4 text-small me-3">9 A.M. / 3 P.M. / 9 P.M.</div>
                                               <div class="badge badge-opacity-warning me-3">10 Remaining</div>
-                                              
+
                                             </div>
                                           </div>
                                         </li>
@@ -1575,8 +1577,9 @@
                                           <div class="form-check w-100">
                                             <label class="form-check-label">
                                               <input class="checkbox" type="checkbox"> Biguanides <i
-                                              class="input-helper rounded"></i>
-                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">Reminding soon</div>
+                                                class="input-helper rounded"></i>
+                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">
+                                                Reminding soon</div>
                                             </label>
                                             <div class="d-flex mt-2" style="justify-content: space-between;">
                                               <div class="ps-4 text-small me-3">9 A.M. / 9 P.M.</div>
@@ -1589,9 +1592,10 @@
                                             <label class="form-check-label">
                                               <input class="checkbox" type="checkbox"> GLP-1 receptor agonists <i
                                                 class="input-helper rounded"></i>
-                                                <div class="badge badge-opacity-success me-3" style="display: table-row;">Reminding soon</div>
+                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">
+                                                Reminding soon</div>
                                             </label>
-                                            <div class="d-flex mt-2"  style="justify-content: space-between;">
+                                            <div class="d-flex mt-2" style="justify-content: space-between;">
                                               <div class="ps-4 text-small me-3">9 P.M.</div>
                                               <div class="badge badge-opacity-warning me-3">10 Remaining</div>
                                             </div>
@@ -1601,10 +1605,11 @@
                                           <div class="form-check w-100">
                                             <label class="form-check-label">
                                               <input class="checkbox" type="checkbox"> Sulfonylureas <i
-                                              class="input-helper rounded"></i>
-                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">Dose Completed</div>
+                                                class="input-helper rounded"></i>
+                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">
+                                                Dose Completed</div>
                                             </label>
-                                            <div class="d-flex mt-2"  style="justify-content: space-between;">
+                                            <div class="d-flex mt-2" style="justify-content: space-between;">
                                               <div class="ps-4 text-small me-3">9 A.M. / 3 P.M. / 9 P.M.</div>
                                               <div class="badge badge-opacity-warning me-3">0 Remaining</div>
                                             </div>
@@ -1899,6 +1904,9 @@
       var theRandomNumber2 = Math.floor(Math.random() * (100 - 95 + 1) + 95);
       spo2[0] = theRandomNumber2;
 
+      avghb = hb[0] + hb[1] + hb[2] + hb[3] + hb[4] + hb[5] + hb[6] + hb[7] + hb[8] + hb[9]
+      avgspo2 = spo2[0] + spo2[1] + spo2[2] + spo2[3] + spo2[4] + spo2[5] + spo2[6] + spo2[7] + spo2[8] + spo2[9]
+
       var xValues = ['1 sec', '2 sec', '3 sec', '4 sec', '5 sec', '6 sec', '7 sec', '8 sec', '9 sec', '10 sec'];
       new Chart("myChart", {
         type: "line",
@@ -1907,7 +1915,7 @@
           datasets: [{
 
 
-            label: 'Heart Rate',
+            label: 'Heart Rate ('+avghb/10+')',
             data: [hb[0], hb[1], hb[2], hb[3], hb[4], hb[5], hb[6], hb[7], hb[8], hb[9]],
             borderColor: "red",
             fill: false
@@ -1919,7 +1927,7 @@
             fill: false
           },
           {
-            label: 'Oxygen Level',
+            label: 'Oxygen Level ('+avgspo2/10+')',
             data: [spo2[0], spo2[1], spo2[2], spo2[3], spo2[4], spo2[5], spo2[6], spo2[7], spo2[8], spo2[9]],
             borderColor: 'green',
             fill: false,
@@ -1936,7 +1944,7 @@
           }
         }
       });
-      if (count < 10) {
+      if (count < 9) {
         count = count + 1;
         setTimeout(bpgraph, 1000);
       }
