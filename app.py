@@ -45,6 +45,18 @@ class Registration(db.Model):
     def __repr__(self) -> str:
         return f"{self.sno} - {self.name}"
 
+class Guardianaddmemberlist(db.Model):
+    sno = db.Column(db.Integer, primary_key=True)
+    guardianName = db.Column(db.String(200))
+    guardianage = db.Column(db.Integer)
+    guardianRelation = db.Column(db.String(200))
+    guardianaddress = db.Column(db.String(200))
+    guardianage = db.Column(db.Integer)
+    guardianphone = db.Column(db.String(200))
+    datejoined = db.Column(db.DateTime, default=date.today())
+
+    def __repr__(self) -> str:
+        return f"{self.sno} - {self.guardianName}"
 
 def funbodycheckup():
     data = bodycheckup(Name='Rohan', Heartbeat='69',
@@ -62,12 +74,13 @@ def funbodycheckup():
 def home():
     Users = Registration.query.all()
     Patientupdatedata = bodycheckup.query.all()
+    Guardianaddmember = Guardianaddmemberlist.query.all()
     try:
         print(Users[0])
-        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
     except:
         funbodycheckup()
-        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
 
 
 @app.route('/bot', methods=['GET', 'POST'])
@@ -113,6 +126,20 @@ def newregister():
     db.session.add(Rdata)
     db.session.commit()
     return render_template('bodycheck.html', patiantname=name)
+
+@app.route('/newguardianmember', methods=['GET', 'POST'])
+def newmember():
+    guardianName = request.form.get('guardianName')
+    guardianage = request.form.get('guardianage')
+    guardianRelation = request.form.get('guardianRelation')
+    guardianaddress = request.form.get('guardianaddress')
+    guardianphone = request.form.get('guardianphone')
+    Rdata = Guardianaddmemberlist( guardianName=guardianName,
+                         guardianage=guardianage, guardianRelation=guardianRelation, guardianaddress=guardianaddress, guardianphone=guardianphone)
+    db.session.add(Rdata)
+    db.session.commit()
+
+
 
 
 if __name__ == "__main__":

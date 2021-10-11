@@ -54,6 +54,19 @@
     background-color: rgba(0, 0, 0, 0.4);
   }
 
+  .modalnewmember {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   .modal-content {
     background-color: #fefefe;
     margin: 6% auto;
@@ -84,11 +97,14 @@
   }
   function newRegistermodal() {
     document.getElementsByClassName('modalregister')[0].style.display = 'block';
-
+  }
+  function newmember() {
+    document.getElementsByClassName('modalnewmember')[0].style.display = 'block';
   }
   function Modalclose() {
     document.getElementsByClassName("modalcheck")[0].style.display = "none";
     document.getElementsByClassName("modalregister")[0].style.display = "none";
+    document.getElementsByClassName("modalnewmember")[0].style.display = "none";
   }
 
 </script>
@@ -1259,6 +1275,97 @@
                           </div>
 
                         </div>
+                        <div class="modalnewmember" style="z-index: 9999 !important;">
+                          <div class="modal-content" style="height: initial;">
+                            <span onclick=Modalclose() class="close">&times;</span>
+
+                            <div class="col-12 grid-margin">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h4 class="card-title">New member</h4>
+                                  <form class="form-sample" action="/newguardianmember" method="POST">
+
+                                    Guardian information
+                                    </p>
+                                    <div class="col-md-6">
+                                      <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Guardian</label>
+                                        <div class="col-sm-4">
+                                          <div class="form-check">
+                                            <label class="form-check-label">
+                                              <input type="radio" class="form-check-input" name="membershipRadios"
+                                                id="membershipRadios1" value="family member" checked>
+                                              Family Member
+                                            </label>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                          <div class="form-check">
+                                            <label class="form-check-label">
+                                              <input type="radio" class="form-check-input" name="membershipRadios"
+                                                id="membershipRadios2" value="other">
+                                              Other
+                                            </label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Guardian Name</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" name="guardianName" class="form-control" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Age</label>
+                                          <div class="col-sm-9">
+                                            <input type="number" name="guardianage" class="form-control"
+                                              placeholder="Enter your age" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Relation</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" name="guardianRelation" class="form-control" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Address</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" name="guardianaddress" class="form-control" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Phone no.</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" name="guardianphone" class="form-control" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary me-2">Next</button>
+                                    <button class="btn btn-light">Cancel</button>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
 
 
                         <div class="col-12 grid-margin">
@@ -1342,8 +1449,8 @@
                                     </p>
                                   </div>
                                   <div>
-                                    <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i
-                                        class="mdi mdi-account-plus"></i>Add new member</button>
+                                    <button onclick="newmember()" class="btn btn-primary btn-lg text-white mb-0 me-0"
+                                      type="button"><i class="mdi mdi-account-plus"></i>Add new member</button>
                                   </div>
                                 </div>
                                 <div class="table-responsive  mt-1">
@@ -1383,7 +1490,7 @@
                                         </td>
                                         <td>
                                           <h6>{{userlogin.guardianaddress}}</h6>
-                                          <p>company type</p>
+                                          <p>Indian</p>
                                         </td>
                                         <td>
                                           <div>
@@ -1399,6 +1506,43 @@
                                           <div class="badge badge-opacity-warning">{{userlogin.guardianphone}}</div>
                                         </td>
                                       </tr>
+                                      {% for Data in Guardianaddmember %}
+                                      <tr>
+                                        <td>
+                                          <div class="form-check form-check-flat mt-0">
+                                            <label class="form-check-label">
+                                              <input type="checkbox" class="form-check-input" aria-checked="false"><i
+                                                class="input-helper"></i></label>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <img src="static/images/faces/face1.jpg" alt="">
+                                            <div>
+                                              <h6>{{Data.guardianName}}</h6>
+
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <h6>{{Data.guardianaddress}}</h6>
+                                          <p>Indian</p>
+                                        </td>
+                                        <td>
+                                          <div>
+                                            <div
+                                              class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+
+                                              <p>{{Data.guardianRelation}}e</p>
+                                            </div>
+
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="badge badge-opacity-warning">{{Data.guardianphone}}</div>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
 
                                     </tbody>
                                   </table>
@@ -1548,7 +1692,7 @@
                                 <div class="row">
                                   <div class="col-lg-12">
                                     <div class="d-flex justify-content-between align-items-center">
-                                      <h4 class="card-title card-title-dash">Todo list</h4>
+                                      <h4 class="card-title card-title-dash">Todo today</h4>
                                       <div class="add-items d-flex mb-0">
                                         <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
                                         <button
@@ -1915,7 +2059,7 @@
           datasets: [{
 
 
-            label: 'Heart Rate ('+avghb/10+')',
+            label: 'Heart Rate (' + avghb / 10 + ')',
             data: [hb[0], hb[1], hb[2], hb[3], hb[4], hb[5], hb[6], hb[7], hb[8], hb[9]],
             borderColor: "red",
             fill: false
@@ -1927,7 +2071,7 @@
             fill: false
           },
           {
-            label: 'Oxygen Level ('+avgspo2/10+')',
+            label: 'Oxygen Level (' + avgspo2 / 10 + ')',
             data: [spo2[0], spo2[1], spo2[2], spo2[3], spo2[4], spo2[5], spo2[6], spo2[7], spo2[8], spo2[9]],
             borderColor: 'green',
             fill: false,
