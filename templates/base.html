@@ -466,6 +466,12 @@
                             <span class="menu-title">Gallery</span>
                         </a>
                     </li>
+                    <li id="activeabout" class="nav-item">
+                        <a class="nav-link" href="/about" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="menu-icon mdi mdi-account-multiple-outline"></i>
+                            <span class="menu-title">About</span>
+                        </a>
+                    </li>
                     <li class="nav-item nav-category">Forms and Datas</li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
@@ -906,7 +912,7 @@
                                                         </div>
                                                         <button type="submit"
                                                             class="btn btn-primary me-2">Submit</button>
-                                                        <button class="btn btn-light">Cancel</button>
+                                                        <button onclick="Modalclose()" class="btn btn-light">Cancel</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -1126,7 +1132,7 @@
                                                             </div>
                                                         </div>
                                                         <button type="submit" class="btn btn-primary me-2">Next</button>
-                                                        <button class="btn btn-light">Cancel</button>
+                                                        <button onclick="Modalclose()" class="btn btn-light">Cancel</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -1228,8 +1234,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary me-2">Next</button>
-                                                        <button class="btn btn-light">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary me-2">Add Member</button>
+                                                        <button onclick="Modalclose()" class="btn btn-light">Cancel</button>
                                                     </form>
                                                 </div>
                                             </div>

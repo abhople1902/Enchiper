@@ -79,10 +79,10 @@ def home():
     Guardianaddmember = Guardianaddmemberlist.query.all()
     try:
         print(Users[0])
-        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1], Guardianaddmember=Guardianaddmember)
     except:
         funbodycheckup()
-        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1], Guardianaddmember=Guardianaddmember)
+    return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1], Guardianaddmember=Guardianaddmember)
+        # return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1], Guardianaddmember=Guardianaddmember)
 
 
 @app.route('/bot', methods=['GET', 'POST'])
@@ -115,6 +115,18 @@ def gallery():
     except:
         funbodycheckup()
         return render_template('gallery.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
+
+@app.route('/about', methods=['GET', 'POST'])
+def About():
+    Users = Registration.query.all()
+    Patientupdatedata = bodycheckup.query.all()
+    Guardianaddmember = Guardianaddmemberlist.query.all()
+    try:
+        print(Users[0])
+        return render_template('about.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
+    except:
+        funbodycheckup()
+        return render_template('about.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
 
 @app.route('/fullbodychckup', methods=['GET', 'POST'])
 def fullbodychckup():
@@ -165,6 +177,7 @@ def newmember():
                          guardianage=guardianage, guardianRelation=guardianRelation, guardianaddress=guardianaddress, guardianphone=guardianphone)
     db.session.add(Rdata)
     db.session.commit()
+    return flask.redirect('/')
 
 
 
