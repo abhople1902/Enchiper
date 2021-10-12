@@ -1,1859 +1,673 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="static/vendors/feather/feather.css">
-  <link rel="stylesheet" href="static/vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="static/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="static/vendors/typicons/typicons.css">
-  <link rel="stylesheet" href="static/vendors/simple-line-icons/css/simple-line-icons.css">
-  <link rel="stylesheet" href="static/vendors/css/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="static/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="static/js/select.dataTables.min.css">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="static/css/vertical-layout-light/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="static/images/favicon.png" />
-</head>
-
-<!-- Heart beat -->
-
-
-<style>
-  .modalcheck {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  .modalregister {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  .modalnewmember {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  .modal-content {
-    background-color: #fefefe;
-    margin: 6% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-
-  /* Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-</style>
+{% block content %}
 <script>
-  function Manuallybodycheckup() {
-    document.getElementsByClassName('modalcheck')[0].style.display = 'block';
-
-  }
-  function newRegistermodal() {
-    document.getElementsByClassName('modalregister')[0].style.display = 'block';
-  }
-  function newmember() {
-    document.getElementsByClassName('modalnewmember')[0].style.display = 'block';
-  }
-  function Modalclose() {
-    document.getElementsByClassName("modalcheck")[0].style.display = "none";
-    document.getElementsByClassName("modalregister")[0].style.display = "none";
-    document.getElementsByClassName("modalnewmember")[0].style.display = "none";
-  }
-
+  document.getElementById('activedashbord').classList.add("active");
 </script>
-<!-- <button onclick="popup()" >Popup</button> -->
-<!-- Modal -->
-<!-- <div class="modal">
-      <div class="modal-content" style="height: -webkit-fill-available;">
-        <span onclick=Modalclose() class="close">&times;</span>
-        
-      </div>
-      </div>  -->
+<div class="tab-content tab-content-basic">
+  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="statistics-details d-flex align-items-center justify-content-between">
 
-<body onload="startTime()">
-  <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-        <div class="me-3">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
-            <span class="icon-menu"></span>
-          </button>
+
+
+
+          <div>
+            <p class="statistics-title">Heart Rate</p>
+            <h3 id="randomheartrate">--</h3>
+            <!-- <h3 id="randomheartrate">{{lastcheckupdata.Heartbeat}}</h3> -->
+            <p class="text-danger d-flex"><i class="mdi mdi-heart"></i><span>{{lastcheckupdata.date}}</span></p>
+          </div>
+
+
+
+          <div>
+            <p class="statistics-title">Sleep Cycle</p>
+            <h3 class="rate-percentage">Normal</h3>
+            <p class="text-success d-flex"><i class="mdi mdi-weather-night"></i><span>{{lastcheckupdata.sleep}}
+                hrs</span></p>
+          </div>
+          <div>
+            <p class="statistics-title">SpO<sub>2</sub></p>
+            <h3 id="randomspo2">--</h3>
+            <!-- <h3 class="rate-percentage">{{lastcheckupdata.Spo2}}</h3> -->
+            <p class="text-danger d-flex"><i class="mdi mdi-chart-bubble"></i><span>-1%</span></p>
+          </div>
+          <div class="d-none d-md-block">
+            <p class="statistics-title">ECG</p>
+            <h3 class="rate-percentage">NIL</h3>
+            <p class="text-success d-flex"><i class="mdi mdi-heart-pulse"></i><span>ST-T changes</span>
+            </p>
+          </div>
+
+          <div class="d-none d-md-block">
+            <p class="statistics-title">Lab Tests</p>
+            <h3 class="rate-percentage">3 Reports</h3>
+            <p class="text-danger d-flex"><i class="mdi mdi-test-tube"></i><span>2 done 1 due</span></p>
+          </div>
+          <div class="d-none d-md-block">
+            <p class="statistics-title">Check ups</p>
+            <h3 class="rate-percentage">5</h3>
+            <p class="text-success d-flex"><i class="mdi mdi-bookmark-check"></i><span>Get them
+                done!</span></p>
+          </div>
         </div>
-        <div>
-          <a class="navbar-brand brand-logo" href="index.html">
-            <img src="static\images\logo.png" style="    height: auto;
-            margin: 20px;
-            margin-top: 56px;" alt="logo" />
-          </a>
-          <a class="navbar-brand brand-logo-mini" href="index.html">
-            <img src="static/images/logo.png" alt="logo" />
-          </a>
-        </div>
       </div>
-      <div class="navbar-menu-wrapper d-flex align-items-top">
-        <ul class="navbar-nav">
-          <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 id="greeting" class="welcome-text"></h1>
-            <h3 class="welcome-sub-text">Welcome to the WellEazy app </h3>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 d-flex flex-column">
+        <div class="row flex-grow">
+          <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-start">
+                  <div>
+                    <h4 class="card-title card-title-dash" id='randomheartbeatgraph'>Your Health
+                      Performance</h4>
+                    <h5 class="card-subtitle card-subtitle-dash">The chart shows your overall health
+                    </h5>
+                  </div>
+                  <div id="performance-line-legend"></div>
+                </div>
+                <div class="chartjs-wrapper mt-5" style="  margin-top: 1rem !important;">
 
-          </li>
-          <div style="    font-size: 25px;
-          margin-left: 20px;" id="txt"></div>
-
-        </ul>
-        <ul class="navbar-nav ms-auto">
-          <li href="/bot" class="nav-item dropdown d-none d-lg-block">
-            <a class="mdi mdi-wechat" style="font-size: 40px;" href="/bot"></a>
-
-          </li>
-          <li class="nav-item d-none d-lg-block">
-            <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
-              <span class="input-group-addon input-group-prepend border-right">
-                <span class="icon-calendar input-group-text calendar-icon"></span>
-              </span>
-              <input type="text" class="form-control">
-            </div>
-          </li>
-          <li class="nav-item">
-            <form class="search-form" action="#">
-              <i class="icon-search"></i>
-              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-            </form>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link count-indicator" id="notificationDropdown" onclick="newRegistermodal()"
-              style="cursor: pointer;" data-bs-toggle="dropdown">
-              <i class="mdi mdi-plus "></i>
-            </a>
-
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <i class="icon-bell"></i>
-              <span class="count"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-              aria-labelledby="countDropdown">
-              <a class="dropdown-item py-3">
-                <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                <span class="badge badge-pill badge-primary float-right">View all</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
+                  <div id="svg-wrapper" class="stretch-card" style="margin: 1px !important;"></div>
                 </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                  <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                  <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="static/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                  <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-            <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class="img-xs rounded-circle" src="static/images/faces/face8.jpg" alt="Profile image">
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <div class="dropdown-header text-center">
-                <img class="img-md rounded-circle" src="static/images/faces/face8.jpg" alt="Profile image">
-                <p class="mb-1 mt-3 font-weight-semibold">{{userlogin.name}}</p>
-                <p class="fw-light text-muted mb-0">{{userlogin.email}}</p>
               </div>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
-                Profile <span class="badge badge-pill badge-danger">1</span></a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
-                Messages</a>
-              <a class="dropdown-item"><i
-                  class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
-                Activity</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
-                FAQ</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
             </div>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-          data-bs-toggle="offcanvas">
-          <span class="mdi mdi-menu"></span>
-        </button>
-      </div>
-    </nav>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper" style="background-color: #f4f5f7;">
-      <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
-        <div id="theme-settings" style="min-height: fit-content;height: auto;" class="settings-panel">
-          <i class="settings-close ti-close"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-            <div class="img-ss rounded-circle bg-light border me-3"></div>Light
           </div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme">
-            <div class="img-ss rounded-circle bg-dark border me-3"></div>Dark
-          </div>
-
         </div>
       </div>
-      <div id="right-sidebar" class="settings-panel">
-        <i class="settings-close ti-close"></i>
-        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="todo-tab" data-bs-toggle="tab" href="#todo-section" role="tab"
-              aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="chats-tab" data-bs-toggle="tab" href="#chats-section" role="tab"
-              aria-controls="chats-section">CHATS</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="setting-content">
-          <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
-            aria-labelledby="todo-section">
-            <div class="add-items d-flex px-3 mb-0">
-              <form class="form w-100">
-                <div class="form-group d-flex">
-                  <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
-                  <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+      <div class="col-lg-4 d-flex flex-column">
+        <div class="row flex-grow">
+          <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+            <div class="card bg-primary card-rounded">
+              <div class="card-body pb-0">
+                <h4 class="card-title card-title-dash text-white mb-4">Health Summary</h4>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <p class="status-summary-ight-white mb-1">Normal Value</p>
+                    <h2 class="text-info">4/5</h2>
+                  </div>
+                  <div class="col-sm-8">
+                    <div class="status-summary-chart-wrapper pb-4">
+                      <canvas id="status-summary"></canvas>
+                    </div>
+                  </div>
                 </div>
-              </form>
-            </div>
-            <div class="list-wrapper px-3">
-              <ul class="d-flex flex-column-reverse todo-list">
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Team review meeting at 3.00 PM
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Prepare for presentation
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Resolve all the low priority tickets due today
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li class="completed">
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox" checked>
-                      Schedule meeting for next week
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li class="completed">
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox" checked>
-                      Project review
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-              </ul>
-            </div>
-            <h4 class="px-3 text-muted mt-5 fw-light mb-0">Events</h4>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="ti-control-record text-primary me-2"></i>
-                <span>Feb 11 2018</span>
               </div>
-              <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
-              <p class="text-gray mb-0">The total number of sessions</p>
-            </div>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="ti-control-record text-primary me-2"></i>
-                <span>Feb 7 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-              <p class="text-gray mb-0 ">Call Sarah Graves</p>
             </div>
           </div>
-          <!-- To do section tab ends -->
-          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
-            <div class="d-flex align-items-center justify-content-between border-bottom">
-              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 fw-normal">See
-                All</small>
-            </div>
-            <ul class="chat-list">
-              <li class="list active">
-                <div class="profile"><img src="static/images/faces/face1.jpg" alt="image"><span class="online"></span>
-                </div>
-                <div class="info">
-                  <p>Thomas Douglas</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">19 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="static/images/faces/face2.jpg" alt="image"><span class="offline"></span>
-                </div>
-                <div class="info">
-                  <div class="wrapper d-flex">
-                    <p>Catherine</p>
+          <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
+                      <div class="circle-progress-width">
+                        <div id="batterypercent1" style="      display: flex;  font-size: 50px;"
+                          class="progressbar-js-circle pr-2"></div>
+                      </div>
+                      <div>
+                        <p class="text-small mb-2">Pendant Battery</p>
+                        <h4 class="mb-0 fw-bold" id="batterypercent">%</h4>
+                      </div>
+                    </div>
                   </div>
-                  <p>Away</p>
+                  <div class="col-sm-6">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="circle-progress-width">
+                        <div class='mdi mdi-bluetooth-audio' style="    display: flex; font-size: 50px; margin: -3px;"
+                          class="progressbar-js-circle pr-2"></div>
+                      </div>
+                      <div>
+                        <p class="text-small mb-2">Device Connected</p>
+                        <h4 class="mb-0 fw-bold">Yes</h4>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
-                <small class="text-muted my-auto">23 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="static/images/faces/face3.jpg" alt="image"><span class="online"></span>
-                </div>
-                <div class="info">
-                  <p>Daniel Russell</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">14 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="static/images/faces/face4.jpg" alt="image"><span class="offline"></span>
-                </div>
-                <div class="info">
-                  <p>James Richardson</p>
-                  <p>Away</p>
-                </div>
-                <small class="text-muted my-auto">2 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="static/images/faces/face5.jpg" alt="image"><span class="online"></span>
-                </div>
-                <div class="info">
-                  <p>Madeline Kennedy</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">5 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="static/images/faces/face6.jpg" alt="image"><span class="online"></span>
-                </div>
-                <div class="info">
-                  <p>Sarah Graves</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">47 min</small>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
-          <!-- chat tab ends -->
         </div>
       </div>
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" style="margin-top: 20px;" id="sidebar">
-        <ul class="nav" style="
-    position: fixed;
-">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">
-              <i class="mdi mdi-grid-large menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a style="cursor: pointer;" class="nav-link" onclick="newRegistermodal()">
-              <i class="mdi mdi-account-plus menu-icon"></i>
-              <span class="menu-title">New Register</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">UI Elements</li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-              aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-floor-plan"></i>
-              <span class="menu-title">UI Elements</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="static/pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="static/pages/ui-features/dropdowns.html">Dropdowns</a>
-                </li>
-                <li class="nav-item"> <a class="nav-link" href="static/pages/ui-features/typography.html">Typography</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item nav-category">Forms and Datas</li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-              aria-controls="form-elements">
-              <i class="menu-icon mdi mdi-card-text-outline"></i>
-              <span class="menu-title">Form elements</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="static/pages/forms/basic_elements.html">Basic
-                    Elements</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Charts</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="static/pages/charts/chartjs.html">ChartJs</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-              <i class="menu-icon mdi mdi-table"></i>
-              <span class="menu-title">Tables</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tables">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="static/pages/tables/basic-table.html">Basic table</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-              <i class="menu-icon mdi mdi-layers-outline"></i>
-              <span class="menu-title">Icons</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="icons">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="static/pages/icons/mdi.html">Mdi
-                    icons</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item nav-category">pages</li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="menu-icon mdi mdi-account-circle-outline"></i>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="static/pages/samples/login.html"> Login
-                  </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item nav-category">help</li>
-          <li class="nav-item">
-            <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
-              <i class="menu-icon mdi mdi-file-document"></i>
-              <span class="menu-title">Documentation</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="home-tab">
-                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab"
-                        aria-controls="overview" aria-selected="true">Overview</a>
-                    </li>
-                    <li class="nav-item">
-                      <a style="cursor: pointer;" class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                        onclick="Manuallybodycheckup()" role="tab" aria-selected="false">Check Manually</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/bot">Bot Assistant</a>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 d-flex flex-column">
+        <div class="row flex-grow">
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-start">
+                  <div>
+                    <h4 class="card-title card-title-dash">Live Reading Quick Scan (10 sec)</h4>
+                  </div>
+                  <div>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary  toggle-dark btn-lg mb-0 me-0" type="button"
+                        onClick="window.location.reload();" aria-haspopup="true" aria-expanded="false">
+                        Quick Check</button>
 
+                    </div>
+                  </div>
+                </div>
+                <div class="d-sm-flex align-items-center mt-1 justify-content-between">
+                  <div class="me-3">
+                    <div id="end"></div>
+                  </div>
+                </div>
+
+                <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+                <div class="chartjs-bar-wrapper mt-3">
+                  <!-- <canvas id="marketingOverview"></canvas> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="row flex-grow">
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-start">
+                  <div>
+                    <h4 class="card-title card-title-dash">Guardian information</h4>
+                    <p class="card-subtitle card-subtitle-dash">We remind you as well as guardian also
+                    </p>
+                  </div>
+                  <div>
+                    <button onclick="newmember()" class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i
+                        class="mdi mdi-account-plus"></i>Add new member</button>
+                  </div>
+                </div>
+                <div class="table-responsive  mt-1">
+                  <table class="table select-table">
+                    <thead>
+                      <tr>
+                        <th>
+                          <div class="form-check form-check-flat mt-0">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input" aria-checked="false"><i
+                                class="input-helper"></i></label>
+                          </div>
+                        </th>
+                        <th>Guardian Name</th>
+                        <th>Address</th>
+                        <th>Guardian Relation</th>
+                        <th>Phone</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="form-check form-check-flat mt-0">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input" aria-checked="false"><i
+                                class="input-helper"></i></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex ">
+                            <img src="static/images/faces/face1.jpg" alt="">
+                            <div>
+                              <h6>{{userlogin.guardianName}}</h6>
+
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <h6>{{userlogin.guardianaddress}}</h6>
+                          <p>Indian</p>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+
+                              <p>{{userlogin.guardianRelation}}e</p>
+                            </div>
+
+                          </div>
+                        </td>
+                        <td>
+                          <div class="badge badge-opacity-warning">{{userlogin.guardianphone}}</div>
+                        </td>
+                      </tr>
+                      {% for Data in Guardianaddmember %}
+                      <tr>
+                        <td>
+                          <div class="form-check form-check-flat mt-0">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input" aria-checked="false"><i
+                                class="input-helper"></i></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex ">
+                            <img src="static/images/faces/face1.jpg" alt="">
+                            <div>
+                              <h6>{{Data.guardianName}}</h6>
+
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <h6>{{Data.guardianaddress}}</h6>
+                          <p>Indian</p>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+
+                              <p>{{Data.guardianRelation}}e</p>
+                            </div>
+
+                          </div>
+                        </td>
+                        <td>
+                          <div class="badge badge-opacity-warning">{{Data.guardianphone}}</div>
+                        </td>
+                      </tr>
+                      {% endfor %}
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row flex-grow">
+
+          <div class="row flex-grow">
+            <div class="col-md-6 col-lg-6 grid-margin stretch-card">
+              <div class="card card-rounded">
+                <div class="card-body card-rounded">
+                  <h4 class="card-title  card-title-dash">Appoinment</h4>
+                  <div class="list align-items-center border-bottom py-2">
+                    <div class="wrapper w-100">
+                      <p class="mb-2 font-weight-medium">
+                        Change in Directors
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                          <i class="mdi mdi-calendar text-muted me-1"></i>
+                          <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list align-items-center border-bottom py-2">
+                    <div class="wrapper w-100">
+                      <p class="mb-2 font-weight-medium">
+                        Other Events
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                          <i class="mdi mdi-calendar text-muted me-1"></i>
+                          <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list align-items-center border-bottom py-2">
+                    <div class="wrapper w-100">
+                      <p class="mb-2 font-weight-medium">
+                        Quarterly Report
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                          <i class="mdi mdi-calendar text-muted me-1"></i>
+                          <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list align-items-center border-bottom py-2">
+                    <div class="wrapper w-100">
+                      <p class="mb-2 font-weight-medium">
+                        Change in Directors
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                          <i class="mdi mdi-calendar text-muted me-1"></i>
+                          <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="list align-items-center pt-3">
+                    <div class="wrapper w-100">
+                      <p class="mb-0">
+                        <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6 grid-margin stretch-card">
+              <div class="card card-rounded">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h4 class="card-title card-title-dash">Diet Schedule</h4>
+                    <p class="mb-0">00 finished, 12 remaining</p>
+                  </div>
+                  <ul class="bullet-line-list">
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
+                        <p>Just now</p>
+                      </div>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="/" role="tab"
-                        aria-selected="false">More</a>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Oliver Noah</span> assign you a task</div>
+                        <p>1h</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Jack William</span> assign you a task</div>
+                        <p>1h</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Leo Lucas</span> assign you a task</div>
+                        <p>1h</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Thomas Henry</span> assign you a task</div>
+                        <p>1h</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
+                        <p>1h</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
+                        <p>1h</p>
+                      </div>
                     </li>
                   </ul>
-                  <div>
-                    <div class="btn-wrapper">
-                      <a href="whatsapp://send?text=This is WhatsApp sharing example using link"
-                        data-action="share/whatsapp/share" class="btn btn-otline-dark align-items-center"><i
-                          class="icon-share"></i> Share</a>
-                      <a onclick="window.print()" class="btn btn-otline-dark"><i class="icon-printer"></i>
-                        Print</a>
-                      <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
+                  <div class="list align-items-center pt-3">
+                    <div class="wrapper w-100">
+                      <p class="mb-0">
+                        <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
+                      </p>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
 
-                <script src="//d3js.org/d3.v3.min.js"></script>
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <h4 class="card-title card-title-dash">Daily / Diet Schedule</h4>
+                  <p id="Dietbord" class="mb-0">00 finished, 12 remaining</p>
+                </div>
+                <p>Wellness Tips For A Healthy Routine From Morning To Night</p>
+                <ul class="bullet-line-list">
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">06:00 – 07:00am : </span>Wake up . Drink two cups of
+                        water with lemon each morning.</div>
+                      <p id='D1' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">07:00 – 08:00am :</span> Do 60 minutes of
+                        cardiovascular exercise on an empty stomach.</div>
+                      <p id='D2' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">08:00 – 09:00am :</span> Have a bowl full of salads
+                        and fresh fruits.Enjoy a smoothie.</div>
+                      <p id='D3' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">08.00 – 11.00am :</span> Carry on with our work and
+                        daily chores.</div>
+                      <p id='D4' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">11:00 – 12noon :</span> Have a lunch that contains
+                        proteins and nutrients</div>
+                      <p id='D5' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">12:00 – 14:00pm :</span> You can continue work
+                        otherwise grab a good book. </div>
+                      <p id='D6' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">14:00 – 15:00pm :</span> Take a break . Have some
+                        water, coffee, Fruit juices.Go for a walk.</div>
+                      <p id='D7' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">15:00 –18:00pm :</span> Get in for work.</div>
+                      <p id='D8' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">18:00 – 19:00pm :</span> Making a meal at home with as
+                        many fresh ingredients as possible.</div>
+                      <p id='D9' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">19:00 – 21:00pm :</span> Eat your dinner two hours
+                        before bed to promote uninterrupted sleep.
+                      </div>
+                      <p id='D10' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">21:00 – 22:00pm :</span> Spend some time alone,
+                        to breathe deeply, meditate, ponder, review your day.</div>
+                      <p id='D11' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex justify-content-between">
+                      <div><span class="text-light-green">22:00 – 23:00pm :</span> Aim to get to bed 11pm,
+                        sleeping in a darkened room.</div>
+                      <p id='D12' class="badge badge-opacity-primary me-3">ongoing!!</p>
+                    </div>
+                  </li>
+                </ul>
 
-                <style>
-                  #svg-wrapper {
-                    height: 160px;
-                    margin: 2em auto;
-                  }
-
-                  svg path {
-                    fill: none;
-                    stroke: #000;
-                    stroke-width: 1.5px;
-                  }
-
-                  svg .axis {
-                    font-size: 12px;
-                  }
-
-                  svg .axis path {
-                    display: none;
-                  }
-                </style>
-
-                <script type="text/javascript">
-
-                  window.onload = function () {
-
-                    var svg = null;
-                    var circle = null;
-                    var circleTransition = null;
-                    var latestBeat = null;
-                    var insideBeat = false;
-                    var data = [];
-
-                    var SECONDS_SAMPLE = 5;
-                    var BEAT_TIME = 400;
-                    var TICK_FREQUENCY = SECONDS_SAMPLE * 1000 / BEAT_TIME;
-                    var BEAT_VALUES = [0, 0, 3, -4, 10, -7, 3, 0, 0];
-
-                    var CIRCLE_FULL_RADIUS = 20;
-                    var MAX_LATENCY = 5000;
-
-                    var colorScale = d3.scale.linear()
-                      .domain([BEAT_TIME, (MAX_LATENCY - BEAT_TIME) / 2, MAX_LATENCY])
-                      .range(["#6D9521", "#D77900", "#CD3333"]);
-
-                    var radiusScale = d3.scale.linear()
-                      .range([5, CIRCLE_FULL_RADIUS])
-                      .domain([MAX_LATENCY, BEAT_TIME]);
-
-                    function beat() {
-
-                      if (insideBeat) return;
-                      insideBeat = true;
-
-                      var now = new Date();
-                      var nowTime = now.getTime();
-
-                      if (data.length > 0 && data[data.length - 1].date > now) {
-                        data.splice(data.length - 1, 1);
-                      }
-
-                      data.push({
-                        date: now,
-                        value: 0
-                      });
-
-                      var step = BEAT_TIME / BEAT_VALUES.length - 2;
-                      for (var i = 1; i < BEAT_VALUES.length; i++) {
-                        data.push({
-                          date: new Date(nowTime + i * step),
-                          value: BEAT_VALUES[i]
-                        });
-                      }
-
-                      latestBeat = now;
-
-                      circleTransition = circle.transition()
-                        .duration(BEAT_TIME)
-                        .attr("r", CIRCLE_FULL_RADIUS)
-                        .attr("fill", "#6D9521");
-
-                      setTimeout(function () {
-                        insideBeat = false;
-                      }, BEAT_TIME);
-                    }
-
-                    var svgWrapper = document.getElementById("svg-wrapper");
-                    var margin = { left: 10, top: 10, right: CIRCLE_FULL_RADIUS * 3, bottom: 10 },
-                      width = svgWrapper.offsetWidth - margin.left - margin.right,
-                      height = svgWrapper.offsetHeight - margin.top - margin.bottom;
-
-                    // create SVG
-                    svg = d3.select('#svg-wrapper').append("svg")
-                      .attr("width", width + margin.left + margin.right)
-                      .attr("height", height + margin.bottom + margin.top)
-                      .append("g")
-                      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-                    circle = svg
-                      .append("circle")
-                      .attr("fill", "#6D9521")
-                      .attr("cx", width + margin.right / 2)
-                      .attr("cy", height / 2)
-                      .attr("r", CIRCLE_FULL_RADIUS);
-
-                    // init scales
-                    var now = new Date(),
-                      fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
-
-                    // create initial set of data
-                    data.push({
-                      date: now,
-                      value: 0
-                    });
-
-                    var x = d3.time.scale()
-                      .domain([fromDate, new Date(now.getTime())])
-                      .range([0, width]),
-                      y = d3.scale.linear()
-                        .domain([-10, 10])
-                        .range([height, 0]);
-
-                    var line = d3.svg.line()
-                      .interpolate("basis")
-                      .x(function (d) {
-                        return x(d.date);
-                      })
-                      .y(function (d) {
-                        return y(d.value);
-                      });
-
-                    var xAxis = d3.svg.axis()
-                      .scale(x)
-                      .orient("bottom")
-                      .ticks(d3.time.seconds, 1)
-                      .tickFormat(function (d) {
-                        var seconds = d.getSeconds() === 0 ? "00" : d.getSeconds();
-                        return seconds % 10 === 0 ? d.getMinutes() + ":" + seconds : ":" + seconds;
-                      });
-
-                    // add clipPath
-                    svg.append("defs").append("clipPath")
-                      .attr("id", "clip")
-                      .append("rect")
-                      .attr("width", width)
-                      .attr("height", height);
-
-                    var axis = d3.select("svg").append("g")
-                      .attr("class", "axis")
-                      .attr("transform", "translate(0," + height + ")")
-                      .call(xAxis);
-
-                    var path = svg.append("g")
-                      .attr("clip-path", "url(#clip)")
-                      .append("path")
-                      .attr("class", "line");
-
-                    svg.select(".line")
-                      .attr("d", line(data));
-
-                    var transition = d3.select("path").transition()
-                      .duration(100)
-                      .ease("linear");
-
-                    (function tick() {
-
-                      transition = transition.each(function () {
-
-                        // update the domains
-                        now = new Date();
-                        fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
-                        x.domain([fromDate, new Date(now.getTime() - 100)]);
-
-                        var translateTo = x(new Date(fromDate.getTime()) - 100);
-
-                        // redraw the line
-                        svg.select(".line")
-                          .attr("d", line(data))
-                          .attr("transform", null)
-                          .transition()
-                          .attr("transform", "translate(" + translateTo + ")");
-
-                        // slide the x-axis left
-                        axis.call(xAxis);
-
-                      }).transition().each("start", tick);
-                    })();
-
-                    setInterval(function () {
-
-                      now = new Date();
-                      fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
-
-                      for (var i = 0; i < data.length; i++) {
-                        if (data[i].date < fromDate) {
-                          data.shift();
-                        } else {
-                          break;
-                        }
-                      }
-
-                      if (insideBeat) return;
-
-                      data.push({
-                        date: now,
-                        value: 0
-                      });
-
-                      if (circleTransition != null) {
-
-                        var diff = now.getTime() - latestBeat.getTime();
-
-                        if (diff < MAX_LATENCY) {
-                          circleTransition = circle.transition()
-                            .duration(TICK_FREQUENCY)
-                            .attr("r", radiusScale(diff))
-                            .attr("fill", colorScale(diff));
-                        }
-                      }
-
-
-                    }, TICK_FREQUENCY);
-
-                    setInterval(function () {
-                      beat();
-                    }, 1000);
-                    beat();
-                  };
-
-                </script>
-
-                <div class="tab-content tab-content-basic">
-                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <div class="statistics-details d-flex align-items-center justify-content-between">
-
-
-
-
-                          <div>
-                            <p class="statistics-title">Heart Rate</p>
-                            <h3 id="randomheartrate">--</h3>
-                            <!-- <h3 id="randomheartrate">{{lastcheckupdata.Heartbeat}}</h3> -->
-                            <p class="text-danger d-flex"><i
-                                class="mdi mdi-heart"></i><span>{{lastcheckupdata.date}}</span></p>
-                          </div>
-
-
-
-                          <div>
-                            <p class="statistics-title">Sleep Cycle</p>
-                            <h3 class="rate-percentage">Normal</h3>
-                            <p class="text-success d-flex"><i
-                                class="mdi mdi-weather-night"></i><span>{{lastcheckupdata.sleep}}
-                                hrs</span></p>
-                          </div>
-                          <div>
-                            <p class="statistics-title">SpO<sub>2</sub></p>
-                            <h3 id="randomspo2">--</h3>
-                            <!-- <h3 class="rate-percentage">{{lastcheckupdata.Spo2}}</h3> -->
-                            <p class="text-danger d-flex"><i class="mdi mdi-chart-bubble"></i><span>-1%</span></p>
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">ECG</p>
-                            <h3 class="rate-percentage">NIL</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-heart-pulse"></i><span>ST-T changes</span>
-                            </p>
-                          </div>
-
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Lab Tests</p>
-                            <h3 class="rate-percentage">3 Reports</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-test-tube"></i><span>2 done 1 due</span></p>
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Check ups</p>
-                            <h3 class="rate-percentage">5</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-bookmark-check"></i><span>Get them
-                                done!</span></p>
-                          </div>
-                        </div>
+                <div class="list align-items-center pt-3">
+                  <div class="wrapper w-100">
+                    <p class="mb-0">
+                      <a href="#" class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 d-flex flex-column">
+        <div class="row flex-grow">
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h4 class="card-title card-title-dash">Todo today</h4>
+                      <div class="add-items d-flex mb-0">
+                        <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
+                        <button
+                          class="add btn btn-icons btn-rounded btn-primary todo-list-add-btn text-white me-0 pl-12p"><i
+                            class="mdi mdi-plus"></i></button>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-lg-8 d-flex flex-column">
-                        <div class="row flex-grow">
-                          <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <h4 class="card-title card-title-dash" id='randomheartbeatgraph'>Your Health
-                                      Performance</h4>
-                                    <h5 class="card-subtitle card-subtitle-dash">The chart shows your overall health
-                                    </h5>
-                                  </div>
-                                  <div id="performance-line-legend"></div>
-                                </div>
-                                <div class="chartjs-wrapper mt-5" style="  margin-top: 1rem !important;">
+                    <div class="list-wrapper">
+                      <ul class="todo-list todo-list-rounded">
+                        <li class="d-block" id="cross1">
+                          <div class="form-check w-100">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" id="check1"> Amylinomimetic <i
+                                class="input-helper rounded"></i>
+                            </label>
+                            <div class="d-flex mt-2" style="justify-content: space-between ;">
+                              <div class="ps-4 text-small me-3">9 A.M.</div>
+                              <div class="badge badge-opacity-dark me-3" id="Med1">
+                                ----</div>
 
-                                  <div id="svg-wrapper" class="stretch-card" style="margin: 1px !important;"></div>
-                                </div>
-                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 d-flex flex-column">
-                        <div class="row flex-grow">
-                          <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                            <div class="card bg-primary card-rounded">
-                              <div class="card-body pb-0">
-                                <h4 class="card-title card-title-dash text-white mb-4">Health Summary</h4>
-                                <div class="row">
-                                  <div class="col-sm-4">
-                                    <p class="status-summary-ight-white mb-1">Normal Value</p>
-                                    <h2 class="text-info">4/5</h2>
-                                  </div>
-                                  <div class="col-sm-8">
-                                    <div class="status-summary-chart-wrapper pb-4">
-                                      <canvas id="status-summary"></canvas>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                        </li>
+                        <li class="d-block" id="cross2">
+                          <div class="form-check w-100">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" id="check2"> Biguanides <i class="input-helper rounded"></i>
+                            </label>
+                            <div class="d-flex mt-2" style="justify-content: space-between;">
+                              <div class="ps-4 text-small me-3">9 A.M.</div>
+                              <div class="badge badge-opacity-dark me-3" id="Med2">
+                                ----</div>
+
                             </div>
                           </div>
-                          <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="row">
-                                  <div class="col-sm-6">
-                                    <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
-                                      <div class="circle-progress-width">
-                                        <div id="batterypercent1" style="      display: flex;  font-size: 50px;"
-                                          class="progressbar-js-circle pr-2"></div>
-                                      </div>
-                                      <div>
-                                        <p class="text-small mb-2">Pendant Battery</p>
-                                        <h4 class="mb-0 fw-bold" id="batterypercent">%</h4>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-sm-6">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                      <div class="circle-progress-width">
-                                        <div class='mdi mdi-bluetooth-audio'
-                                          style="    display: flex; font-size: 50px; margin: -3px;"
-                                          class="progressbar-js-circle pr-2"></div>
-                                      </div>
-                                      <div>
-                                        <p class="text-small mb-2">Device Connected</p>
-                                        <h4 class="mb-0 fw-bold">Yes</h4>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                        </li>
+                        <li class="d-block" id="cross3">
+                          <div class="form-check w-100">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" id="check3"> Sulfonylureas <i
+                                class="input-helper rounded"></i>
+                            </label>
+                            <div class="d-flex mt-2" style="justify-content: space-between;">
+                              <div class="ps-4 text-small me-3">9 A.M.</div>
+                              <div class="badge badge-opacity-dark me-3" id="Med3">
+                                ----</div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-8 d-flex flex-column">
-                        <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <h4 class="card-title card-title-dash">Live Reading Quick Scan (10 sec)</h4>
-                                  </div>
-                                  <div>
-                                    <div class="dropdown">
-                                      <button class="btn btn-secondary  toggle-dark btn-lg mb-0 me-0" type="button"
-                                        onClick="window.location.reload();" aria-haspopup="true" aria-expanded="false">
-                                        Quick Check</button>
+                        </li>
+                        <li class="d-block" id="cross4">
+                          <div class="form-check w-100">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" id="check4"> Amylinomimetic <i
+                                class="input-helper rounded"></i>
 
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                                  <div class="me-3">
-                                    <div id="end"></div>
-                                  </div>
-                                </div>
+                            </label>
+                            <div class="d-flex mt-2" style="justify-content: space-between ;">
+                              <div class="ps-4 text-small me-3">15 P.M.</div>
+                              <div class="badge badge-opacity-dark me-3" id="Med4">
+                                ----</div>
 
-                                <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-                                <div class="chartjs-bar-wrapper mt-3">
-                                  <!-- <canvas id="marketingOverview"></canvas> -->
-                                </div>
-                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <h4 class="card-title card-title-dash">Market Overview</h4>
-                                    <p class="card-subtitle card-subtitle-dash">Lorem ipsum dolor sit amet consectetur
-                                      adipisicing elit</p>
-                                  </div>
-                                  <div>
-                                    <div class="dropdown">
-                                      <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0"
-                                        type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        This month </button>
-                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                        <h6 class="dropdown-header">Settings</h6>
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Separated link</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                                  <div class="d-sm-flex align-items-center mt-4 justify-content-between">
-                                    <h2 class="me-2 fw-bold">$36,2531.00</h2>
-                                    <h4 class="me-2">USD</h4>
-                                    <h4 class="text-success">(+1.37%)</h4>
-                                  </div>
-                                  <div class="me-3">
-                                    <div id="marketing-overview-legend"></div>
-                                  </div>
-                                </div>
-                                <div class="chartjs-bar-wrapper mt-3">
-                                  <canvas id="marketingOverview"></canvas>
-                                </div>
-                              </div>
+                        </li>
+                        <li class="d-block" id="cross5">
+                          <div class="form-check w-100">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" id="check5"> Sulfonylureas <i
+                                class="input-helper rounded"></i>
+                            </label>
+                            <div class="d-flex mt-2" style="justify-content: space-between;">
+                              <div class="ps-4 text-small me-3">15 P.M.</div>
+                              <div class="badge badge-opacity-dark me-3" id="Med5">
+                                ----</div>
+
                             </div>
                           </div>
-                        </div>
-
-                        <div class="modalcheck" style="z-index: 9999 !important;">
-                          <div class="modal-content" style="height: initial;">
-                            <span onclick=Modalclose() class="close">&times;</span>
-                            <div class="col-12 grid-margin stretch-card">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h4 class="card-title">Full Body Check Up</h4>
-                                  <p class="card-description">
-                                    Enter your health Status
-                                  </p>
-                                  <form class="forms-sample" action="/fullbodychckup" method="POST">
-                                    <div class="form-group">
-                                      <label for="exampleInputName1">Name</label>
-                                      <input type="username" class="form-control" name="Name"
-                                        placeholder="Enter Full Name">
-                                    </div>
-
-                                    <div class="form-group">
-                                      <label for="exampleInputEmail3">Heart Rate</label>
-                                      <input type="number" class="form-control" name="bpm"
-                                        placeholder="Enter Heart Rate">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword4">SpO<sub>2</sub></label>
-                                      <input type="number" class="form-control" name="percentO2"
-                                        placeholder="Enter SpO2 in percentage">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputCity1">Sleep duration</label>
-                                      <input type="number" class="form-control" name="sleepcycle"
-                                        placeholder="Enter Sleep duration in hours">
-                                    </div>
-
-                                    <div class="form-group">
-                                      <label for="Diabetes">Diabetes</label>
-                                      <div class="form-check">
-                                        <label class="form-check-label">
-                                          <input type="radio" class="form-check-input" name="DiabetesY" id="DiabetesY"
-                                            value="Yes">
-                                          Yes
-                                          <i class="input-helper">
-                                          </i>
-                                        </label>
-
-                                      </div>
-
-                                      <div class="form-check">
-                                        <label class="form-check-label">
-                                          <input type="radio" class="form-check-input" name="DiabetesY" id="DiabetesN"
-                                            value="No">
-                                          No
-                                          <i class="input-helper">
-                                          </i>
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
-                                    <button class="btn btn-light">Cancel</button>
-                                  </form>
-                                </div>
-                              </div>
-                            </div>
+                        </li>
+                        <li class="d-block" id="cross6">
+                          <div class="form-check w-100">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" id="check6"> Amylinomimetic <i
+                                class="input-helper rounded"></i>
+                            </label>
+                            <div class="d-flex mt-2" style="justify-content: space-between ;">
+                              <div class="ps-4 text-small me-3">15 P.M.</div>
+                              <div class="badge badge-opacity-dark me-3" id="Med6">
+                                ----</div>
 
 
-                          </div>
-                        </div>
-                        <div class="modalregister" style="z-index: 9999 !important;">
-                          <div class="modal-content" style="height: initial;">
-                            <span onclick=Modalclose() class="close">&times;</span>
-
-                            <div class="col-12 grid-margin">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h4 class="card-title">User Registration</h4>
-                                  <form class="form-sample" action="/newregister" method="POST">
-                                    <p class="card-description">
-                                      Personal info
-                                    </p>
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Patient Name</label>
-                                          <div class="col-sm-9">
-                                            <input type="username" name="name" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Email address</label>
-                                          <div class="col-sm-9">
-                                            <input type="email" name='email' class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Gender</label>
-                                          <div class="col-sm-9">
-                                            <select class="form-control" name="gender">
-                                              <option>Male</option>
-                                              <option>Female</option>
-                                            </select>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Date of Birth</label>
-                                          <div class="col-sm-9">
-                                            <input type="date" name="dob" class="form-control"
-                                              placeholder="dd/mm/yyyy" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">age</label>
-                                          <div class="col-sm-9">
-                                            <input type="number" name="age" class="form-control"
-                                              placeholder="Enter your age" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Patient Phone number</label>
-                                          <div class="col-sm-9">
-                                            <input type="tel" name="phone" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                    </div>
-                                    <p class="card-description">
-                                      User Address
-                                    </p>
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Address</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" name="address" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">State</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Postcode</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">City</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <p class="card-description">
-                                      Guardian information
-                                    </p>
-                                    <div class="col-md-6">
-                                      <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Guardian</label>
-                                        <div class="col-sm-4">
-                                          <div class="form-check">
-                                            <label class="form-check-label">
-                                              <input type="radio" class="form-check-input" name="membershipRadios"
-                                                id="membershipRadios1" value="family member" checked>
-                                              Family Member
-                                            </label>
-                                          </div>
-                                        </div>
-                                        <div class="col-sm-5">
-                                          <div class="form-check">
-                                            <label class="form-check-label">
-                                              <input type="radio" class="form-check-input" name="membershipRadios"
-                                                id="membershipRadios2" value="other">
-                                              Other
-                                            </label>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Guardian Name</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" name="guardianName" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Age</label>
-                                          <div class="col-sm-9">
-                                            <input type="number" name="guardianage" class="form-control"
-                                              placeholder="Enter your age" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Relation</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" name="guardianRelation" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Address</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" name="guardianaddress" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Phone no.</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" name="guardianphone" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary me-2">Next</button>
-                                    <button class="btn btn-light">Cancel</button>
-                                  </form>
-                                </div>
-                              </div>
                             </div>
                           </div>
+                        </li>
+                        <li class="d-block" id="cross7">
+                          <div class="form-check w-100">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" id="check7"> Biguanides <i class="input-helper rounded"></i>
+                            </label>
+                            <div class="d-flex mt-2" style="justify-content: space-between;">
+                              <div class="ps-4 text-small me-3">21 P.M.</div>
+                              <div class="badge badge-opacity-dark me-3" id="Med7">
+                                ----</div>
 
-                        </div>
-                        <div class="modalnewmember" style="z-index: 9999 !important;">
-                          <div class="modal-content" style="height: initial;">
-                            <span onclick=Modalclose() class="close">&times;</span>
-
-                            <div class="col-12 grid-margin">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h4 class="card-title">New member</h4>
-                                  <form class="form-sample" action="/newguardianmember" method="POST">
-
-                                    Guardian information
-                                    </p>
-                                    <div class="col-md-6">
-                                      <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Guardian</label>
-                                        <div class="col-sm-4">
-                                          <div class="form-check">
-                                            <label class="form-check-label">
-                                              <input type="radio" class="form-check-input" name="membershipRadios"
-                                                id="membershipRadios1" value="family member" checked>
-                                              Family Member
-                                            </label>
-                                          </div>
-                                        </div>
-                                        <div class="col-sm-5">
-                                          <div class="form-check">
-                                            <label class="form-check-label">
-                                              <input type="radio" class="form-check-input" name="membershipRadios"
-                                                id="membershipRadios2" value="other">
-                                              Other
-                                            </label>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Guardian Name</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" name="guardianName" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Age</label>
-                                          <div class="col-sm-9">
-                                            <input type="number" name="guardianage" class="form-control"
-                                              placeholder="Enter your age" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Relation</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" name="guardianRelation" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Address</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" name="guardianaddress" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group row">
-                                          <label class="col-sm-3 col-form-label">Phone no.</label>
-                                          <div class="col-sm-9">
-                                            <input type="text" name="guardianphone" class="form-control" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary me-2">Next</button>
-                                    <button class="btn btn-light">Cancel</button>
-                                  </form>
-                                </div>
-                              </div>
                             </div>
                           </div>
+                        </li>
+                        <li class="d-block" id="cross8">
+                          <div class="form-check w-100">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" id="check8"> Sulfonylureas <i
+                                class="input-helper rounded"></i>
+                            </label>
+                            <div class="d-flex mt-2" style="justify-content: space-between;">
+                              <div class="ps-4 text-small me-3">21 P.M.</div>
+                              <div class="badge badge-opacity-dark me-3" id="Med8">
+                                ----</div>
 
-                        </div>
-
-
-                        <div class="col-12 grid-margin">
-                          <div class="card">
-                            <div class="card-body">
-                              <h4 class="card-title">WellEazy Gallery</h4>
-                              <p class="card-description">
-                                The Pendant
-                              </p>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <div class="g1-group row">
-                                    <label class="col-sm-3 col-design-label">Design</label>
-                                    <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
-                                        alt="pendant">
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="g1-group row">
-                                    <label class="col-sm-3 col-design-label">Structure</label>
-                                    <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
-                                        alt="pendant">
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <div class="g1-group row">
-                                    <label class="col-sm-3 col-design-label">Interior</label>
-                                    <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
-                                        alt="pendant">
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="g1-group row">
-                                    <label class="col-sm-3 col-design-label">Looks</label>
-                                    <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
-                                        alt="pendant">
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <div class="g1-group row">
-                                    <label class="col-sm-3 col-design-label">Features</label>
-                                    <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
-                                        alt="pendant">
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="g1-group row">
-                                    <label class="col-sm-3 col-design-label">Colour</label>
-                                    <div class="col-sm-9">
-                                      <img class="img-sm rounded-circle" src="static/images/Pendant/Round-demo.jpg"
-                                        alt="pendant">
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <h4 class="card-title card-title-dash">Guardian information</h4>
-                                    <p class="card-subtitle card-subtitle-dash">We remind you as well as guardian also
-                                    </p>
-                                  </div>
-                                  <div>
-                                    <button onclick="newmember()" class="btn btn-primary btn-lg text-white mb-0 me-0"
-                                      type="button"><i class="mdi mdi-account-plus"></i>Add new member</button>
-                                  </div>
-                                </div>
-                                <div class="table-responsive  mt-1">
-                                  <table class="table select-table">
-                                    <thead>
-                                      <tr>
-                                        <th>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                                class="input-helper"></i></label>
-                                          </div>
-                                        </th>
-                                        <th>Guardian Name</th>
-                                        <th>Address</th>
-                                        <th>Guardian Relation</th>
-                                        <th>Phone</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                                class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex ">
-                                            <img src="static/images/faces/face1.jpg" alt="">
-                                            <div>
-                                              <h6>{{userlogin.guardianName}}</h6>
+                        </li>
+                        <li class="d-block" id="cross9">
+                          <div class="form-check w-100">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" id="check9"> GLP-1 receptor agonists <i
+                                class="input-helper rounded"></i>
+                            </label>
+                            <div class="d-flex mt-2" style="justify-content: space-between;">
+                              <div class="ps-4 text-small me-3">21 P.M.</div>
+                              <div class="badge badge-opacity-dark me-3" id="Med9">
+                                ----</div>
 
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>{{userlogin.guardianaddress}}</h6>
-                                          <p>Indian</p>
-                                        </td>
-                                        <td>
-                                          <div>
-                                            <div
-                                              class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-
-                                              <p>{{userlogin.guardianRelation}}e</p>
-                                            </div>
-
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="badge badge-opacity-warning">{{userlogin.guardianphone}}</div>
-                                        </td>
-                                      </tr>
-                                      {% for Data in Guardianaddmember %}
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" aria-checked="false"><i
-                                                class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex ">
-                                            <img src="static/images/faces/face1.jpg" alt="">
-                                            <div>
-                                              <h6>{{Data.guardianName}}</h6>
-
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>{{Data.guardianaddress}}</h6>
-                                          <p>Indian</p>
-                                        </td>
-                                        <td>
-                                          <div>
-                                            <div
-                                              class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-
-                                              <p>{{Data.guardianRelation}}e</p>
-                                            </div>
-
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="badge badge-opacity-warning">{{Data.guardianphone}}</div>
-                                        </td>
-                                      </tr>
-                                      {% endfor %}
-
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row flex-grow">
-                          <div class="col-md-6 col-lg-6 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body card-rounded">
-                                <h4 class="card-title  card-title-dash">Doctors Appoinment</h4>
-                                <div class="list align-items-center border-bottom py-2">
-                                  <div class="wrapper w-100">
-                                    <p class="mb-2 font-weight-medium">
-                                      Change in Directors
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                      <div class="d-flex align-items-center">
-                                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                                        <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="list align-items-center border-bottom py-2">
-                                  <div class="wrapper w-100">
-                                    <p class="mb-2 font-weight-medium">
-                                      Other Events
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                      <div class="d-flex align-items-center">
-                                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                                        <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="list align-items-center border-bottom py-2">
-                                  <div class="wrapper w-100">
-                                    <p class="mb-2 font-weight-medium">
-                                      Quarterly Report
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                      <div class="d-flex align-items-center">
-                                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                                        <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="list align-items-center border-bottom py-2">
-                                  <div class="wrapper w-100">
-                                    <p class="mb-2 font-weight-medium">
-                                      Change in Directors
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                      <div class="d-flex align-items-center">
-                                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                                        <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
+                        </li>
+                     
 
-                                <div class="list align-items-center pt-3">
-                                  <div class="wrapper w-100">
-                                    <p class="mb-0">
-                                      <a href="#" class="fw-bold text-primary">Show all <i
-                                          class="mdi mdi-arrow-right ms-2"></i></a>
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-6 col-lg-6 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-flex align-items-center justify-content-between mb-3">
-                                  <h4 class="card-title card-title-dash">Diet Schedule</h4>
-                                  <p class="mb-0">20 finished, 5 remaining</p>
-                                </div>
-                                <ul class="bullet-line-list">
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                      <p>Just now</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Oliver Noah</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Jack William</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Leo Lucas</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Thomas Henry</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="d-flex justify-content-between">
-                                      <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
-                                      <p>1h</p>
-                                    </div>
-                                  </li>
-                                </ul>
-                                <div class="list align-items-center pt-3">
-                                  <div class="wrapper w-100">
-                                    <p class="mb-0">
-                                      <a href="#" class="fw-bold text-primary">Show all <i
-                                          class="mdi mdi-arrow-right ms-2"></i></a>
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 d-flex flex-column">
-                        <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="row">
-                                  <div class="col-lg-12">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                      <h4 class="card-title card-title-dash">Todo today</h4>
-                                      <div class="add-items d-flex mb-0">
-                                        <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
-                                        <button
-                                          class="add btn btn-icons btn-rounded btn-primary todo-list-add-btn text-white me-0 pl-12p"><i
-                                            class="mdi mdi-plus"></i></button>
-                                      </div>
-                                    </div>
-                                    <div class="list-wrapper">
-                                      <ul class="todo-list todo-list-rounded">
-                                        <li class="d-block">
-                                          <div class="form-check w-100">
-                                            <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Amylinomimetic <i
-                                                class="input-helper rounded"></i>
-                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">
-                                                Taken</div>
-                                            </label>
-                                            <div class="d-flex mt-2" style="justify-content: space-between ;">
-                                              <div class="ps-4 text-small me-3">9 A.M. / 3 P.M. / 9 P.M.</div>
-                                              <div class="badge badge-opacity-warning me-3">10 Remaining</div>
-
-                                            </div>
-                                          </div>
-                                        </li>
-                                        <li class="d-block">
-                                          <div class="form-check w-100">
-                                            <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Biguanides <i
-                                                class="input-helper rounded"></i>
-                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">
-                                                Reminding soon</div>
-                                            </label>
-                                            <div class="d-flex mt-2" style="justify-content: space-between;">
-                                              <div class="ps-4 text-small me-3">9 A.M. / 9 P.M.</div>
-                                              <div class="badge badge-opacity-warning me-3">5 Remaining</div>
-                                            </div>
-                                          </div>
-                                        </li>
-                                        <li>
-                                          <div class="form-check w-100">
-                                            <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> GLP-1 receptor agonists <i
-                                                class="input-helper rounded"></i>
-                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">
-                                                Reminding soon</div>
-                                            </label>
-                                            <div class="d-flex mt-2" style="justify-content: space-between;">
-                                              <div class="ps-4 text-small me-3">9 P.M.</div>
-                                              <div class="badge badge-opacity-warning me-3">10 Remaining</div>
-                                            </div>
-                                          </div>
-                                        </li>
-                                        <li>
-                                          <div class="form-check w-100">
-                                            <label class="form-check-label">
-                                              <input class="checkbox" type="checkbox"> Sulfonylureas <i
-                                                class="input-helper rounded"></i>
-                                              <div class="badge badge-opacity-success me-3" style="display: table-row;">
-                                                Dose Completed</div>
-                                            </label>
-                                            <div class="d-flex mt-2" style="justify-content: space-between;">
-                                              <div class="ps-4 text-small me-3">9 A.M. / 3 P.M. / 9 P.M.</div>
-                                              <div class="badge badge-opacity-warning me-3">0 Remaining</div>
-                                            </div>
-                                          </div>
-                                        </li>
-
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="row">
-                                  <div class="col-lg-12">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                      <h4 class="card-title card-title-dash">Type By Amount</h4>
-                                    </div>
-                                    <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
-                                    <div id="doughnut-chart-legend" class="mt-5 text-center"></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="row">
-                                  <div class="col-lg-12">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                      <div>
-                                        <h4 class="card-title card-title-dash">Leave Report</h4>
-                                      </div>
-                                      <div>
-                                        <div class="dropdown">
-                                          <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0"
-                                            type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false"> Month Wise </button>
-                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                            <h6 class="dropdown-header">week Wise</h6>
-                                            <a class="dropdown-item" href="#">Year Wise</a>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="mt-3">
-                                      <canvas id="leaveReport"></canvas>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="row">
-                                  <div class="col-lg-12">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                      <div>
-                                        <h4 class="card-title card-title-dash">Pendent User</h4>
-                                      </div>
-                                    </div>
-                                    <div class="mt-3">
-                                      {% for user in Users %}
-
-                                      <div
-                                        class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                        <div class="d-flex">
-                                          <img class="img-sm rounded-10"
-                                            src="static/images/faces/face{{loop.index}}.jpg" alt="profile">
-                                          <div class="wrapper ms-3">
-                                            <p class="ms-1 mb-1 fw-bold">{{user.name}}</p>
-                                            <small class="text-muted mb-0">age = {{user.age}}</small>
-                                          </div>
-                                        </div>
-                                        <div class="text-muted text-small">
-                                          {{user.datejoined}}
-                                        </div>
-                                      </div>
-                                      {% endfor %}
-
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -1861,244 +675,120 @@
             </div>
           </div>
         </div>
-
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a
-                href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from
-              BootstrapDash.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights
-              reserved.</span>
+        <div class="row flex-grow">
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                      <h4 class="card-title card-title-dash">Type By Amount</h4>
+                    </div>
+                    <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
+                    <div id="doughnut-chart-legend" class="mt-5 text-center"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </footer>
-        <!-- partial -->
+        </div>
+        <div class="row flex-grow">
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body card-rounded">
+                <h4 class="card-title  card-title-dash">Doctors Appoinment</h4>
+                <div class="list align-items-center border-bottom py-2">
+                  <div class="wrapper w-100">
+                    <p class="mb-2 font-weight-medium">
+                      Ramesh Gupta (Cardiologist)
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-center">
+                        <i class="mdi mdi-calendar text-muted me-1"></i>
+                        <p class="mb-0 text-small text-muted">Oct 24, 2021</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="list align-items-center border-bottom py-2">
+                  <div class="wrapper w-100">
+                    <p class="mb-2 font-weight-medium">
+                      Mahesh Sharma (Neurologist)
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-center">
+                        <i class="mdi mdi-calendar text-muted me-1"></i>
+                        <p class="mb-0 text-small text-muted">Oct 26, 2021</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="list align-items-center border-bottom py-2">
+                  <div class="wrapper w-100">
+                    <p class="mb-2 font-weight-medium">
+                      Suresh Jaiswal (General Checkup)
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-center">
+                        <i class="mdi mdi-calendar text-muted me-1"></i>
+                        <p class="mb-0 text-small text-muted">Nov 05, 2021</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="list align-items-center pt-3">
+                  <div class="wrapper w-100">
+                    <p style="cursor: not-allowed;" class="mb-0">
+                      <a  class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row flex-grow">
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card card-rounded">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                      <div>
+                        <h4 class="card-title card-title-dash">Pendent User</h4>
+                      </div>
+                    </div>
+                    <div class="mt-3">
+                      {% for user in Users %}
+
+                      <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+                        <div class="d-flex">
+                          <img class="img-sm rounded-10" src="static/images/faces/face{{loop.index}}.jpg" alt="profile">
+                          <div class="wrapper ms-3">
+                            <p class="ms-1 mb-1 fw-bold">{{user.name}}</p>
+                            <small class="text-muted mb-0">age = {{user.age}}</small>
+                          </div>
+                        </div>
+                        <div class="text-muted text-small">
+                          {{user.datejoined}}
+                        </div>
+                      </div>
+                      {% endfor %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- main-panel ends -->
     </div>
-    <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
-
-  <!-- plugins:js -->
-  <script src="static/vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <script src="static/vendors/chart.js/Chart.min.js"></script>
-  <script src="static/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="static/vendors/progressbar.js/progressbar.min.js"></script>
-
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="static/js/off-canvas.js"></script>
-  <script src="static/js/hoverable-collapse.js"></script>
-  <script src="static/js/template.js"></script>
-  <script src="static/js/settings.js"></script>
-  <script src="static/js/todolist.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="static/js/dashboard.js"></script>
-  <script src="static/js/Chart.roundedBarCharts.js"></script>
-  <!-- End custom js for this page-->
-
-  <script>
-
-
-    startTime()
-    function startTime() {
-      const today = new Date();
-      let h = today.getHours();
-      let m = today.getMinutes();
-      let s = today.getSeconds();
-      m = checkTime(m);
-      s = checkTime(s);
-
-      var element = document.getElementById("greeting");
-      Before = '<span><i id="greetingicon" class="mdi '
-      After = '"></i></span>'
-
-      if (h < 6) {
-        greeting = 'Good Night!! '
-        message = 'mdi-weather-night'
-      }
-      else if (h < 9) {
-        greeting = 'Good Morning!! '
-        message = 'mdi mdi-weather-sunset-up'
-
-      }
-      else if (h < 12) {
-        greeting = 'Good Morning!! '
-        message = 'mdi mdi-weather-sunny'
-
-      }
-      else if (h < 17) {
-        greeting = 'Good Afternoon!! '
-        message = 'mdi mdi-white-balance-sunny'
-      }
-      else if (h < 18) {
-        greeting = 'Good Afternoon!! '
-        message = 'mdi mdi-weather-sunset'
-      }
-      else if (h < 21) {
-        greeting = 'Good Evening!! '
-        message = 'mdi mdi-weather-sunset-down'
-      }
-      else if (h < 24) {
-        greeting = 'Good Night!! '
-        message = 'mdi-weather-night'
-      }
-
-      element.innerHTML = greeting + Before + message + After;
-      document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
-
-      // #batterypercent
-      if (h == 1 || h == 0 || h == 2 || h == 4 || h == 5 || h == 6) {
-        document.getElementById('batterypercent').innerHTML = 10 + '%';
-        document.getElementById('batterypercent1').className = 'mdi mdi-battery-10';
-      }
-      else if (h == 7 || h == 8) {
-        document.getElementById('batterypercent').innerHTML = 20 + '%';
-        document.getElementById('batterypercent1').className = 'mdi mdi-battery-20';
-      }
-      else if (h == 9 || h == 10) {
-        document.getElementById('batterypercent').innerHTML = 30 + '%';
-        document.getElementById('batterypercent1').className = 'mdi mdi-battery-30';
-      }
-      else if (h == 11 || h == 12) {
-        document.getElementById('batterypercent').innerHTML = 40 + '%';
-        document.getElementById('batterypercent1').className = 'mdi mdi-battery-40';
-      }
-      else if (h == 13 || h == 14) {
-        document.getElementById('batterypercent').innerHTML = 50 + '%';
-        document.getElementById('batterypercent1').className = 'mdi mdi-battery-50';
-      }
-      else if (h == 15 || h == 16) {
-        document.getElementById('batterypercent').innerHTML = 60 + '%';
-        document.getElementById('batterypercent1').className = 'mdi mdi-battery-60';
-      }
-      else if (h == 17 || h == 18) {
-        document.getElementById('batterypercent').innerHTML = 70 + '%';
-        document.getElementById('batterypercent1').className = 'mdi mdi-battery-70';
-      }
-      else if (h == 19 || h == 20) {
-        document.getElementById('batterypercent').innerHTML = 80 + '%';
-        document.getElementById('batterypercent1').className = 'mdi mdi-battery-80';
-      }
-      else if (h == 21 || h == 22) {
-        document.getElementById('batterypercent').innerHTML = 90 + '%';
-        document.getElementById('batterypercent1').className = 'mdi mdi-battery-90';
-      }
-      else if (h == 23 || h == 24) {
-        document.getElementById('batterypercent').innerHTML = 100 + '%';
-        document.getElementById('batterypercent1').className = 'mdi mdi-battery';
-      }
-
-
-      var theRandomNumber = Math.floor(Math.random() * (75 - 65 + 1) + 65);
-      if (theRandomNumber % 2 == 0) {
-        document.getElementById("randomheartrate").innerHTML = `<b>${theRandomNumber} BPM</b>`;
-        document.getElementById("randomheartbeatgraph").innerHTML = `Your Health Performance - ${theRandomNumber} BPM`;
-      }
-
-      var theRandomNumber = Math.floor(Math.random() * (100 - 98 + 1) + 98);
-      if (theRandomNumber % 2 == 0) {
-        document.getElementById("randomspo2").innerHTML = `<b>${theRandomNumber}%</b>`;
-      }
-      setTimeout(startTime, 1000);
-    }
-
-    function checkTime(i) {
-      if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
-      return i;
-    }
-
-
-
-  </script>
-  <script>
-
-
-    const hb = [];
-    const spo2 = [];
-    spo2[0] = hb[0] = 0
-    spo2[1] = hb[1] = 0
-    spo2[2] = hb[2] = 0
-    spo2[3] = hb[3] = 0
-    spo2[4] = hb[4] = 0
-    spo2[5] = hb[5] = 0
-    spo2[6] = hb[6] = 0
-    spo2[7] = hb[7] = 0
-    spo2[8] = hb[8] = 0
-    spo2[9] = hb[9] = 0
-    count = 0;
-
-    bpgraph()
-    function bpgraph() {
-
-
-      for (let i = 0; i < 10; i++) {
-        hb[10 - i - 1] = hb[10 - i - 2]
-      }
-      for (let i = 0; i < 10; i++) {
-        spo2[10 - i - 1] = spo2[10 - i - 2]
-      }
-      var theRandomNumber1 = Math.floor(Math.random() * (75 - 65 + 1) + 65);
-      hb[0] = theRandomNumber1;
-      var theRandomNumber2 = Math.floor(Math.random() * (100 - 95 + 1) + 95);
-      spo2[0] = theRandomNumber2;
-
-      avghb = hb[0] + hb[1] + hb[2] + hb[3] + hb[4] + hb[5] + hb[6] + hb[7] + hb[8] + hb[9]
-      avgspo2 = spo2[0] + spo2[1] + spo2[2] + spo2[3] + spo2[4] + spo2[5] + spo2[6] + spo2[7] + spo2[8] + spo2[9]
-
-      var xValues = ['1 sec', '2 sec', '3 sec', '4 sec', '5 sec', '6 sec', '7 sec', '8 sec', '9 sec', '10 sec'];
-      new Chart("myChart", {
-        type: "line",
-        data: {
-          labels: xValues,
-          datasets: [{
-
-
-            label: 'Heart Rate (' + avghb / 10 + ')',
-            data: [hb[0], hb[1], hb[2], hb[3], hb[4], hb[5], hb[6], hb[7], hb[8], hb[9]],
-            borderColor: "red",
-            fill: false
-          },
-          {
-            label: '',
-            data: [0],
-            borderColor: "white",
-            fill: false
-          },
-          {
-            label: 'Oxygen Level (' + avgspo2 / 10 + ')',
-            data: [spo2[0], spo2[1], spo2[2], spo2[3], spo2[4], spo2[5], spo2[6], spo2[7], spo2[8], spo2[9]],
-            borderColor: 'green',
-            fill: false,
-
-          }
-          ]
-        },
-        options: {
-          // legend: { display: false }
-
-          title: {
-            display: true,
-            text: "Quick Body Scan in 10 sec"
-          }
-        }
-      });
-      if (count < 9) {
-        count = count + 1;
-        setTimeout(bpgraph, 1000);
-      }
-      else {
-        avghb = hb[0] + hb[1] + hb[2] + hb[3] + hb[4] + hb[5] + hb[6] + hb[7] + hb[8] + hb[9]
-        avgspo2 = spo2[0] + spo2[1] + spo2[2] + spo2[3] + spo2[4] + spo2[5] + spo2[6] + spo2[7] + spo2[8] + spo2[9]
-
-      }
-    }
-  </script>
-</body>
-
-</html>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

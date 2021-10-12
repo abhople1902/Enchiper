@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+    document.getElementById('activemornignclass').classList.add("active");
+</script>
+<div class="tab-content tab-content-basic">
+
+    <h3>Morning Stretch</h3>
+    <hr>
+    <br>
+
+    <div class="row">
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        <div>
+
+                            <b>
+                                <li>Morning Stretch</li>
+                            </b>
+                            <br>
+                            <ol>
+                                <ul>
+                                    <li>Sholder Stretch</li>
+                                    <li>Upper Back Stretch</li>
+                                    <li>Core Stretch</li>
+                                    <li>Hamstring Stretch</li>
+                                    <li>Glutr Stretch</li>
+                                    <li>Quad Stretch</li>
+                                    <li>calf Raise Stretch</li>
+
+                                </ul>
+                            </ol>
+                        </div>
+                        <div>
+
+                            <br><b>
+                                <li>Do this Workout Daily</li>
+                            </b> <br>
+                            <ol>
+                                <ul>
+                                    <li>10 Jumping Jacks</li>
+                                    <li>10 Squats</li>
+                                    <li>10 calf Raises</li>
+                                    <li>10 Lunces</li>
+                                    <li>10 jumping Jacks</li>
+                                    <li>10 Squats</li>
+
+                                </ul>
+                            </ol>
+                        </div>
+                        <br><b>
+                            <li>Morning Walk</li>
+                        </b>
+                        <br>
+                        <ol>
+                            <ul>
+                                <li>Slow walk (10 min)</li>
+                                <li>Fast walk (20 min)</li>
+                            </ul>
+                            <i style="color: red;">5 days in a week*</i>
+
+                        </ol>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+                    <h3>Gallery</h3>
+                    <br>
+                    <div style="text-align: center;">
+
+
+                        <img onclick="MorningImage1()" width="200px" height="auto" style="margin: 15px;" src="static\images\workout-images\w1.jpg"
+                            alt="" srcset="">
+                        <img onclick="MorningImage2()" width="200px" height="auto" style="margin: 15px;" src="static\images\workout-images\w2.jpg"
+                            alt="" srcset="">
+                        <img onclick="MorningImage3()" width="200px" height="auto" style="margin: 15px;" src="static\images\workout-images\w3.jpg"
+                            alt="" srcset="">
+                        <img onclick="MorningImage4()" width="200px" height="auto" style="margin: 15px;" src="static\images\workout-images\w4.jpg"
+                            alt="" srcset="">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="mornignImage1" style="z-index: 9999 !important;">
+    <div class="modal-content" style="height: initial;     background: #faebd700; border: none;">
+        <span onclick=Modalclose() style="    font-size: -webkit-xxx-large;color: aliceblue;" class="close">&times;</span>
+<img src="static\images\workout-images\w1.jpg"  alt="" srcset="">
+</div>
+</div>
+<div class="mornignImage2" style="z-index: 9999 !important;">
+    <div class="modal-content" style="height: initial;     background: #faebd700; border: none;">
+        <span onclick=Modalclose() style="    font-size: -webkit-xxx-large;color: aliceblue;"  class="close">&times;</span>
+        <img src="static\images\workout-images\w2.jpg" alt="" srcset="">
+        
+    </div>
+</div>
+<div class="mornignImage3" style="z-index: 9999 !important;">
+    <div class="modal-content" style="height: initial;    background: #faebd700; border: none;">
+        <span onclick=Modalclose() style="    font-size: -webkit-xxx-large;color: aliceblue;"  class="close">&times;</span>
+        <img src="static\images\workout-images\w3.jpg" alt="" srcset="">
+        
+    </div>
+</div>
+<div class="mornignImage4" style="z-index: 9999 !important;">
+    <div class="modal-content" style="height: initial;    background: #faebd700; border: none;">
+        <span onclick=Modalclose() style="    font-size: -webkit-xxx-large;color: aliceblue;"  class="close">&times;</span>
+        <img src="static\images\workout-images\w4.jpg" alt="" srcset="">
+
+    </div>
+</div>
+
+{% endblock %}

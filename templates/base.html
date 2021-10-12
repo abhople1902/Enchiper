@@ -28,20 +28,13 @@
 
 
 <style>
-    .modalcheck {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .modalregister {
+    .modalnewmember,
+    .modalregister,
+    .modalcheck,
+    .mornignImage1,
+    .mornignImage2,
+    .mornignImage3,
+    .mornignImage4 {
         display: none;
         position: fixed;
         z-index: 1;
@@ -84,11 +77,30 @@
     }
     function newRegistermodal() {
         document.getElementsByClassName('modalregister')[0].style.display = 'block';
-
+    }
+    function newmember() {
+        document.getElementsByClassName('modalnewmember')[0].style.display = 'block';
+    }
+    function MorningImage1() {
+        document.getElementsByClassName('mornignImage1')[0].style.display = 'block';
+    }
+    function MorningImage2() {
+        document.getElementsByClassName('mornignImage2')[0].style.display = 'block';
+    }
+    function MorningImage3() {
+        document.getElementsByClassName('mornignImage3')[0].style.display = 'block';
+    }
+    function MorningImage4() {
+        document.getElementsByClassName('mornignImage4')[0].style.display = 'block';
     }
     function Modalclose() {
         document.getElementsByClassName("modalcheck")[0].style.display = "none";
         document.getElementsByClassName("modalregister")[0].style.display = "none";
+        document.getElementsByClassName("modalnewmember")[0].style.display = "none";
+        document.getElementsByClassName('mornignImage1')[0].style.display = 'none';
+        document.getElementsByClassName('mornignImage2')[0].style.display = 'none';
+        document.getElementsByClassName('mornignImage3')[0].style.display = 'none';
+        document.getElementsByClassName('mornignImage4')[0].style.display = 'none';
     }
 
 </script>
@@ -113,11 +125,13 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="index.html">
-                        <img src="static/images/logo.svg" alt="logo" />
+                    <a class="navbar-brand brand-logo" href="/">
+                        <img src="static\images\logo.png" style="    height: auto;
+            margin: 20px;
+            margin-top: 56px;" alt="logo" />
                     </a>
-                    <a class="navbar-brand brand-logo-mini" href="index.html">
-                        <img src="static/images/logo-mini.svg" alt="logo" />
+                    <a class="navbar-brand brand-logo-mini" href="/">
+                        <img src="static/images/logo.png" alt="logo" />
                     </a>
                 </div>
             </div>
@@ -130,101 +144,12 @@
                     </li>
                     <div style="    font-size: 25px;
           margin-left: 20px;" id="txt"></div>
-                    <script>
-                        function startTime() {
-                            const today = new Date();
-                            let h = today.getHours();
-                            let m = today.getMinutes();
-                            let s = today.getSeconds();
-                            m = checkTime(m);
-                            s = checkTime(s);
 
-                            var element = document.getElementById("greeting");
-                            Before = '<span><i id="greetingicon" class="mdi '
-                            After = '"></i></span>'
-
-                            if (h < 6) {
-                                greeting = 'Good Night!! '
-                                message = 'mdi-weather-night'
-                            }
-                            else if (h < 9) {
-                                greeting = 'Good Morning!! '
-                                message = 'mdi mdi-weather-sunset-up'
-
-                            }
-                            else if (h < 12) {
-                                greeting = 'Good Morning!! '
-                                message = 'mdi mdi-weather-sunny'
-
-                            }
-                            else if (h < 17) {
-                                greeting = 'Good Afternoon!! '
-                                message = 'mdi mdi-white-balance-sunny'
-                            }
-                            else if (h < 18) {
-                                greeting = 'Good Afternoon!! '
-                                message = 'mdi mdi-weather-sunset'
-                            }
-                            else if (h < 21) {
-                                greeting = 'Good Evening!! '
-                                message = 'mdi mdi-weather-sunset-down'
-                            }
-                            else if (h < 24) {
-                                greeting = 'Good Night!! '
-                                message = 'mdi-weather-night'
-                            }
-
-                            element.innerHTML = greeting + Before + message + After;
-                            document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
-                            setTimeout(startTime, 1000);
-
-                            
-                        }
-
-                        function checkTime(i) {
-                            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
-                            return i;
-                        }
-                    </script>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown d-none d-lg-block">
-                        <a class="mdi mdi-wechat" id="messageDropdown" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false"></a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                            aria-labelledby="messageDropdown">
-                            <a class="dropdown-item py-3">
-                                <p class="mb-0 font-weight-medium float-left">Select category</p>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle
-                                    </p>
-                                    <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Angular Bundle</p>
-                                    <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular
-                                        projects</p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">VUE Bundle</p>
-                                    <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">React Bundle</p>
-                                    <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
-                                </div>
-                            </a>
-                        </div>
+                    <li href="/bot" class="nav-item dropdown d-none d-lg-block">
+                        <a class="mdi mdi-wechat" style="font-size: 40px;" href="/bot"></a>
+
                     </li>
                     <li class="nav-item d-none d-lg-block">
                         <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
@@ -324,7 +249,7 @@
             </div>
         </nav>
         <!-- partial -->
-        <div class="container-fluid page-body-wrapper">
+        <div class="container-fluid page-body-wrapper" style="background-color: #f4f5f7;">
             <!-- partial:partials/_settings-panel.html -->
             <div class="theme-setting-wrapper">
                 <div id="settings-trigger"><i class="ti-settings"></i></div>
@@ -340,6 +265,7 @@
 
                 </div>
             </div>
+
             <div id="right-sidebar" class="settings-panel">
                 <i class="settings-close ti-close"></i>
                 <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
@@ -510,10 +436,12 @@
             </div>
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+            <nav class="sidebar sidebar-offcanvas" style="margin-top: 20px;" id="sidebar">
+                <ul class="nav" style="
+    position: fixed;
+">
+                    <li id="activedashbord" class="nav-item">
+                        <a class="nav-link" href="/">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
@@ -524,7 +452,36 @@
                             <span class="menu-title">New Register</span>
                         </a>
                     </li>
-                    <li class="nav-item nav-category">UI Elements</li>
+                    <li class="nav-item nav-category">Body Fitness</li>
+
+                    <li id="activemornignclass" class="nav-item">
+                        <a class="nav-link" href="/morningexercise" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="menu-icon mdi mdi-bike"></i>
+                            <span class="menu-title">Morning Exercises</span>
+                        </a>
+                    </li>
+                    <li id="activegallery" class="nav-item">
+                        <a class="nav-link" href="/gallery" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="menu-icon mdi mdi-tooltip-image"></i>
+                            <span class="menu-title">Gallery</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">Forms and Datas</li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
+                            aria-controls="form-elements">
+                            <i class="menu-icon mdi mdi-card-text-outline"></i>
+                            <span class="menu-title">Form elements</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="form-elements">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="static/pages/forms/basic_elements.html">Basic
+                                        Elements</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
@@ -545,22 +502,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item nav-category">Forms and Datas</li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-card-text-outline"></i>
-                            <span class="menu-title">Form elements</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="form-elements">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link"
-                                        href="static/pages/forms/basic_elements.html">Basic
-                                        Elements</a></li>
-                            </ul>
-                        </div>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false"
                             aria-controls="charts">
@@ -649,7 +591,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/bot">Bot Assistant</a>
-                                            
+
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="/"
@@ -658,12 +600,1093 @@
                                     </ul>
                                     <div>
                                         <div class="btn-wrapper">
-                                            <a href="whatsapp://send?text=This is WhatsApp sharing example using link" 	data-action="share/whatsapp/share" class="btn btn-otline-dark align-items-center"><i
+                                            <a href="whatsapp://send?text=This is WhatsApp sharing example using link"
+                                                data-action="share/whatsapp/share"
+                                                class="btn btn-otline-dark align-items-center"><i
                                                     class="icon-share"></i> Share</a>
-                                            <a onclick = "window.print()" class="btn btn-otline-dark"><i class="icon-printer"></i>
+                                            <a onclick="window.print()" class="btn btn-otline-dark"><i
+                                                    class="icon-printer"></i>
                                                 Print</a>
                                             <a href="#" class="btn btn-primary text-white me-0"><i
                                                     class="icon-download"></i> Export</a>
                                         </div>
                                     </div>
                                 </div>
+
+                                <script src="//d3js.org/d3.v3.min.js"></script>
+
+                                <style>
+                                    #svg-wrapper {
+                                        height: 160px;
+                                        margin: 2em auto;
+                                    }
+
+                                    svg path {
+                                        fill: none;
+                                        stroke: #000;
+                                        stroke-width: 1.5px;
+                                    }
+
+                                    svg .axis {
+                                        font-size: 12px;
+                                    }
+
+                                    svg .axis path {
+                                        display: none;
+                                    }
+                                </style>
+
+                                <script type="text/javascript">
+
+                                    window.onload = function () {
+
+                                        var svg = null;
+                                        var circle = null;
+                                        var circleTransition = null;
+                                        var latestBeat = null;
+                                        var insideBeat = false;
+                                        var data = [];
+
+                                        var SECONDS_SAMPLE = 5;
+                                        var BEAT_TIME = 400;
+                                        var TICK_FREQUENCY = SECONDS_SAMPLE * 1000 / BEAT_TIME;
+                                        var BEAT_VALUES = [0, 0, 3, -4, 10, -7, 3, 0, 0];
+
+                                        var CIRCLE_FULL_RADIUS = 20;
+                                        var MAX_LATENCY = 5000;
+
+                                        var colorScale = d3.scale.linear()
+                                            .domain([BEAT_TIME, (MAX_LATENCY - BEAT_TIME) / 2, MAX_LATENCY])
+                                            .range(["#6D9521", "#D77900", "#CD3333"]);
+
+                                        var radiusScale = d3.scale.linear()
+                                            .range([5, CIRCLE_FULL_RADIUS])
+                                            .domain([MAX_LATENCY, BEAT_TIME]);
+
+                                        function beat() {
+
+                                            if (insideBeat) return;
+                                            insideBeat = true;
+
+                                            var now = new Date();
+                                            var nowTime = now.getTime();
+
+                                            if (data.length > 0 && data[data.length - 1].date > now) {
+                                                data.splice(data.length - 1, 1);
+                                            }
+
+                                            data.push({
+                                                date: now,
+                                                value: 0
+                                            });
+
+                                            var step = BEAT_TIME / BEAT_VALUES.length - 2;
+                                            for (var i = 1; i < BEAT_VALUES.length; i++) {
+                                                data.push({
+                                                    date: new Date(nowTime + i * step),
+                                                    value: BEAT_VALUES[i]
+                                                });
+                                            }
+
+                                            latestBeat = now;
+
+                                            circleTransition = circle.transition()
+                                                .duration(BEAT_TIME)
+                                                .attr("r", CIRCLE_FULL_RADIUS)
+                                                .attr("fill", "#6D9521");
+
+                                            setTimeout(function () {
+                                                insideBeat = false;
+                                            }, BEAT_TIME);
+                                        }
+
+                                        var svgWrapper = document.getElementById("svg-wrapper");
+                                        var margin = { left: 10, top: 10, right: CIRCLE_FULL_RADIUS * 3, bottom: 10 },
+                                            width = svgWrapper.offsetWidth - margin.left - margin.right,
+                                            height = svgWrapper.offsetHeight - margin.top - margin.bottom;
+
+                                        // create SVG
+                                        svg = d3.select('#svg-wrapper').append("svg")
+                                            .attr("width", width + margin.left + margin.right)
+                                            .attr("height", height + margin.bottom + margin.top)
+                                            .append("g")
+                                            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                                        circle = svg
+                                            .append("circle")
+                                            .attr("fill", "#6D9521")
+                                            .attr("cx", width + margin.right / 2)
+                                            .attr("cy", height / 2)
+                                            .attr("r", CIRCLE_FULL_RADIUS);
+
+                                        // init scales
+                                        var now = new Date(),
+                                            fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
+
+                                        // create initial set of data
+                                        data.push({
+                                            date: now,
+                                            value: 0
+                                        });
+
+                                        var x = d3.time.scale()
+                                            .domain([fromDate, new Date(now.getTime())])
+                                            .range([0, width]),
+                                            y = d3.scale.linear()
+                                                .domain([-10, 10])
+                                                .range([height, 0]);
+
+                                        var line = d3.svg.line()
+                                            .interpolate("basis")
+                                            .x(function (d) {
+                                                return x(d.date);
+                                            })
+                                            .y(function (d) {
+                                                return y(d.value);
+                                            });
+
+                                        var xAxis = d3.svg.axis()
+                                            .scale(x)
+                                            .orient("bottom")
+                                            .ticks(d3.time.seconds, 1)
+                                            .tickFormat(function (d) {
+                                                var seconds = d.getSeconds() === 0 ? "00" : d.getSeconds();
+                                                return seconds % 10 === 0 ? d.getMinutes() + ":" + seconds : ":" + seconds;
+                                            });
+
+                                        // add clipPath
+                                        svg.append("defs").append("clipPath")
+                                            .attr("id", "clip")
+                                            .append("rect")
+                                            .attr("width", width)
+                                            .attr("height", height);
+
+                                        var axis = d3.select("svg").append("g")
+                                            .attr("class", "axis")
+                                            .attr("transform", "translate(0," + height + ")")
+                                            .call(xAxis);
+
+                                        var path = svg.append("g")
+                                            .attr("clip-path", "url(#clip)")
+                                            .append("path")
+                                            .attr("class", "line");
+
+                                        svg.select(".line")
+                                            .attr("d", line(data));
+
+                                        var transition = d3.select("path").transition()
+                                            .duration(100)
+                                            .ease("linear");
+
+                                        (function tick() {
+
+                                            transition = transition.each(function () {
+
+                                                // update the domains
+                                                now = new Date();
+                                                fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
+                                                x.domain([fromDate, new Date(now.getTime() - 100)]);
+
+                                                var translateTo = x(new Date(fromDate.getTime()) - 100);
+
+                                                // redraw the line
+                                                svg.select(".line")
+                                                    .attr("d", line(data))
+                                                    .attr("transform", null)
+                                                    .transition()
+                                                    .attr("transform", "translate(" + translateTo + ")");
+
+                                                // slide the x-axis left
+                                                axis.call(xAxis);
+
+                                            }).transition().each("start", tick);
+                                        })();
+
+                                        setInterval(function () {
+
+                                            now = new Date();
+                                            fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
+
+                                            for (var i = 0; i < data.length; i++) {
+                                                if (data[i].date < fromDate) {
+                                                    data.shift();
+                                                } else {
+                                                    break;
+                                                }
+                                            }
+
+                                            if (insideBeat) return;
+
+                                            data.push({
+                                                date: now,
+                                                value: 0
+                                            });
+
+                                            if (circleTransition != null) {
+
+                                                var diff = now.getTime() - latestBeat.getTime();
+
+                                                if (diff < MAX_LATENCY) {
+                                                    circleTransition = circle.transition()
+                                                        .duration(TICK_FREQUENCY)
+                                                        .attr("r", radiusScale(diff))
+                                                        .attr("fill", colorScale(diff));
+                                                }
+                                            }
+
+
+                                        }, TICK_FREQUENCY);
+
+                                        setInterval(function () {
+                                            beat();
+                                        }, 1000);
+                                        beat();
+                                    };
+
+                                </script>
+
+                                {% block content %}{% endblock %}
+
+                                <!-- Modal -->
+                                <div class="modalcheck" style="z-index: 9999 !important;">
+                                    <div class="modal-content" style="height: initial;">
+                                        <span onclick=Modalclose() class="close">&times;</span>
+                                        <div class="col-12 grid-margin stretch-card">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Full Body Check Up</h4>
+                                                    <p class="card-description">
+                                                        Enter your health Status
+                                                    </p>
+                                                    <form class="forms-sample" action="/fullbodychckup" method="POST">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputName1">Name</label>
+                                                            <input type="username" class="form-control" name="Name"
+                                                                placeholder="Enter Full Name">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail3">Heart Rate</label>
+                                                            <input type="number" class="form-control" name="bpm"
+                                                                placeholder="Enter Heart Rate">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword4">SpO<sub>2</sub></label>
+                                                            <input type="number" class="form-control" name="percentO2"
+                                                                placeholder="Enter SpO2 in percentage">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputCity1">Sleep duration</label>
+                                                            <input type="number" class="form-control" name="sleepcycle"
+                                                                placeholder="Enter Sleep duration in hours">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="Diabetes">Diabetes</label>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input"
+                                                                        name="DiabetesY" id="DiabetesY" value="Yes">
+                                                                    Yes
+                                                                    <i class="input-helper">
+                                                                    </i>
+                                                                </label>
+
+                                                            </div>
+
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input"
+                                                                        name="DiabetesY" id="DiabetesN" value="No">
+                                                                    No
+                                                                    <i class="input-helper">
+                                                                    </i>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit"
+                                                            class="btn btn-primary me-2">Submit</button>
+                                                        <button class="btn btn-light">Cancel</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="modalregister" style="z-index: 9999 !important;">
+                                    <div class="modal-content" style="height: initial;">
+                                        <span onclick=Modalclose() class="close">&times;</span>
+
+                                        <div class="col-12 grid-margin">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">User Registration</h4>
+                                                    <form class="form-sample" action="/newregister" method="POST">
+                                                        <p class="card-description">
+                                                            Personal info
+                                                        </p>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Patient
+                                                                        Name</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="username" name="name"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Email
+                                                                        address</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="email" name='email'
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label
+                                                                        class="col-sm-3 col-form-label">Gender</label>
+                                                                    <div class="col-sm-9">
+                                                                        <select class="form-control" name="gender">
+                                                                            <option>Male</option>
+                                                                            <option>Female</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Date of
+                                                                        Birth</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="date" name="dob"
+                                                                            class="form-control"
+                                                                            placeholder="dd/mm/yyyy" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">age</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="number" name="age"
+                                                                            class="form-control"
+                                                                            placeholder="Enter your age" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Patient Phone
+                                                                        number</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="tel" name="phone"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <p class="card-description">
+                                                            User Address
+                                                        </p>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label
+                                                                        class="col-sm-3 col-form-label">Address</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" name="address"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">State</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label
+                                                                        class="col-sm-3 col-form-label">Postcode</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">City</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p class="card-description">
+                                                            Guardian information
+                                                        </p>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-3 col-form-label">Guardian</label>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label">
+                                                                            <input type="radio" class="form-check-input"
+                                                                                name="membershipRadios"
+                                                                                id="membershipRadios1"
+                                                                                value="family member" checked>
+                                                                            Family Member
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label">
+                                                                            <input type="radio" class="form-check-input"
+                                                                                name="membershipRadios"
+                                                                                id="membershipRadios2" value="other">
+                                                                            Other
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Guardian
+                                                                        Name</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" name="guardianName"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Age</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="number" name="guardianage"
+                                                                            class="form-control"
+                                                                            placeholder="Enter your age" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label
+                                                                        class="col-sm-3 col-form-label">Relation</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" name="guardianRelation"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label
+                                                                        class="col-sm-3 col-form-label">Address</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" name="guardianaddress"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Phone
+                                                                        no.</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" name="guardianphone"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary me-2">Next</button>
+                                                        <button class="btn btn-light">Cancel</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modalnewmember" style="z-index: 9999 !important;">
+                                    <div class="modal-content" style="height: initial;">
+                                        <span onclick=Modalclose() class="close">&times;</span>
+
+                                        <div class="col-12 grid-margin">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">New member</h4>
+                                                    <form class="form-sample" action="/newguardianmember" method="POST">
+
+                                                        Guardian information
+                                                        </p>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-3 col-form-label">Guardian</label>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label">
+                                                                            <input type="radio" class="form-check-input"
+                                                                                name="membershipRadios"
+                                                                                id="membershipRadios1"
+                                                                                value="family member" checked>
+                                                                            Family Member
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label">
+                                                                            <input type="radio" class="form-check-input"
+                                                                                name="membershipRadios"
+                                                                                id="membershipRadios2" value="other">
+                                                                            Other
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Guardian
+                                                                        Name</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" name="guardianName"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Age</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="number" name="guardianage"
+                                                                            class="form-control"
+                                                                            placeholder="Enter your age" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label
+                                                                        class="col-sm-3 col-form-label">Relation</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" name="guardianRelation"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label
+                                                                        class="col-sm-3 col-form-label">Address</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" name="guardianaddress"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Phone
+                                                                        no.</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" name="guardianphone"
+                                                                            class="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary me-2">Next</button>
+                                                        <button class="btn btn-light">Cancel</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <!-- content-wrapper ends -->
+                                <!-- partial:partials/_footer.html -->
+                                <footer class="footer">
+                                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                                        <span
+                                            class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium
+                                            <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin
+                                                template</a> from
+                                            BootstrapDash.</span>
+                                        <span
+                                            class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright
+                                            © 2021. All rights
+                                            reserved.</span>
+                                    </div>
+                                </footer>
+                                <!-- partial -->
+                            </div>
+                            <!-- main-panel ends -->
+                        </div>
+                        <!-- page-body-wrapper ends -->
+                    </div>
+                    <!-- container-scroller -->
+
+                    <!-- plugins:js -->
+                    <script src="static/vendors/js/vendor.bundle.base.js"></script>
+                    <!-- endinject -->
+                    <!-- Plugin js for this page -->
+                    <script src="static/vendors/chart.js/Chart.min.js"></script>
+                    <script src="static/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+                    <script src="static/vendors/progressbar.js/progressbar.min.js"></script>
+
+                    <!-- End plugin js for this page -->
+                    <!-- inject:js -->
+                    <script src="static/js/off-canvas.js"></script>
+                    <script src="static/js/hoverable-collapse.js"></script>
+                    <script src="static/js/template.js"></script>
+                    <script src="static/js/settings.js"></script>
+                    <script src="static/js/todolist.js"></script>
+                    <!-- endinject -->
+                    <!-- Custom js for this page-->
+                    <script src="static/js/dashboard.js"></script>
+                    <script src="static/js/Chart.roundedBarCharts.js"></script>
+                    <!-- End custom js for this page-->
+
+                    <script>
+
+
+                        startTime()
+                        function startTime() {
+                            const today = new Date();
+                            let h = today.getHours();
+                            let m = today.getMinutes();
+                            let s = today.getSeconds();
+                            m = checkTime(m);
+                            s = checkTime(s);
+
+                            var element = document.getElementById("greeting");
+                            Before = '<span><i id="greetingicon" class="mdi '
+                            After = '"></i></span>'
+
+                            if (h < 6) {
+                                greeting = 'Good Night!! '
+                                message = 'mdi-weather-night'
+                            }
+                            else if (h < 9) {
+                                greeting = 'Good Morning!! '
+                                message = 'mdi mdi-weather-sunset-up'
+
+                            }
+                            else if (h < 12) {
+                                greeting = 'Good Morning!! '
+                                message = 'mdi mdi-weather-sunny'
+
+                            }
+                            else if (h < 17) {
+                                greeting = 'Good Afternoon!! '
+                                message = 'mdi mdi-white-balance-sunny'
+                            }
+                            else if (h < 18) {
+                                greeting = 'Good Afternoon!! '
+                                message = 'mdi mdi-weather-sunset'
+                            }
+                            else if (h < 21) {
+                                greeting = 'Good Evening!! '
+                                message = 'mdi mdi-weather-sunset-down'
+                            }
+                            else if (h < 24) {
+                                greeting = 'Good Night!! '
+                                message = 'mdi-weather-night'
+                            }
+
+                            element.innerHTML = greeting + Before + message + After;
+                            document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+
+                            // #batterypercent
+                            if (h == 1 || h == 0 || h == 2 || h == 4 || h == 5 || h == 6) {
+                                document.getElementById('batterypercent').innerHTML = 10 + '%';
+                                document.getElementById('batterypercent1').className = 'mdi mdi-battery-10';
+                            }
+                            else if (h == 7 || h == 8) {
+                                document.getElementById('batterypercent').innerHTML = 20 + '%';
+                                document.getElementById('batterypercent1').className = 'mdi mdi-battery-20';
+                            }
+                            else if (h == 9 || h == 10) {
+                                document.getElementById('batterypercent').innerHTML = 30 + '%';
+                                document.getElementById('batterypercent1').className = 'mdi mdi-battery-30';
+                            }
+                            else if (h == 11 || h == 12) {
+                                document.getElementById('batterypercent').innerHTML = 40 + '%';
+                                document.getElementById('batterypercent1').className = 'mdi mdi-battery-40';
+                            }
+                            else if (h == 13 || h == 14) {
+                                document.getElementById('batterypercent').innerHTML = 50 + '%';
+                                document.getElementById('batterypercent1').className = 'mdi mdi-battery-50';
+                            }
+                            else if (h == 15 || h == 16) {
+                                document.getElementById('batterypercent').innerHTML = 60 + '%';
+                                document.getElementById('batterypercent1').className = 'mdi mdi-battery-60';
+                            }
+                            else if (h == 17 || h == 18) {
+                                document.getElementById('batterypercent').innerHTML = 70 + '%';
+                                document.getElementById('batterypercent1').className = 'mdi mdi-battery-70';
+                            }
+                            else if (h == 19 || h == 20) {
+                                document.getElementById('batterypercent').innerHTML = 80 + '%';
+                                document.getElementById('batterypercent1').className = 'mdi mdi-battery-80';
+                            }
+                            else if (h == 21 || h == 22) {
+                                document.getElementById('batterypercent').innerHTML = 90 + '%';
+                                document.getElementById('batterypercent1').className = 'mdi mdi-battery-90';
+                            }
+                            else if (h == 23 || h == 24) {
+                                document.getElementById('batterypercent').innerHTML = 100 + '%';
+                                document.getElementById('batterypercent1').className = 'mdi mdi-battery';
+                            }
+
+
+                            var theRandomNumber = Math.floor(Math.random() * (75 - 65 + 1) + 65);
+                            if (theRandomNumber % 2 == 0) {
+                                document.getElementById("randomheartrate").innerHTML = `<b>${theRandomNumber} BPM</b>`;
+                                document.getElementById("randomheartbeatgraph").innerHTML = `Your Health Performance - ${theRandomNumber} BPM`;
+                            }
+
+                            var theRandomNumber = Math.floor(Math.random() * (100 - 98 + 1) + 98);
+                            if (theRandomNumber % 2 == 0) {
+                                document.getElementById("randomspo2").innerHTML = `<b>${theRandomNumber}%</b>`;
+                            }
+
+
+                            // Daily / Diet Schedule
+                        
+                            if (h <= 06) {
+
+                                document.getElementById('D1').innerHTML = 06 - h + 'h'
+                                document.getElementById('D1').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 07) {
+                                document.getElementById('D1').innerHTML = 'Done!'
+                                document.getElementById('D1').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "01 finished, 11 remaining"
+                            }
+                            if (h <= 07) {
+                                document.getElementById('D2').innerHTML = 07 - h + 'h'
+                                document.getElementById('D2').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 08) {
+                                document.getElementById('D2').innerHTML = 'Done!'
+                                document.getElementById('D2').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "02 finished, 10 remaining"
+                            }
+                            if (h <= 08) {
+                                document.getElementById('D3').innerHTML = 08 - h + 'h'
+                                document.getElementById('D3').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 09) {
+                                document.getElementById('D3').innerHTML = 'Done!'
+                                document.getElementById('D3').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "03 finished, 09 remaining"
+                            }
+                            if (h <= 08) {
+                                document.getElementById('D4').innerHTML = 08 - h + 'h'
+                                document.getElementById('D4').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 11) {
+                                document.getElementById('D4').innerHTML = 'Done!'
+                                document.getElementById('D4').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "04 finished, 08 remaining"
+                            }
+                            if (h <= 11) {
+                                document.getElementById('D5').innerHTML = 11 - h + 'h'
+                                document.getElementById('D5').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 12) {
+                                document.getElementById('D5').innerHTML = 'Done!'
+                                document.getElementById('D5').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "05 finished, 07 remaining"
+                            }
+                            if (h <= 12) {
+                                document.getElementById('D6').innerHTML = 12 - h + 'h'
+                                document.getElementById('D6').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 14) {
+                                document.getElementById('D6').innerHTML = 'Done!'
+                                document.getElementById('D6').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "06 finished, 06 remaining"
+                            }
+                            if (h <= 14) {
+                                document.getElementById('D7').innerHTML = 14 - h + 'h'
+                                document.getElementById('D7').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 15) {
+                                document.getElementById('D7').innerHTML = 'Done!'
+                                document.getElementById('D7').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "07 finished, 05 remaining"
+                            }
+                            if (h <= 15) {
+                                document.getElementById('D8').innerHTML = 15 - h + 'h'
+                                document.getElementById('D8').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 18) {
+                                document.getElementById('D8').innerHTML = 'Done!'
+                                document.getElementById('D8').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "08 finished, 04 remaining"
+                            }
+                            if (h <= 18) {
+                                document.getElementById('D9').innerHTML = 18 - h + 'h'
+                                document.getElementById('D9').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 19) {
+                                document.getElementById('D9').innerHTML = 'Done!'
+                                document.getElementById('D9').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "09 finished, 03 remaining"
+                            }
+                            if (h <= 19) {
+                                document.getElementById('D10').innerHTML = 19 - h + 'h'
+                                document.getElementById('D10').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 21) {
+                                document.getElementById('D10').innerHTML = 'Done!'
+                                document.getElementById('D10').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "10 finished, 02 remaining"
+                            }
+                            if (h <= 21) {
+                                document.getElementById('D11').innerHTML = 21 - h + 'h'
+                                document.getElementById('D11').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 22) {
+                                document.getElementById('D11').innerHTML = 'Done!'
+                                document.getElementById('D11').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "11 finished, 01 remaining"
+                            }
+                            if (h <= 22) {
+                                document.getElementById('D12').innerHTML = 22 - h + 'h'
+                                document.getElementById('D12').className = 'badge badge-opacity-warning me-3'
+                            }
+                            else if (h > 23) {
+                                document.getElementById('D12').innerHTML = 'Done!'
+                                document.getElementById('D12').className = 'badge badge-opacity-success me-3'
+                                document.getElementById("Dietbord").innerHTML = "Daily Schedule is Done"
+                            }
+
+                            
+                          if (h >= 9) {
+                            document.getElementById('Med1').innerHTML = 'Taken'
+                            document.getElementById("Med1").className = 'badge badge-opacity-success me-3'
+                            document.getElementById("cross1").className = 'completed'
+                            document.getElementById("check1").checked = true;
+                          }
+                          else if (h < 9) {
+                            document.getElementById('Med1').innerHTML = 9-h+"h"
+                            document.getElementById("Med1").className = 'badge badge-opacity-warning me-3'
+                          }
+                          if (h >= 9) {
+                            document.getElementById('Med2').innerHTML = 'Taken'
+                            document.getElementById("Med2").className = 'badge badge-opacity-success me-3'
+                            document.getElementById("cross2").className = 'completed'
+                            document.getElementById("check2").checked = true;
+                          }
+                          else if (h < 9) {
+                            document.getElementById('Med2').innerHTML = 9-h+"h"
+                            document.getElementById("Med2").className = 'badge badge-opacity-warning me-3'
+                          }
+                          if (h >= 9) {
+                            document.getElementById('Med3').innerHTML = 'Taken'
+                            document.getElementById("Med3").className = 'badge badge-opacity-success me-3'
+                            document.getElementById("cross3").className = 'completed'
+                            document.getElementById("check3").checked = true;
+                          }
+                          else if (h < 9) {
+                            document.getElementById('Med3').innerHTML = 15-h+"h"
+                            document.getElementById("Med3").className = 'badge badge-opacity-warning me-3'
+                          }
+                          if (h >= 15) {
+                            document.getElementById('Med4').innerHTML = 'Taken'
+                            document.getElementById("Med4").className = 'badge badge-opacity-success me-3'
+                            document.getElementById("cross4").className = 'completed'
+                            document.getElementById("check4").checked = true;
+                          }
+                          else if (h < 15) {
+                            document.getElementById('Med4').innerHTML = 15-h+"h"
+                            document.getElementById("Med4").className = 'badge badge-opacity-warning me-3'
+                          }
+                          if (h >= 15) {
+                            document.getElementById('Med5').innerHTML = 'Taken'
+                            document.getElementById("Med5").className = 'badge badge-opacity-success me-3'
+                            document.getElementById("cross5").className = 'completed'
+                            document.getElementById("check5").checked = true;
+                          }
+                          else if (h < 15) {
+                            document.getElementById('Med5').innerHTML = 15-h+"h"
+                            document.getElementById("Med5").className = 'badge badge-opacity-warning me-3'
+                          }
+                          if (h >= 15) {
+                            document.getElementById('Med6').innerHTML = 'Taken'
+                            document.getElementById("Med6").className = 'badge badge-opacity-success me-3'
+                            document.getElementById("cross6").className = 'completed'
+                            document.getElementById("check6").checked = true;
+                          }
+                          else if (h < 15) {
+                            document.getElementById('Med6').innerHTML = 15-h+"h"
+                            document.getElementById("Med6").className = 'badge badge-opacity-warning me-3'
+                          }
+                          if (h >= 21) {
+                            document.getElementById('Med7').innerHTML = 'Taken'
+                            document.getElementById("Med7").className = 'badge badge-opacity-success me-3'
+                            document.getElementById("cross7").className = 'completed'
+                            document.getElementById("check7").checked = true;
+                          }
+                          else if (h < 21) {
+                            document.getElementById('Med7').innerHTML = 21-h+"h"
+                            document.getElementById("Med7").className = 'badge badge-opacity-warning me-3'
+                          }
+                          if (h >= 21) {
+                            document.getElementById('Med8').innerHTML = 'Taken'
+                            document.getElementById("Med8").className = 'badge badge-opacity-success me-3'
+                            document.getElementById("cross8").className = 'completed'
+                            document.getElementById("check8").checked = true;
+                          }
+                          else if (h < 21) {
+                            document.getElementById('Med8').innerHTML = 21-h+"h"
+                            document.getElementById("Med8").className = 'badge badge-opacity-warning me-3'
+                          }
+                          if (h >= 21) {
+                            document.getElementById('Med9').innerHTML = 'Taken'
+                            document.getElementById("Med9").className = 'badge badge-opacity-success me-3'
+                            document.getElementById("cross9").className = 'completed'
+                            document.getElementById("check9").checked = true;
+                          }
+                          else if (h < 21) {
+                            document.getElementById('Med9').innerHTML = 21-h+"h"
+                            document.getElementById("Med9").className = 'badge badge-opacity-warning me-3'
+                          }
+                      
+
+                            setTimeout(startTime, 1000);
+                        }
+
+                        function checkTime(i) {
+                            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+                            return i;
+                        }
+
+
+
+                    </script>
+                    <script>
+
+
+                        const hb = [];
+                        const spo2 = [];
+                        spo2[0] = hb[0] = 0
+                        spo2[1] = hb[1] = 0
+                        spo2[2] = hb[2] = 0
+                        spo2[3] = hb[3] = 0
+                        spo2[4] = hb[4] = 0
+                        spo2[5] = hb[5] = 0
+                        spo2[6] = hb[6] = 0
+                        spo2[7] = hb[7] = 0
+                        spo2[8] = hb[8] = 0
+                        spo2[9] = hb[9] = 0
+                        count = 0;
+
+                        bpgraph()
+                        function bpgraph() {
+
+
+                            for (let i = 0; i < 10; i++) {
+                                hb[10 - i - 1] = hb[10 - i - 2]
+                            }
+                            for (let i = 0; i < 10; i++) {
+                                spo2[10 - i - 1] = spo2[10 - i - 2]
+                            }
+                            var theRandomNumber1 = Math.floor(Math.random() * (75 - 65 + 1) + 65);
+                            hb[0] = theRandomNumber1;
+                            var theRandomNumber2 = Math.floor(Math.random() * (100 - 95 + 1) + 95);
+                            spo2[0] = theRandomNumber2;
+
+                            avghb = hb[0] + hb[1] + hb[2] + hb[3] + hb[4] + hb[5] + hb[6] + hb[7] + hb[8] + hb[9]
+                            avgspo2 = spo2[0] + spo2[1] + spo2[2] + spo2[3] + spo2[4] + spo2[5] + spo2[6] + spo2[7] + spo2[8] + spo2[9]
+
+                            var xValues = ['1 sec', '2 sec', '3 sec', '4 sec', '5 sec', '6 sec', '7 sec', '8 sec', '9 sec', '10 sec'];
+                            new Chart("myChart", {
+                                type: "line",
+                                data: {
+                                    labels: xValues,
+                                    datasets: [{
+
+
+                                        label: 'Heart Rate (' + avghb / 10 + ')',
+                                        data: [hb[0], hb[1], hb[2], hb[3], hb[4], hb[5], hb[6], hb[7], hb[8], hb[9]],
+                                        borderColor: "red",
+                                        fill: false
+                                    },
+                                    {
+                                        label: '',
+                                        data: [0],
+                                        borderColor: "white",
+                                        fill: false
+                                    },
+                                    {
+                                        label: 'Oxygen Level (' + avgspo2 / 10 + ')',
+                                        data: [spo2[0], spo2[1], spo2[2], spo2[3], spo2[4], spo2[5], spo2[6], spo2[7], spo2[8], spo2[9]],
+                                        borderColor: 'green',
+                                        fill: false,
+
+                                    }
+                                    ]
+                                },
+                                options: {
+                                    // legend: { display: false }
+
+                                    title: {
+                                        display: true,
+                                        text: "Quick Body Scan in 10 sec"
+                                    }
+                                }
+                            });
+                            if (count < 9) {
+                                count = count + 1;
+                                setTimeout(bpgraph, 1000);
+                            }
+                            else {
+                                avghb = hb[0] + hb[1] + hb[2] + hb[3] + hb[4] + hb[5] + hb[6] + hb[7] + hb[8] + hb[9]
+                                avgspo2 = spo2[0] + spo2[1] + spo2[2] + spo2[3] + spo2[4] + spo2[5] + spo2[6] + spo2[7] + spo2[8] + spo2[9]
+
+                            }
+                        }
+                    </script>
+</body>
+
+</html>

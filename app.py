@@ -17,7 +17,7 @@ class bodycheckup(db.Model):
     Heartbeat = db.Column(db.String(30))
     Spo2 = db.Column(db.String(30))
     # Spo2 = db.Column(db.Integer)
-    sleep = db.Column(db.String(100))   
+    sleep = db.Column(db.String(100))
     diabetes = db.Column(db.String(30))
     date = db.Column(db.DateTime, default=date.today())
 
@@ -45,6 +45,7 @@ class Registration(db.Model):
     def __repr__(self) -> str:
         return f"{self.sno} - {self.name}"
 
+
 class Guardianaddmemberlist(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     guardianName = db.Column(db.String(200))
@@ -57,6 +58,7 @@ class Guardianaddmemberlist(db.Model):
 
     def __repr__(self) -> str:
         return f"{self.sno} - {self.guardianName}"
+
 
 def funbodycheckup():
     data = bodycheckup(Name='Rohan', Heartbeat='69',
@@ -77,17 +79,42 @@ def home():
     Guardianaddmember = Guardianaddmemberlist.query.all()
     try:
         print(Users[0])
-        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
+        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1], Guardianaddmember=Guardianaddmember)
     except:
         funbodycheckup()
-        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
+        return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1], Guardianaddmember=Guardianaddmember)
 
 
 @app.route('/bot', methods=['GET', 'POST'])
 def bot():
     Users = Registration.query.all()
     Patientupdatedata = bodycheckup.query.all()
-    return render_template('chattingbot.html',Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+    return render_template('chattingbot.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+
+
+@app.route('/morningexercise', methods=['GET', 'POST'])
+def mornignexercise():
+    Users = Registration.query.all()
+    Patientupdatedata = bodycheckup.query.all()
+    Guardianaddmember = Guardianaddmemberlist.query.all()
+    try:
+        print(Users[0])
+        return render_template('morningexercise.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
+    except:
+        funbodycheckup()
+        return render_template('morningexercise.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
+        
+@app.route('/gallery', methods=['GET', 'POST'])
+def gallery():
+    Users = Registration.query.all()
+    Patientupdatedata = bodycheckup.query.all()
+    Guardianaddmember = Guardianaddmemberlist.query.all()
+    try:
+        print(Users[0])
+        return render_template('gallery.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
+    except:
+        funbodycheckup()
+        return render_template('gallery.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1],Guardianaddmember=Guardianaddmember)
 
 @app.route('/fullbodychckup', methods=['GET', 'POST'])
 def fullbodychckup():
