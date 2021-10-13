@@ -1,4 +1,3 @@
-
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -6,7 +5,7 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="container app">
+<div class="container app" style="    width: 60%;">
   <div class="row app-one">
 
 
@@ -18,13 +17,13 @@
           </div>
         </div>
         <div class="col-sm-8 col-xs-7 heading-name">
-          <a class="heading-name-meta">John Doe
+          <a class="heading-name-meta">Test Bot
           </a>
-          <span >Online</span>
+          <span>Online</span>
         </div>
-        
+
         <div class="col-sm-1 col-xs-1  heading-dot pull-right">
-          
+
           <a type="button" href="/" class="pull-right btn btn-light">Go Back</a>
         </div>
       </div>
@@ -38,11 +37,29 @@
           </div>
         </div>
 
-        <div class="row message-body">
-          <div class="col-sm-12 message-main-receiver">
+        <script>
+          setTimeout(function () { document.getElementById('messagehii1').style = 'display:block;' }, 2000);
+          setTimeout(function () { document.getElementById('messagehii2').style = 'display:block;' }, 3000);
+        </script>
+
+        <div id='messagehii1' style="display: none;" class="row message-body">
+          <div class="col-sm-12 message-main-receiver" style="margin-bottom: 5px;">
             <div class="receiver">
               <div class="message-text ">
                 Heyy!!
+              </div>
+              <span class="message-time pull-right">
+                now
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div id='messagehii2' style="display: none;" class="row message-body">
+          <div class="col-sm-12 message-main-receiver" style="margin-bottom: 5px;">
+            <div class="receiver">
+              <div class="message-text ">
+                Welcome to WellEazy Chatting Bot!!
               </div>
               <span class="message-time pull-right">
                 now
@@ -80,13 +97,26 @@
         </div> -->
 
       </div>
+      <script>
 
+        function enterKeyPressed(event) {
+          if (event.keyCode == 13) {
+            Uploadmessage()
+            document.getElementById("comment").value = "";
+            return true;
+          } else {
+            console.log('/')
+            // document.getElementById("comment").value += event.key;
+          }
+        }
+      </script>
       <div class="row reply">
         <div class="col-sm-1 col-xs-1 reply-emojis">
           <i class="fa fa-smile-o fa-2x"></i>
         </div>
         <div class="col-sm-9 col-xs-9 reply-main">
-          <textarea class="form-control" rows="1" id="comment"></textarea>
+          <textarea placeholder="Message" class="form-control" rows="1" id="comment"
+            onkeypress="return enterKeyPressed(event)"></textarea>
         </div>
         <div class="col-sm-1 col-xs-1 reply-recording">
           <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
@@ -100,37 +130,90 @@
 </div>
 
 <script>
-  function answermessage(answer) {
+
+  function answermessage(message) {
+
+    var messageuser = message
 
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
     var element = document.getElementById("conversation");
-    Before = ' <div class="row message-body"><div class="col-sm-12 message-main-receiver"><div class="receiver"> <div class="message-text">'
-    message = answer
+    Before = ' <div class="row message-body"><div class="col-sm-12 message-main-receiver" style="margin-bottom: 5px;"><div class="receiver"> <div class="message-text">'
+
     After1 = '</div> <span class="message-time pull-right">'
     After2 = '  </span> </div> </div> </div>'
 
-    element.innerHTML += Before + message + After1 + time + After2;
+    if (message == 'hii' || message == 'hello' || message == 'hi' || message == 'hey') {
+      message = message + ' there. How Can i help you??'
+      element.innerHTML += Before + message + After1 + time + After2;
+    }
+    else if (message.includes("Good morning") || message.includes("good morning") || message.includes("Good afternoon") || message.includes("good aftrnoon") || message.includes("Good night") || message.includes("good night")) {
+      message = "hii! you've found the new " + message + ' Schedule!!'
+      element.innerHTML += Before + message + After1 + time + After2;
+      message = "you are redirecting to the schedule"
+      element.innerHTML += Before + message + After1 + time + After2;
+      setTimeout(() => { window.open("http://127.0.0.1:5000/morningexercise", "_self") }, 5000);
+    }
+    else if (message.includes("rate")) {
+      var theRandomNumber = Math.floor(Math.random() * (85 - 65 + 1) + 65);
+      message = theRandomNumber + " BPM";
+      element.innerHTML += Before + message + After1 + time + After2;
 
+    }
+    else if (message.includes("spo2")) {
+      var theRandomNumber = Math.floor(Math.random() * (100 - 97 + 1) + 97);
+      message = theRandomNumber + " %";
+      element.innerHTML += Before + message + After1 + time + After2;
+
+    }
+    else if (message.includes("body checkup")) {
+      message = "What's your current heart rate?"
+      element.innerHTML += Before + message + After1 + time + After2;
+      message = "What's your current SpO2 level?"
+      setTimeout(() => { element.innerHTML += Before + "What's your current SpO2 level?" + After1 + time + After2; }, 10000);
+      setTimeout(() => { element.innerHTML += Before + "what's your sleep hour?" + After1 + time + After2; }, 20000);
+      setTimeout(() => { element.innerHTML += Before + "want to attach any file here?" + After1 + time + After2; }, 30000);
+      setTimeout(() => { element.innerHTML += Before + "pendent is working good?" + After1 + time + After2; }, 40000);
+    }
+    // is my body fit
+    else if (message.includes("body fit")) {
+      message = "Yes you are fit and fine";
+      element.innerHTML += Before + message + After1 + time + After2;
+
+    }
+    else if (isNaN(message) == false) {
+      console.log('.')
+    }
+    else {
+      message = "Sorry, I don't understand."
+      element.innerHTML += Before + message + After1 + time + After2;
+    }
+    element.scroll(0, 10000);
   }
   function Uploadmessage() {
-    if (document.getElementById("comment").value != ""){
+    if ((document.getElementById("comment").value).length == 1) {
+      alert("Enter number in format of --")
+    } else {
+      if (document.getElementById("comment").value != "") {
 
-      var today = new Date();
-      var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var today = new Date();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-      var element = document.getElementById("conversation");
-      Before = ' <div class="row message-body"> <div class="col-sm-12 message-main-sender"> <div class="sender"><div class="message-text">'
-      message = document.getElementById("comment").value
-      After1 = '</div> <span class="message-time pull-right">'
-      After2 = '</span> </div><div> </div>'
+        var element = document.getElementById("conversation");
+        Before = ' <div class="row message-body"> <div class="col-sm-12 message-main-sender" > <div class="sender"><div class="message-text">'
+        message = document.getElementById("comment").value
+        After1 = '</div> <span class="message-time pull-right">'
+        After2 = '</span> </div><div> </div>'
 
-      element.innerHTML += Before + message + After1 + time + After2;
-      document.getElementById("comment").value = "";
 
-      setTimeout(() => { answermessage(message) }, 2000);
 
+        element.innerHTML += Before + message + After1 + time + After2;
+        document.getElementById("comment").value = "";
+
+        setTimeout(() => { answermessage(message) }, 2000);
+        element.scroll(0, 10000);
+      }
     }
   }
 </script>

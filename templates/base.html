@@ -34,7 +34,8 @@
     .mornignImage1,
     .mornignImage2,
     .mornignImage3,
-    .mornignImage4 {
+    .mornignImage4,
+    .modaladdtodo {
         display: none;
         position: fixed;
         z-index: 1;
@@ -93,10 +94,14 @@
     function MorningImage4() {
         document.getElementsByClassName('mornignImage4')[0].style.display = 'block';
     }
+    function addtodo() {
+        document.getElementsByClassName('modaladdtodo')[0].style.display = 'block';
+    }
     function Modalclose() {
-        document.getElementsByClassName("modalcheck")[0].style.display = "none";
         document.getElementsByClassName("modalregister")[0].style.display = "none";
+        document.getElementsByClassName("modalcheck")[0].style.display = "none";
         document.getElementsByClassName("modalnewmember")[0].style.display = "none";
+        document.getElementsByClassName('modaladdtodo')[0].style.display = 'none';
         document.getElementsByClassName('mornignImage1')[0].style.display = 'none';
         document.getElementsByClassName('mornignImage2')[0].style.display = 'none';
         document.getElementsByClassName('mornignImage3')[0].style.display = 'none';
@@ -855,8 +860,8 @@
 
                                 <!-- Modal -->
                                 <div class="modalcheck" style="z-index: 9999 !important;">
-                                    <div class="modal-content" style="height: initial;">
-                                        <span onclick=Modalclose() class="close">&times;</span>
+                                    <div class="modal-content" style=" background: #faebd700; border: none; height: initial;">
+
                                         <div class="col-12 grid-margin stretch-card">
                                             <div class="card">
                                                 <div class="card-body">
@@ -867,23 +872,23 @@
                                                     <form class="forms-sample" action="/fullbodychckup" method="POST">
                                                         <div class="form-group">
                                                             <label for="exampleInputName1">Name</label>
-                                                            <input type="username" class="form-control" name="Name"
+                                                            <input required type="username" class="form-control" name="Name"
                                                                 placeholder="Enter Full Name">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail3">Heart Rate</label>
-                                                            <input type="number" class="form-control" name="bpm"
+                                                            <input required type="number" class="form-control" name="bpm"
                                                                 placeholder="Enter Heart Rate">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputPassword4">SpO<sub>2</sub></label>
-                                                            <input type="number" class="form-control" name="percentO2"
+                                                            <input required type="number" class="form-control" name="percentO2"
                                                                 placeholder="Enter SpO2 in percentage">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputCity1">Sleep duration</label>
-                                                            <input type="number" class="form-control" name="sleepcycle"
+                                                            <input required type="number" class="form-control" name="sleepcycle"
                                                                 placeholder="Enter Sleep duration in hours">
                                                         </div>
 
@@ -891,7 +896,7 @@
                                                             <label for="Diabetes">Diabetes</label>
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input type="radio" class="form-check-input"
+                                                                    <input required type="radio" class="form-check-input"
                                                                         name="DiabetesY" id="DiabetesY" value="Yes">
                                                                     Yes
                                                                     <i class="input-helper">
@@ -902,7 +907,7 @@
 
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input type="radio" class="form-check-input"
+                                                                    <input required type="radio" class="form-check-input"
                                                                         name="DiabetesY" id="DiabetesN" value="No">
                                                                     No
                                                                     <i class="input-helper">
@@ -912,7 +917,7 @@
                                                         </div>
                                                         <button type="submit"
                                                             class="btn btn-primary me-2">Submit</button>
-                                                        <button onclick="Modalclose()" class="btn btn-light">Cancel</button>
+                                                            <a onclick="Modalclose()" class="btn btn-light">Cancel</a>
                                                     </form>
                                                 </div>
                                             </div>
@@ -922,8 +927,8 @@
                                     </div>
                                 </div>
                                 <div class="modalregister" style="z-index: 9999 !important;">
-                                    <div class="modal-content" style="height: initial;">
-                                        <span onclick=Modalclose() class="close">&times;</span>
+                                    <div class="modal-content" style=" background: #faebd700; border: none; height: initial;">
+
 
                                         <div class="col-12 grid-margin">
                                             <div class="card">
@@ -939,7 +944,7 @@
                                                                     <label class="col-sm-3 col-form-label">Patient
                                                                         Name</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="username" name="name"
+                                                                        <input required type="username" name="name"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -949,7 +954,7 @@
                                                                     <label class="col-sm-3 col-form-label">Email
                                                                         address</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="email" name='email'
+                                                                        <input required type="email" name='email'
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -973,7 +978,7 @@
                                                                     <label class="col-sm-3 col-form-label">Date of
                                                                         Birth</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="date" name="dob"
+                                                                        <input required type="date" name="dob"
                                                                             class="form-control"
                                                                             placeholder="dd/mm/yyyy" />
                                                                     </div>
@@ -985,7 +990,7 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">age</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="number" name="age"
+                                                                        <input required type="number" name="age"
                                                                             class="form-control"
                                                                             placeholder="Enter your age" />
                                                                     </div>
@@ -996,7 +1001,7 @@
                                                                     <label class="col-sm-3 col-form-label">Patient Phone
                                                                         number</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="tel" name="phone"
+                                                                        <input required type="tel" name="phone"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -1012,7 +1017,7 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Address</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" name="address"
+                                                                        <input required type="text" name="address"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -1021,7 +1026,7 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">State</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" />
+                                                                        <input required type="text" class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1033,7 +1038,7 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Postcode</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" />
+                                                                        <input required type="text" class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1041,7 +1046,7 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">City</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" class="form-control" />
+                                                                        <input required type="text" class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1055,7 +1060,7 @@
                                                                 <div class="col-sm-4">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input type="radio" class="form-check-input"
+                                                                            <input required type="radio" class="form-check-input"
                                                                                 name="membershipRadios"
                                                                                 id="membershipRadios1"
                                                                                 value="family member" checked>
@@ -1066,7 +1071,7 @@
                                                                 <div class="col-sm-5">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input type="radio" class="form-check-input"
+                                                                            <input required type="radio" class="form-check-input"
                                                                                 name="membershipRadios"
                                                                                 id="membershipRadios2" value="other">
                                                                             Other
@@ -1081,7 +1086,7 @@
                                                                     <label class="col-sm-3 col-form-label">Guardian
                                                                         Name</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" name="guardianName"
+                                                                        <input required type="text" name="guardianName"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -1090,7 +1095,7 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">Age</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="number" name="guardianage"
+                                                                        <input required type="number" name="guardianage"
                                                                             class="form-control"
                                                                             placeholder="Enter your age" />
                                                                     </div>
@@ -1103,7 +1108,7 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Relation</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" name="guardianRelation"
+                                                                        <input required type="text" name="guardianRelation"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -1113,7 +1118,7 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Address</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" name="guardianaddress"
+                                                                        <input required type="text" name="guardianaddress"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -1125,14 +1130,14 @@
                                                                     <label class="col-sm-3 col-form-label">Phone
                                                                         no.</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" name="guardianphone"
+                                                                        <input required type="text" name="guardianphone"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <button type="submit" class="btn btn-primary me-2">Next</button>
-                                                        <button onclick="Modalclose()" class="btn btn-light">Cancel</button>
+                                                        <a onclick="Modalclose()" class="btn btn-light">Cancel</a>
                                                     </form>
                                                 </div>
                                             </div>
@@ -1141,8 +1146,8 @@
 
                                 </div>
                                 <div class="modalnewmember" style="z-index: 9999 !important;">
-                                    <div class="modal-content" style="height: initial;">
-                                        <span onclick=Modalclose() class="close">&times;</span>
+                                    <div class="modal-content" style=" background: #faebd700; border: none; height: initial;">
+
 
                                         <div class="col-12 grid-margin">
                                             <div class="card">
@@ -1158,7 +1163,7 @@
                                                                 <div class="col-sm-4">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input type="radio" class="form-check-input"
+                                                                            <input required type="radio" class="form-check-input"
                                                                                 name="membershipRadios"
                                                                                 id="membershipRadios1"
                                                                                 value="family member" checked>
@@ -1169,7 +1174,7 @@
                                                                 <div class="col-sm-5">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input type="radio" class="form-check-input"
+                                                                            <input required type="radio" class="form-check-input"
                                                                                 name="membershipRadios"
                                                                                 id="membershipRadios2" value="other">
                                                                             Other
@@ -1184,7 +1189,7 @@
                                                                     <label class="col-sm-3 col-form-label">Guardian
                                                                         Name</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" name="guardianName"
+                                                                        <input required type="text" name="guardianName"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -1193,7 +1198,7 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">Age</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="number" name="guardianage"
+                                                                        <input required type="number" name="guardianage"
                                                                             class="form-control"
                                                                             placeholder="Enter your age" />
                                                                     </div>
@@ -1206,7 +1211,7 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Relation</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" name="guardianRelation"
+                                                                        <input required type="text" name="guardianRelation"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -1216,7 +1221,7 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Address</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" name="guardianaddress"
+                                                                        <input required type="text" name="guardianaddress"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -1228,14 +1233,15 @@
                                                                     <label class="col-sm-3 col-form-label">Phone
                                                                         no.</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="text" name="guardianphone"
+                                                                        <input required type="text" name="guardianphone"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary me-2">Add Member</button>
-                                                        <button onclick="Modalclose()" class="btn btn-light">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary me-2">Add
+                                                            Member</button>
+                                                            <a onclick="Modalclose()" class="btn btn-light">Cancel</a>
                                                     </form>
                                                 </div>
                                             </div>
@@ -1243,7 +1249,41 @@
                                     </div>
 
                                 </div>
-
+                                <div class="modaladdtodo" style="z-index: 9999 !important;">
+                                    <div class="modal-content" style=" background: #faebd700; border: none; height: initial;">
+                                     
+                                        <div class="col-md-6 grid-margin stretch-card" style="margin: auto;">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Enter Todo Today</h4>
+                                                    <p class="card-description">
+                                                        todo helps to reminf you!!
+                                                    </p>
+                                                    <form class="forms-sample">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputUsername1">Medicine Name</label>
+                                                            <input required type="text" class="form-control"
+                                                                id="exampleInputUsername1" placeholder="Medicine Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Time</label>
+                                                            <input required type="number" class="form-control"
+                                                                id="exampleInputEmail1" placeholder="Medicine Time">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword1">Days</label>
+                                                            <input required type="password" class="form-control"
+                                                                id="exampleInputPassword1"
+                                                                placeholder="How long to take medicine">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary me-2">Add</button>
+                                                        <a onclick="Modalclose()" class="btn btn-light">Cancel</a>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <!-- content-wrapper ends -->
                                 <!-- partial:partials/_footer.html -->
@@ -1340,7 +1380,7 @@
                             document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
 
                             // #batterypercent
-                            if (h == 1 || h == 0 || h == 2 || h == 4 || h == 5 || h == 6) {
+                            if (h == 1 || h == 0 || h == 2 || h==3 || h == 4 || h == 5 || h == 6) {
                                 document.getElementById('batterypercent').innerHTML = 10 + '%';
                                 document.getElementById('batterypercent1').className = 'mdi mdi-battery-10';
                             }
@@ -1395,209 +1435,209 @@
 
 
                             // Daily / Diet Schedule
-                        
-                            if (h <= 06) {
+
+                            if (h < 06) {
 
                                 document.getElementById('D1').innerHTML = 06 - h + 'h'
                                 document.getElementById('D1').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 07) {
+                            else if (h >= 07) {
                                 document.getElementById('D1').innerHTML = 'Done!'
                                 document.getElementById('D1').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "01 finished, 11 remaining"
                             }
-                            if (h <= 07) {
+                            if (h < 07) {
                                 document.getElementById('D2').innerHTML = 07 - h + 'h'
                                 document.getElementById('D2').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 08) {
+                            else if (h >= 08) {
                                 document.getElementById('D2').innerHTML = 'Done!'
                                 document.getElementById('D2').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "02 finished, 10 remaining"
                             }
-                            if (h <= 08) {
+                            if (h < 08) {
                                 document.getElementById('D3').innerHTML = 08 - h + 'h'
                                 document.getElementById('D3').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 09) {
+                            else if (h >= 09) {
                                 document.getElementById('D3').innerHTML = 'Done!'
                                 document.getElementById('D3').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "03 finished, 09 remaining"
                             }
-                            if (h <= 08) {
+                            if (h < 08) {
                                 document.getElementById('D4').innerHTML = 08 - h + 'h'
                                 document.getElementById('D4').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 11) {
+                            else if (h >= 11) {
                                 document.getElementById('D4').innerHTML = 'Done!'
                                 document.getElementById('D4').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "04 finished, 08 remaining"
                             }
-                            if (h <= 11) {
+                            if (h < 11) {
                                 document.getElementById('D5').innerHTML = 11 - h + 'h'
                                 document.getElementById('D5').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 12) {
+                            else if (h >= 12) {
                                 document.getElementById('D5').innerHTML = 'Done!'
                                 document.getElementById('D5').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "05 finished, 07 remaining"
                             }
-                            if (h <= 12) {
+                            if (h < 12) {
                                 document.getElementById('D6').innerHTML = 12 - h + 'h'
                                 document.getElementById('D6').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 14) {
+                            else if (h >= 14) {
                                 document.getElementById('D6').innerHTML = 'Done!'
                                 document.getElementById('D6').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "06 finished, 06 remaining"
                             }
-                            if (h <= 14) {
+                            if (h < 14) {
                                 document.getElementById('D7').innerHTML = 14 - h + 'h'
                                 document.getElementById('D7').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 15) {
+                            else if (h >= 15) {
                                 document.getElementById('D7').innerHTML = 'Done!'
                                 document.getElementById('D7').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "07 finished, 05 remaining"
                             }
-                            if (h <= 15) {
+                            if (h < 15) {
                                 document.getElementById('D8').innerHTML = 15 - h + 'h'
                                 document.getElementById('D8').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 18) {
+                            else if (h >= 18) {
                                 document.getElementById('D8').innerHTML = 'Done!'
                                 document.getElementById('D8').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "08 finished, 04 remaining"
                             }
-                            if (h <= 18) {
+                            if (h < 18) {
                                 document.getElementById('D9').innerHTML = 18 - h + 'h'
                                 document.getElementById('D9').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 19) {
+                            else if (h >= 19) {
                                 document.getElementById('D9').innerHTML = 'Done!'
                                 document.getElementById('D9').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "09 finished, 03 remaining"
                             }
-                            if (h <= 19) {
+                            if (h < 19) {
                                 document.getElementById('D10').innerHTML = 19 - h + 'h'
                                 document.getElementById('D10').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 21) {
+                            else if (h >= 21) {
                                 document.getElementById('D10').innerHTML = 'Done!'
                                 document.getElementById('D10').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "10 finished, 02 remaining"
                             }
-                            if (h <= 21) {
+                            if (h < 21) {
                                 document.getElementById('D11').innerHTML = 21 - h + 'h'
                                 document.getElementById('D11').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 22) {
+                            else if (h >= 22) {
                                 document.getElementById('D11').innerHTML = 'Done!'
                                 document.getElementById('D11').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "11 finished, 01 remaining"
                             }
-                            if (h <= 22) {
+                            if (h < 22) {
                                 document.getElementById('D12').innerHTML = 22 - h + 'h'
                                 document.getElementById('D12').className = 'badge badge-opacity-warning me-3'
                             }
-                            else if (h > 23) {
+                            else if (h >= 23) {
                                 document.getElementById('D12').innerHTML = 'Done!'
                                 document.getElementById('D12').className = 'badge badge-opacity-success me-3'
                                 document.getElementById("Dietbord").innerHTML = "Daily Schedule is Done"
                             }
 
-                            
-                          if (h >= 9) {
-                            document.getElementById('Med1').innerHTML = 'Taken'
-                            document.getElementById("Med1").className = 'badge badge-opacity-success me-3'
-                            document.getElementById("cross1").className = 'completed'
-                            document.getElementById("check1").checked = true;
-                          }
-                          else if (h < 9) {
-                            document.getElementById('Med1').innerHTML = 9-h+"h"
-                            document.getElementById("Med1").className = 'badge badge-opacity-warning me-3'
-                          }
-                          if (h >= 9) {
-                            document.getElementById('Med2').innerHTML = 'Taken'
-                            document.getElementById("Med2").className = 'badge badge-opacity-success me-3'
-                            document.getElementById("cross2").className = 'completed'
-                            document.getElementById("check2").checked = true;
-                          }
-                          else if (h < 9) {
-                            document.getElementById('Med2').innerHTML = 9-h+"h"
-                            document.getElementById("Med2").className = 'badge badge-opacity-warning me-3'
-                          }
-                          if (h >= 9) {
-                            document.getElementById('Med3').innerHTML = 'Taken'
-                            document.getElementById("Med3").className = 'badge badge-opacity-success me-3'
-                            document.getElementById("cross3").className = 'completed'
-                            document.getElementById("check3").checked = true;
-                          }
-                          else if (h < 9) {
-                            document.getElementById('Med3').innerHTML = 15-h+"h"
-                            document.getElementById("Med3").className = 'badge badge-opacity-warning me-3'
-                          }
-                          if (h >= 15) {
-                            document.getElementById('Med4').innerHTML = 'Taken'
-                            document.getElementById("Med4").className = 'badge badge-opacity-success me-3'
-                            document.getElementById("cross4").className = 'completed'
-                            document.getElementById("check4").checked = true;
-                          }
-                          else if (h < 15) {
-                            document.getElementById('Med4').innerHTML = 15-h+"h"
-                            document.getElementById("Med4").className = 'badge badge-opacity-warning me-3'
-                          }
-                          if (h >= 15) {
-                            document.getElementById('Med5').innerHTML = 'Taken'
-                            document.getElementById("Med5").className = 'badge badge-opacity-success me-3'
-                            document.getElementById("cross5").className = 'completed'
-                            document.getElementById("check5").checked = true;
-                          }
-                          else if (h < 15) {
-                            document.getElementById('Med5').innerHTML = 15-h+"h"
-                            document.getElementById("Med5").className = 'badge badge-opacity-warning me-3'
-                          }
-                          if (h >= 15) {
-                            document.getElementById('Med6').innerHTML = 'Taken'
-                            document.getElementById("Med6").className = 'badge badge-opacity-success me-3'
-                            document.getElementById("cross6").className = 'completed'
-                            document.getElementById("check6").checked = true;
-                          }
-                          else if (h < 15) {
-                            document.getElementById('Med6').innerHTML = 15-h+"h"
-                            document.getElementById("Med6").className = 'badge badge-opacity-warning me-3'
-                          }
-                          if (h >= 21) {
-                            document.getElementById('Med7').innerHTML = 'Taken'
-                            document.getElementById("Med7").className = 'badge badge-opacity-success me-3'
-                            document.getElementById("cross7").className = 'completed'
-                            document.getElementById("check7").checked = true;
-                          }
-                          else if (h < 21) {
-                            document.getElementById('Med7').innerHTML = 21-h+"h"
-                            document.getElementById("Med7").className = 'badge badge-opacity-warning me-3'
-                          }
-                          if (h >= 21) {
-                            document.getElementById('Med8').innerHTML = 'Taken'
-                            document.getElementById("Med8").className = 'badge badge-opacity-success me-3'
-                            document.getElementById("cross8").className = 'completed'
-                            document.getElementById("check8").checked = true;
-                          }
-                          else if (h < 21) {
-                            document.getElementById('Med8').innerHTML = 21-h+"h"
-                            document.getElementById("Med8").className = 'badge badge-opacity-warning me-3'
-                          }
-                          if (h >= 21) {
-                            document.getElementById('Med9').innerHTML = 'Taken'
-                            document.getElementById("Med9").className = 'badge badge-opacity-success me-3'
-                            document.getElementById("cross9").className = 'completed'
-                            document.getElementById("check9").checked = true;
-                          }
-                          else if (h < 21) {
-                            document.getElementById('Med9').innerHTML = 21-h+"h"
-                            document.getElementById("Med9").className = 'badge badge-opacity-warning me-3'
-                          }
-                      
+                            // #Todo
+                            if (h >= 9) {
+                                document.getElementById('Med1').innerHTML = 'Taken'
+                                document.getElementById("Med1").className = 'badge badge-opacity-success me-3'
+                                document.getElementById("cross1").className = 'completed'
+                                document.getElementById("check1").checked = true;
+                            }
+                            else if (h < 9) {
+                                document.getElementById('Med1').innerHTML = 9 - h + "h"
+                                document.getElementById("Med1").className = 'badge badge-opacity-warning me-3'
+                            }
+                            if (h >= 9) {
+                                document.getElementById('Med2').innerHTML = 'Taken'
+                                document.getElementById("Med2").className = 'badge badge-opacity-success me-3'
+                                document.getElementById("cross2").className = 'completed'
+                                document.getElementById("check2").checked = true;
+                            }
+                            else if (h < 9) {
+                                document.getElementById('Med2').innerHTML = 9 - h + "h"
+                                document.getElementById("Med2").className = 'badge badge-opacity-warning me-3'
+                            }
+                            if (h >= 9) {
+                                document.getElementById('Med3').innerHTML = 'Taken'
+                                document.getElementById("Med3").className = 'badge badge-opacity-success me-3'
+                                document.getElementById("cross3").className = 'completed'
+                                document.getElementById("check3").checked = true;
+                            }
+                            else if (h < 9) {
+                                document.getElementById('Med3').innerHTML = 15 - h + "h"
+                                document.getElementById("Med3").className = 'badge badge-opacity-warning me-3'
+                            }
+                            if (h >= 15) {
+                                document.getElementById('Med4').innerHTML = 'Taken'
+                                document.getElementById("Med4").className = 'badge badge-opacity-success me-3'
+                                document.getElementById("cross4").className = 'completed'
+                                document.getElementById("check4").checked = true;
+                            }
+                            else if (h < 15) {
+                                document.getElementById('Med4').innerHTML = 15 - h + "h"
+                                document.getElementById("Med4").className = 'badge badge-opacity-warning me-3'
+                            }
+                            if (h >= 15) {
+                                document.getElementById('Med5').innerHTML = 'Taken'
+                                document.getElementById("Med5").className = 'badge badge-opacity-success me-3'
+                                document.getElementById("cross5").className = 'completed'
+                                document.getElementById("check5").checked = true;
+                            }
+                            else if (h < 15) {
+                                document.getElementById('Med5').innerHTML = 15 - h + "h"
+                                document.getElementById("Med5").className = 'badge badge-opacity-warning me-3'
+                            }
+                            if (h >= 15) {
+                                document.getElementById('Med6').innerHTML = 'Taken'
+                                document.getElementById("Med6").className = 'badge badge-opacity-success me-3'
+                                document.getElementById("cross6").className = 'completed'
+                                document.getElementById("check6").checked = true;
+                            }
+                            else if (h < 15) {
+                                document.getElementById('Med6').innerHTML = 15 - h + "h"
+                                document.getElementById("Med6").className = 'badge badge-opacity-warning me-3'
+                            }
+                            if (h >= 21) {
+                                document.getElementById('Med7').innerHTML = 'Taken'
+                                document.getElementById("Med7").className = 'badge badge-opacity-success me-3'
+                                document.getElementById("cross7").className = 'completed'
+                                document.getElementById("check7").checked = true;
+                            }
+                            else if (h < 21) {
+                                document.getElementById('Med7').innerHTML = 21 - h + "h"
+                                document.getElementById("Med7").className = 'badge badge-opacity-warning me-3'
+                            }
+                            if (h >= 21) {
+                                document.getElementById('Med8').innerHTML = 'Taken'
+                                document.getElementById("Med8").className = 'badge badge-opacity-success me-3'
+                                document.getElementById("cross8").className = 'completed'
+                                document.getElementById("check8").checked = true;
+                            }
+                            else if (h < 21) {
+                                document.getElementById('Med8').innerHTML = 21 - h + "h"
+                                document.getElementById("Med8").className = 'badge badge-opacity-warning me-3'
+                            }
+                            if (h >= 21) {
+                                document.getElementById('Med9').innerHTML = 'Taken'
+                                document.getElementById("Med9").className = 'badge badge-opacity-success me-3'
+                                document.getElementById("cross9").className = 'completed'
+                                document.getElementById("check9").checked = true;
+                            }
+                            else if (h < 21) {
+                                document.getElementById('Med9').innerHTML = 21 - h + "h"
+                                document.getElementById("Med9").className = 'badge badge-opacity-warning me-3'
+                            }
+
 
                             setTimeout(startTime, 1000);
                         }
