@@ -186,37 +186,41 @@
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
                             aria-labelledby="countDropdown">
                             <a class="dropdown-item py-3">
-                                <p class="mb-0 font-weight-medium float-left">You have {{Users|length}} Users in list </p>
-                                <span  onclick="newRegistermodal()" class="badge badge-pill badge-primary float-right">Add</span>
+                                <p class="mb-0 font-weight-medium float-left">You have {{Users|length}} Users in list
+                                </p>
+                                <span onclick="newRegistermodal()"
+                                    class="badge badge-pill badge-primary float-right">Add</span>
                             </a>
                             <div class="dropdown-divider"></div>
                             {% for user in Users %}
                             <a href=/{{user.name}} style="text-decoration: none;" class="dropdown-item preview-item">
-                              
-                                  <div
+
+                                <div
                                     class="blockhover wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
                                     <div class="d-flex">
-                                      <img class="img-sm rounded-10" src="static/images/faces/face{{loop.index}}.jpg"
-                                        alt="profile">
-                                      <div class="wrapper ms-3">
-                                        <p class="ms-1 mb-1 fw-bold">{{user.name}}</p>
-                                        <small class="text-muted mb-0">age = {{user.age}}</small>
-                                      </div>
+                                        <img class="img-sm rounded-10" src="static/images/faces/face{{loop.index}}.jpg"
+                                            alt="profile">
+                                        <div class="wrapper ms-3">
+                                            <p class="ms-1 mb-1 fw-bold">{{user.name}}</p>
+                                            <small class="text-muted mb-0">age = {{user.age}}</small>
+                                        </div>
                                     </div>
                                     <div class="text-muted text-small">
-                                      {{user.datejoined}}
+                                        {{user.datejoined}}
                                     </div>
-                                  </div>
-                                </a>
+                                </div>
+                            </a>
                             <!-- </a> -->
                             {% endfor %}
-                           
+
                         </div>
                     </li>
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <img class="img-xs rounded-circle" src="static/images/faces/face8.jpg" alt="Profile image">
-                            <p class="mb-1 mt-3 font-weight-semibold" style="    margin-bottom: -0.75rem !important; margin-top: 1px !important;">{{userlogin.name}}</p>
+                            <p class="mb-1 mt-3 font-weight-semibold"
+                                style="    margin-bottom: -0.75rem !important; margin-top: 1px !important;">
+                                {{userlogin.name}}</p>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             <div class="dropdown-header text-center">
@@ -619,13 +623,14 @@
                                     </div>
                                 </div>
 
-                                
+
 
                                 {% block content %}{% endblock %}
 
                                 <!-- Modal -->
                                 <div class="modalcheck" style="z-index: 9999 !important;">
-                                    <div class="modal-content" style=" background: #faebd700; border: none; height: initial;">
+                                    <div class="modal-content"
+                                        style=" background: #faebd700; border: none; height: initial;">
 
                                         <div class="col-12 grid-margin stretch-card">
                                             <div class="card">
@@ -637,23 +642,24 @@
                                                     <form class="forms-sample" action="/fullbodychckup" method="POST">
                                                         <div class="form-group">
                                                             <label for="exampleInputName1">Name</label>
-                                                            <input required type="username" class="form-control" name="Name"
-                                                                placeholder="Enter Full Name">
+                                                            <input required type="username" class="form-control"
+                                                                name="Name" placeholder="Enter Full Name">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail3">Heart Rate</label>
-                                                            <input required type="number" class="form-control" name="bpm"
-                                                                placeholder="Enter Heart Rate">
+                                                            <input required type="number" class="form-control"
+                                                                name="bpm" placeholder="Enter Heart Rate">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputPassword4">SpO<sub>2</sub></label>
-                                                            <input required type="number" class="form-control" name="percentO2"
-                                                                placeholder="Enter SpO2 in percentage">
+                                                            <input required type="number" class="form-control"
+                                                                name="percentO2" placeholder="Enter SpO2 in percentage">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputCity1">Sleep duration</label>
-                                                            <input required type="number" class="form-control" name="sleepcycle"
+                                                            <input required type="number" class="form-control"
+                                                                name="sleepcycle"
                                                                 placeholder="Enter Sleep duration in hours">
                                                         </div>
 
@@ -661,8 +667,9 @@
                                                             <label for="Diabetes">Diabetes</label>
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input required type="radio" class="form-check-input"
-                                                                        name="DiabetesY" id="DiabetesY" value="Yes">
+                                                                    <input required type="radio"
+                                                                        class="form-check-input" name="DiabetesY"
+                                                                        id="DiabetesY" value="Yes">
                                                                     Yes
                                                                     <i class="input-helper">
                                                                     </i>
@@ -672,8 +679,9 @@
 
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input required type="radio" class="form-check-input"
-                                                                        name="DiabetesY" id="DiabetesN" value="No">
+                                                                    <input required type="radio"
+                                                                        class="form-check-input" name="DiabetesY"
+                                                                        id="DiabetesN" value="No">
                                                                     No
                                                                     <i class="input-helper">
                                                                     </i>
@@ -682,7 +690,7 @@
                                                         </div>
                                                         <button type="submit"
                                                             class="btn btn-primary me-2">Submit</button>
-                                                            <a onclick="Modalclose()" class="btn btn-light">Cancel</a>
+                                                        <a onclick="Modalclose()" class="btn btn-light">Cancel</a>
                                                     </form>
                                                 </div>
                                             </div>
@@ -692,7 +700,8 @@
                                     </div>
                                 </div>
                                 <div class="modalregister" style="z-index: 9999 !important;">
-                                    <div class="modal-content" style=" background: #faebd700; border: none; height: initial;">
+                                    <div class="modal-content"
+                                        style=" background: #faebd700; border: none; height: initial;">
 
 
                                         <div class="col-12 grid-margin">
@@ -791,7 +800,8 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">State</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="text" class="form-control" />
+                                                                        <input required type="text"
+                                                                            class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -803,7 +813,8 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Postcode</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="text" class="form-control" />
+                                                                        <input required type="text"
+                                                                            class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -811,7 +822,8 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">City</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="text" class="form-control" />
+                                                                        <input required type="text"
+                                                                            class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -825,7 +837,8 @@
                                                                 <div class="col-sm-4">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input required type="radio" class="form-check-input"
+                                                                            <input required type="radio"
+                                                                                class="form-check-input"
                                                                                 name="membershipRadios"
                                                                                 id="membershipRadios1"
                                                                                 value="family member" checked>
@@ -836,7 +849,8 @@
                                                                 <div class="col-sm-5">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input required type="radio" class="form-check-input"
+                                                                            <input required type="radio"
+                                                                                class="form-check-input"
                                                                                 name="membershipRadios"
                                                                                 id="membershipRadios2" value="other">
                                                                             Other
@@ -873,7 +887,8 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Relation</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="text" name="guardianRelation"
+                                                                        <input required type="text"
+                                                                            name="guardianRelation"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -883,7 +898,8 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Address</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="text" name="guardianaddress"
+                                                                        <input required type="text"
+                                                                            name="guardianaddress"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -911,7 +927,8 @@
 
                                 </div>
                                 <div class="modalnewmember" style="z-index: 9999 !important;">
-                                    <div class="modal-content" style=" background: #faebd700; border: none; height: initial;">
+                                    <div class="modal-content"
+                                        style=" background: #faebd700; border: none; height: initial;">
 
 
                                         <div class="col-12 grid-margin">
@@ -928,7 +945,8 @@
                                                                 <div class="col-sm-4">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input required type="radio" class="form-check-input"
+                                                                            <input required type="radio"
+                                                                                class="form-check-input"
                                                                                 name="membershipRadios"
                                                                                 id="membershipRadios1"
                                                                                 value="family member" checked>
@@ -939,7 +957,8 @@
                                                                 <div class="col-sm-5">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input required type="radio" class="form-check-input"
+                                                                            <input required type="radio"
+                                                                                class="form-check-input"
                                                                                 name="membershipRadios"
                                                                                 id="membershipRadios2" value="other">
                                                                             Other
@@ -976,7 +995,8 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Relation</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="text" name="guardianRelation"
+                                                                        <input required type="text"
+                                                                            name="guardianRelation"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -986,7 +1006,8 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Address</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="text" name="guardianaddress"
+                                                                        <input required type="text"
+                                                                            name="guardianaddress"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -1006,7 +1027,7 @@
                                                         </div>
                                                         <button type="submit" class="btn btn-primary me-2">Add
                                                             Member</button>
-                                                            <a onclick="Modalclose()" class="btn btn-light">Cancel</a>
+                                                        <a onclick="Modalclose()" class="btn btn-light">Cancel</a>
                                                     </form>
                                                 </div>
                                             </div>
@@ -1015,8 +1036,9 @@
 
                                 </div>
                                 <div class="modaladdtodo" style="z-index: 9999 !important;">
-                                    <div class="modal-content" style=" background: #faebd700; border: none; height: initial;">
-                                     
+                                    <div class="modal-content"
+                                        style=" background: #faebd700; border: none; height: initial;">
+
                                         <div class="col-md-6 grid-margin stretch-card" style="margin: auto;">
                                             <div class="card">
                                                 <div class="card-body">
@@ -1053,15 +1075,10 @@
                                 <!-- content-wrapper ends -->
                                 <!-- partial:partials/_footer.html -->
                                 <footer class="footer">
-                                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                                        <span
-                                            class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium
-                                            <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin
-                                                template</a> from
-                                            BootstrapDash.</span>
-                                        <span
-                                            class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright
-                                            © 2021. All rights
+                                    <div class="d-sm-flex justify-content-center ">
+                                        
+                                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center" style="text-align: center;"> ©
+                                            2021. <a href="/">WellEazy Inc</a>. All rights
                                             reserved.</span>
                                     </div>
                                 </footer>
@@ -1145,7 +1162,7 @@
                             document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
 
                             // #batterypercent
-                            if (h == 1 || h == 0 || h == 2 || h==3 || h == 4 || h == 5 || h == 6) {
+                            if (h == 1 || h == 0 || h == 2 || h == 3 || h == 4 || h == 5 || h == 6) {
                                 document.getElementById('batterypercent').innerHTML = 10 + '%';
                                 document.getElementById('batterypercent1').className = 'mdi mdi-battery-10';
                             }
@@ -1500,262 +1517,262 @@
                     </script>
 
 
-<script src="//d3js.org/d3.v3.min.js"></script>
+                    <script src="//d3js.org/d3.v3.min.js"></script>
 
-                                <style>
-                                    #svg-wrapper {
-                                        height: 160px;
-                                        margin: 2em auto;
+                    <style>
+                        #svg-wrapper {
+                            height: 160px;
+                            margin: 2em auto;
+                        }
+
+                        svg path {
+                            fill: none;
+                            stroke: #000;
+                            stroke-width: 1.5px;
+                        }
+
+                        svg .axis {
+                            font-size: 12px;
+                        }
+
+                        svg .axis path {
+                            display: none;
+                        }
+                    </style>
+
+                    <script type="text/javascript">
+
+                        window.onload = function () {
+
+                            var svg = null;
+                            var circle = null;
+                            var circleTransition = null;
+                            var latestBeat = null;
+                            var insideBeat = false;
+                            var data = [];
+
+                            var SECONDS_SAMPLE = 5;
+                            var BEAT_TIME = 400;
+                            var TICK_FREQUENCY = SECONDS_SAMPLE * 1000 / BEAT_TIME;
+                            var BEAT_VALUES = [0, 0, 3, -4, 10, -7, 3, 0, 0];
+
+                            var CIRCLE_FULL_RADIUS = 20;
+                            var MAX_LATENCY = 5000;
+
+                            var colorScale = d3.scale.linear()
+                                .domain([BEAT_TIME, (MAX_LATENCY - BEAT_TIME) / 2, MAX_LATENCY])
+                                .range(["#6D9521", "#D77900", "#CD3333"]);
+
+                            var radiusScale = d3.scale.linear()
+                                .range([5, CIRCLE_FULL_RADIUS])
+                                .domain([MAX_LATENCY, BEAT_TIME]);
+
+                            function beat() {
+
+                                if (insideBeat) return;
+                                insideBeat = true;
+
+                                var now = new Date();
+                                var nowTime = now.getTime();
+
+                                if (data.length > 0 && data[data.length - 1].date > now) {
+                                    data.splice(data.length - 1, 1);
+                                }
+
+                                data.push({
+                                    date: now,
+                                    value: 0
+                                });
+
+                                var step = BEAT_TIME / BEAT_VALUES.length - 2;
+                                for (var i = 1; i < BEAT_VALUES.length; i++) {
+                                    data.push({
+                                        date: new Date(nowTime + i * step),
+                                        value: BEAT_VALUES[i]
+                                    });
+                                }
+
+                                latestBeat = now;
+
+                                circleTransition = circle.transition()
+                                    .duration(BEAT_TIME)
+                                    .attr("r", CIRCLE_FULL_RADIUS)
+                                    .attr("fill", "#6D9521");
+
+                                setTimeout(function () {
+                                    insideBeat = false;
+                                }, BEAT_TIME);
+                            }
+
+                            var svgWrapper = document.getElementById("svg-wrapper");
+                            var margin = { left: 10, top: 10, right: CIRCLE_FULL_RADIUS * 3, bottom: 10 },
+                                width = svgWrapper.offsetWidth - margin.left - margin.right,
+                                height = svgWrapper.offsetHeight - margin.top - margin.bottom;
+
+                            // create SVG
+                            svg = d3.select('#svg-wrapper').append("svg")
+                                .attr("width", width + margin.left + margin.right)
+                                .attr("height", height + margin.bottom + margin.top)
+                                .append("g")
+                                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                            circle = svg
+                                .append("circle")
+                                .attr("fill", "#6D9521")
+                                .attr("cx", width + margin.right / 2)
+                                .attr("cy", height / 2)
+                                .attr("r", CIRCLE_FULL_RADIUS);
+
+                            // init scales
+                            var now = new Date(),
+                                fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
+
+                            // create initial set of data
+                            data.push({
+                                date: now,
+                                value: 0
+                            });
+
+                            var x = d3.time.scale()
+                                .domain([fromDate, new Date(now.getTime())])
+                                .range([0, width]),
+                                y = d3.scale.linear()
+                                    .domain([-10, 10])
+                                    .range([height, 0]);
+
+                            var line = d3.svg.line()
+                                .interpolate("basis")
+                                .x(function (d) {
+                                    return x(d.date);
+                                })
+                                .y(function (d) {
+                                    return y(d.value);
+                                });
+
+                            var xAxis = d3.svg.axis()
+                                .scale(x)
+                                .orient("bottom")
+                                .ticks(d3.time.seconds, 1)
+                                .tickFormat(function (d) {
+                                    var seconds = d.getSeconds() === 0 ? "00" : d.getSeconds();
+                                    return seconds % 10 === 0 ? d.getMinutes() + ":" + seconds : ":" + seconds;
+                                });
+
+                            // add clipPath
+                            svg.append("defs").append("clipPath")
+                                .attr("id", "clip")
+                                .append("rect")
+                                .attr("width", width)
+                                .attr("height", height);
+
+                            var axis = d3.select("svg").append("g")
+                                .attr("class", "axis")
+                                .attr("transform", "translate(0," + height + ")")
+                                .call(xAxis);
+
+                            var path = svg.append("g")
+                                .attr("clip-path", "url(#clip)")
+                                .append("path")
+                                .attr("class", "line");
+
+                            svg.select(".line")
+                                .attr("d", line(data));
+
+                            var transition = d3.select("path").transition()
+                                .duration(100)
+                                .ease("linear");
+
+                            (function tick() {
+
+                                transition = transition.each(function () {
+
+                                    // update the domains
+                                    now = new Date();
+                                    fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
+                                    x.domain([fromDate, new Date(now.getTime() - 100)]);
+
+                                    var translateTo = x(new Date(fromDate.getTime()) - 100);
+
+                                    // redraw the line
+                                    svg.select(".line")
+                                        .attr("d", line(data))
+                                        .attr("transform", null)
+                                        .transition()
+                                        .attr("transform", "translate(" + translateTo + ")");
+
+                                    // slide the x-axis left
+                                    axis.call(xAxis);
+
+                                }).transition().each("start", tick);
+                            })();
+
+                            setInterval(function () {
+
+                                now = new Date();
+                                fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
+
+                                for (var i = 0; i < data.length; i++) {
+                                    if (data[i].date < fromDate) {
+                                        data.shift();
+                                    } else {
+                                        break;
                                     }
+                                }
 
-                                    svg path {
-                                        fill: none;
-                                        stroke: #000;
-                                        stroke-width: 1.5px;
+                                if (insideBeat) return;
+
+                                data.push({
+                                    date: now,
+                                    value: 0
+                                });
+
+                                if (circleTransition != null) {
+
+                                    var diff = now.getTime() - latestBeat.getTime();
+
+                                    if (diff < MAX_LATENCY) {
+                                        circleTransition = circle.transition()
+                                            .duration(TICK_FREQUENCY)
+                                            .attr("r", radiusScale(diff))
+                                            .attr("fill", colorScale(diff));
                                     }
-
-                                    svg .axis {
-                                        font-size: 12px;
-                                    }
-
-                                    svg .axis path {
-                                        display: none;
-                                    }
-                                </style>
-
-                                <script type="text/javascript">
-
-                                    window.onload = function () {
-
-                                        var svg = null;
-                                        var circle = null;
-                                        var circleTransition = null;
-                                        var latestBeat = null;
-                                        var insideBeat = false;
-                                        var data = [];
-
-                                        var SECONDS_SAMPLE = 5;
-                                        var BEAT_TIME = 400;
-                                        var TICK_FREQUENCY = SECONDS_SAMPLE * 1000 / BEAT_TIME;
-                                        var BEAT_VALUES = [0, 0, 3, -4, 10, -7, 3, 0, 0];
-
-                                        var CIRCLE_FULL_RADIUS = 20;
-                                        var MAX_LATENCY = 5000;
-
-                                        var colorScale = d3.scale.linear()
-                                            .domain([BEAT_TIME, (MAX_LATENCY - BEAT_TIME) / 2, MAX_LATENCY])
-                                            .range(["#6D9521", "#D77900", "#CD3333"]);
-
-                                        var radiusScale = d3.scale.linear()
-                                            .range([5, CIRCLE_FULL_RADIUS])
-                                            .domain([MAX_LATENCY, BEAT_TIME]);
-
-                                        function beat() {
-
-                                            if (insideBeat) return;
-                                            insideBeat = true;
-
-                                            var now = new Date();
-                                            var nowTime = now.getTime();
-
-                                            if (data.length > 0 && data[data.length - 1].date > now) {
-                                                data.splice(data.length - 1, 1);
-                                            }
-
-                                            data.push({
-                                                date: now,
-                                                value: 0
-                                            });
-
-                                            var step = BEAT_TIME / BEAT_VALUES.length - 2;
-                                            for (var i = 1; i < BEAT_VALUES.length; i++) {
-                                                data.push({
-                                                    date: new Date(nowTime + i * step),
-                                                    value: BEAT_VALUES[i]
-                                                });
-                                            }
-
-                                            latestBeat = now;
-
-                                            circleTransition = circle.transition()
-                                                .duration(BEAT_TIME)
-                                                .attr("r", CIRCLE_FULL_RADIUS)
-                                                .attr("fill", "#6D9521");
-
-                                            setTimeout(function () {
-                                                insideBeat = false;
-                                            }, BEAT_TIME);
-                                        }
-
-                                        var svgWrapper = document.getElementById("svg-wrapper");
-                                        var margin = { left: 10, top: 10, right: CIRCLE_FULL_RADIUS * 3, bottom: 10 },
-                                            width = svgWrapper.offsetWidth - margin.left - margin.right,
-                                            height = svgWrapper.offsetHeight - margin.top - margin.bottom;
-
-                                        // create SVG
-                                        svg = d3.select('#svg-wrapper').append("svg")
-                                            .attr("width", width + margin.left + margin.right)
-                                            .attr("height", height + margin.bottom + margin.top)
-                                            .append("g")
-                                            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-                                        circle = svg
-                                            .append("circle")
-                                            .attr("fill", "#6D9521")
-                                            .attr("cx", width + margin.right / 2)
-                                            .attr("cy", height / 2)
-                                            .attr("r", CIRCLE_FULL_RADIUS);
-
-                                        // init scales
-                                        var now = new Date(),
-                                            fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
-
-                                        // create initial set of data
-                                        data.push({
-                                            date: now,
-                                            value: 0
-                                        });
-
-                                        var x = d3.time.scale()
-                                            .domain([fromDate, new Date(now.getTime())])
-                                            .range([0, width]),
-                                            y = d3.scale.linear()
-                                                .domain([-10, 10])
-                                                .range([height, 0]);
-
-                                        var line = d3.svg.line()
-                                            .interpolate("basis")
-                                            .x(function (d) {
-                                                return x(d.date);
-                                            })
-                                            .y(function (d) {
-                                                return y(d.value);
-                                            });
-
-                                        var xAxis = d3.svg.axis()
-                                            .scale(x)
-                                            .orient("bottom")
-                                            .ticks(d3.time.seconds, 1)
-                                            .tickFormat(function (d) {
-                                                var seconds = d.getSeconds() === 0 ? "00" : d.getSeconds();
-                                                return seconds % 10 === 0 ? d.getMinutes() + ":" + seconds : ":" + seconds;
-                                            });
-
-                                        // add clipPath
-                                        svg.append("defs").append("clipPath")
-                                            .attr("id", "clip")
-                                            .append("rect")
-                                            .attr("width", width)
-                                            .attr("height", height);
-
-                                        var axis = d3.select("svg").append("g")
-                                            .attr("class", "axis")
-                                            .attr("transform", "translate(0," + height + ")")
-                                            .call(xAxis);
-
-                                        var path = svg.append("g")
-                                            .attr("clip-path", "url(#clip)")
-                                            .append("path")
-                                            .attr("class", "line");
-
-                                        svg.select(".line")
-                                            .attr("d", line(data));
-
-                                        var transition = d3.select("path").transition()
-                                            .duration(100)
-                                            .ease("linear");
-
-                                        (function tick() {
-
-                                            transition = transition.each(function () {
-
-                                                // update the domains
-                                                now = new Date();
-                                                fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
-                                                x.domain([fromDate, new Date(now.getTime() - 100)]);
-
-                                                var translateTo = x(new Date(fromDate.getTime()) - 100);
-
-                                                // redraw the line
-                                                svg.select(".line")
-                                                    .attr("d", line(data))
-                                                    .attr("transform", null)
-                                                    .transition()
-                                                    .attr("transform", "translate(" + translateTo + ")");
-
-                                                // slide the x-axis left
-                                                axis.call(xAxis);
-
-                                            }).transition().each("start", tick);
-                                        })();
-
-                                        setInterval(function () {
-
-                                            now = new Date();
-                                            fromDate = new Date(now.getTime() - SECONDS_SAMPLE * 1000);
-
-                                            for (var i = 0; i < data.length; i++) {
-                                                if (data[i].date < fromDate) {
-                                                    data.shift();
-                                                } else {
-                                                    break;
-                                                }
-                                            }
-
-                                            if (insideBeat) return;
-
-                                            data.push({
-                                                date: now,
-                                                value: 0
-                                            });
-
-                                            if (circleTransition != null) {
-
-                                                var diff = now.getTime() - latestBeat.getTime();
-
-                                                if (diff < MAX_LATENCY) {
-                                                    circleTransition = circle.transition()
-                                                        .duration(TICK_FREQUENCY)
-                                                        .attr("r", radiusScale(diff))
-                                                        .attr("fill", colorScale(diff));
-                                                }
-                                            }
+                                }
 
 
-                                        }, TICK_FREQUENCY);
+                            }, TICK_FREQUENCY);
 
-                                        setInterval(function () {
-                                            beat();
-                                        }, 1000);
-                                        beat();
-                                    };
+                            setInterval(function () {
+                                beat();
+                            }, 1000);
+                            beat();
+                        };
 
-                                </script>
-                              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-                              </script>
-                              <script>
-                              
-                                  var xValues = ["Fruits and Vegitable", "Fibre-rich Carbohydrate", "Protein", "Fats"];
-                                  var yValues = [40,25,25,10];
-                                  var barColors = ["red", "green", "blue", "orange"];
-                              
-                                  new Chart("mydoghnut", {
-                                      type: "pie",
-                                      data: {
-                                          datasets: [{
-                                              backgroundColor: barColors,
-                                              data: yValues
-                                            }],
-                                              labels: xValues
-                                      },
-                                      options: {
-                                          title: {
-                                              display: true,
-                                              text: "Balance Diet"
-                                          }
-                                      }
-                                  });
-                              </script>
+                    </script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+                    </script>
+                    <script>
+
+                        var xValues = ["Fruits and Vegitable", "Fibre-rich Carbohydrate", "Protein", "Fats"];
+                        var yValues = [40, 25, 25, 10];
+                        var barColors = ["red", "green", "blue", "orange"];
+
+                        new Chart("mydoghnut", {
+                            type: "pie",
+                            data: {
+                                datasets: [{
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }],
+                                labels: xValues
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: "Balance Diet"
+                                }
+                            }
+                        });
+                    </script>
 </body>
 
 </html>
