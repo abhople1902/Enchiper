@@ -110,23 +110,23 @@ def bot():
     Patientupdatedata = bodycheckup.query.all()
     return render_template('chattingbot.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
 
-# @app.route('/contact', methods=['GET', 'POST'])
-# def contact():
-#     Users = Registration.query.all()
-#     Patientupdatedata = bodycheckup.query.all()
-#     return render_template('chattingbot.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    Users = Registration.query.all()
+    Patientupdatedata = bodycheckup.query.all()
+    return render_template('contactus.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
 
-# @app.route('/pendent', methods=['GET', 'POST'])
-# def pendent():
-#     Users = Registration.query.all()
-#     Patientupdatedata = bodycheckup.query.all()
-#     return render_template('chattingbot.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+@app.route('/pendent', methods=['GET', 'POST'])
+def pendent():
+    Users = Registration.query.all()
+    Patientupdatedata = bodycheckup.query.all()
+    return render_template('pendent.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
 
-# @app.route('/helpsupport', methods=['GET', 'POST'])
-# def helpsupport():
-#     Users = Registration.query.all()
-#     Patientupdatedata = bodycheckup.query.all()
-#     return render_template('chattingbot.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
+@app.route('/helpsupport', methods=['GET', 'POST'])
+def helpsupport():
+    Users = Registration.query.all()
+    Patientupdatedata = bodycheckup.query.all()
+    return render_template('helpsupport.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
 
 
 @app.route('/morningexercise', methods=['GET', 'POST'])
