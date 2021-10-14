@@ -1731,6 +1731,31 @@
                                     };
 
                                 </script>
+                              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+                              </script>
+                              <script>
+                              
+                                  var xValues = ["Fruits and Vegitable", "Fibre-rich Carbohydrate", "Protein", "Fats"];
+                                  var yValues = [40,25,25,10];
+                                  var barColors = ["red", "green", "blue", "orange"];
+                              
+                                  new Chart("mydoghnut", {
+                                      type: "pie",
+                                      data: {
+                                          datasets: [{
+                                              backgroundColor: barColors,
+                                              data: yValues
+                                            }],
+                                            //   labels: xValues
+                                      },
+                                      options: {
+                                          title: {
+                                              display: true,
+                                              text: "Balance Diet"
+                                          }
+                                      }
+                                  });
+                              </script>
 </body>
 
 </html>

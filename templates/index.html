@@ -284,64 +284,67 @@
         </div>
         <div class="row flex-grow">
 
-          <div class="row flex-grow">
+          <!-- <div class="row flex-grow">
+          
             <div class="col-md-6 col-lg-6 grid-margin stretch-card">
               <div class="card card-rounded">
-                <div class="card-body card-rounded">
-                  <h4 class="card-title  card-title-dash">Appoinment</h4>
-                  <div class="list align-items-center border-bottom py-2">
-                    <div class="wrapper w-100">
-                      <p class="mb-2 font-weight-medium">
-                        Change in Directors
-                      </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-calendar text-muted me-1"></i>
-                          <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                        </div>
-                      </div>
-                    </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h4 class="card-title card-title-dash">Diet Schedule</h4>
+                    <p class="mb-0">00 finished, 12 remaining</p>
                   </div>
-                  <div class="list align-items-center border-bottom py-2">
-                    <div class="wrapper w-100">
-                      <p class="mb-2 font-weight-medium">
-                        Other Events
-                      </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-calendar text-muted me-1"></i>
-                          <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                        </div>
+                  <ul class="bullet-line-list">
+                    <p>MORNING</p>
+                    <p>LUNCH</p>
+                    <p>4PM</p>
+                    <p>PRE-WORKOUT</p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
+                        <p>Just now</p>
                       </div>
-                    </div>
-                  </div>
-                  <div class="list align-items-center border-bottom py-2">
-                    <div class="wrapper w-100">
-                      <p class="mb-2 font-weight-medium">
-                        Quarterly Report
-                      </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-calendar text-muted me-1"></i>
-                          <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                        </div>
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Oliver Noah</span> assign you a task</div>
+                        <p>1h</p>
                       </div>
-                    </div>
-                  </div>
-                  <div class="list align-items-center border-bottom py-2">
-                    <div class="wrapper w-100">
-                      <p class="mb-2 font-weight-medium">
-                        Change in Directors
-                      </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                          <i class="mdi mdi-calendar text-muted me-1"></i>
-                          <p class="mb-0 text-small text-muted">Mar 14, 2019</p>
-                        </div>
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Jack William</span> assign you a task</div>
+                        <p>1h</p>
                       </div>
-                    </div>
-                  </div>
-
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Leo Lucas</span> assign you a task</div>
+                        <p>1h</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Thomas Henry</span> assign you a task</div>
+                        <p>1h</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
+                        <p>1h</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex justify-content-between">
+                        <div><span class="text-light-green">Ben Tossell</span> assign you a task</div>
+                        <p>1h</p>
+                      </div>
+                    </li>
+                  </ul>
                   <div class="list align-items-center pt-3">
                     <div class="wrapper w-100">
                       <p class="mb-0">
@@ -413,7 +416,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
 
 
@@ -421,7 +424,7 @@
             <div class="card card-rounded">
               <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <h4 class="card-title card-title-dash">Daily / Diet Schedule</h4>
+                  <h4 class="card-title card-title-dash">Daily Schedule</h4>
                   <p id="Dietbord" class="mb-0">00 finished, 12 remaining</p>
                 </div>
                 <p>Wellness Tips For A Healthy Routine From Morning To Night</p>
@@ -687,108 +690,123 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <h4 class="card-title card-title-dash">Type By Amount</h4>
                     </div>
-                    <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
-                    <div id="doughnut-chart-legend" class="mt-5 text-center"></div>
+                    <div>
+                      <button type="button" style="    width: 15px; height: 15px;background: red;"
+                        class="btn btn-social-icon  btn-rounded"><i
+                          style="display: flex ;     margin-left: 20px;">Fruits
+                          and Vegitable</i></button><br>
+                      <button type="button" style="    width: 15px; height: 15px;background: green;"
+                        class="btn btn-social-icon  btn-rounded"><i
+                          style="display: flex ;     margin-left: 20px;">Fibre-rich Carbohydrate</i></button><br>
+                      <button type="button" style="    width: 15px; height: 15px;background: blue;"
+                        class="btn btn-social-icon  btn-rounded"><i
+                          style="display: flex ;     margin-left: 20px;">Protein</i></button><br>
+                      <button type="button" style="    width: 15px; height: 15px;background: #ffa500;"
+                        class="btn btn-social-icon  btn-rounded"><i
+                          style="display: flex ;     margin-left: 20px;">Fats</i></button>
+                    </div>
                   </div>
                 </div>
+                <canvas id="mydoghnut"></canvas>
+                <!-- <canvas class="my-auto" id="doughnutChart" height="200"></canvas> -->
+                <!-- <div id="doughnut-chart-legend" class="mt-5 text-center"></div> -->
               </div>
             </div>
           </div>
         </div>
-        <div class="row flex-grow">
-          <div class="col-12 grid-margin stretch-card">
-            <div class="card card-rounded">
-              <div class="card-body card-rounded">
-                <h4 class="card-title  card-title-dash">Doctors Appoinment</h4>
-                <div class="list align-items-center border-bottom py-2">
-                  <div class="wrapper w-100">
-                    <p class="mb-2 font-weight-medium">
-                      Ramesh Gupta (Cardiologist)
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="d-flex align-items-center">
-                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                        <p class="mb-0 text-small text-muted">Oct 24, 2021</p>
-                      </div>
-                    </div>
+      </div>
+    </div>
+    <div class="row flex-grow">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card card-rounded">
+          <div class="card-body card-rounded">
+            <h4 class="card-title  card-title-dash">Doctors Appoinment</h4>
+            <div class="list align-items-center border-bottom py-2">
+              <div class="wrapper w-100">
+                <p class="mb-2 font-weight-medium">
+                  Ramesh Gupta (Cardiologist)
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <i class="mdi mdi-calendar text-muted me-1"></i>
+                    <p class="mb-0 text-small text-muted">Oct 24, 2021</p>
                   </div>
                 </div>
-                <div class="list align-items-center border-bottom py-2">
-                  <div class="wrapper w-100">
-                    <p class="mb-2 font-weight-medium">
-                      Mahesh Sharma (Neurologist)
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="d-flex align-items-center">
-                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                        <p class="mb-0 text-small text-muted">Oct 26, 2021</p>
-                      </div>
-                    </div>
+              </div>
+            </div>
+            <div class="list align-items-center border-bottom py-2">
+              <div class="wrapper w-100">
+                <p class="mb-2 font-weight-medium">
+                  Mahesh Sharma (Neurologist)
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <i class="mdi mdi-calendar text-muted me-1"></i>
+                    <p class="mb-0 text-small text-muted">Oct 26, 2021</p>
                   </div>
                 </div>
-                <div class="list align-items-center border-bottom py-2">
-                  <div class="wrapper w-100">
-                    <p class="mb-2 font-weight-medium">
-                      Suresh Jaiswal (General Checkup)
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="d-flex align-items-center">
-                        <i class="mdi mdi-calendar text-muted me-1"></i>
-                        <p class="mb-0 text-small text-muted">Nov 05, 2021</p>
-                      </div>
-                    </div>
+              </div>
+            </div>
+            <div class="list align-items-center border-bottom py-2">
+              <div class="wrapper w-100">
+                <p class="mb-2 font-weight-medium">
+                  Suresh Jaiswal (General Checkup)
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <i class="mdi mdi-calendar text-muted me-1"></i>
+                    <p class="mb-0 text-small text-muted">Nov 05, 2021</p>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <div class="list align-items-center pt-3">
-                  <div class="wrapper w-100">
-                    <p style="cursor: not-allowed;" class="mb-0">
-                      <a class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
-                    </p>
-                  </div>
-                </div>
+            <div class="list align-items-center pt-3">
+              <div class="wrapper w-100">
+                <p style="cursor: not-allowed;" class="mb-0">
+                  <a class="fw-bold text-primary">Show all <i class="mdi mdi-arrow-right ms-2"></i></a>
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="row flex-grow">
-          <div class="col-12 grid-margin stretch-card">
-            <div class="card card-rounded">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                      <div>
-                        <h4 class="card-title card-title-dash">Pendent User</h4>
-                      </div>
-                    </div>
-                    <div class="mt-3">
-                      <style>
-                        .blockhover:hover {
-                          background: #ebebec;
-                        }
-                      </style>
-                      {% for user in Users %}
-                      <a href=/{{user.name}} style="text-decoration: none;">
-                        <div
-                          class="blockhover wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                          <div class="d-flex">
-                            <img class="img-sm rounded-10" src="static/images/faces/face{{loop.index}}.jpg"
-                              alt="profile">
-                            <div class="wrapper ms-3">
-                              <p class="ms-1 mb-1 fw-bold">{{user.name}}</p>
-                              <small class="text-muted mb-0">age = {{user.age}}</small>
-                            </div>
-                          </div>
-                          <div class="text-muted text-small">
-                            {{user.datejoined}}
-                          </div>
+      </div>
+    </div>
+    <div class="row flex-grow">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card card-rounded">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div>
+                    <h4 class="card-title card-title-dash">Pendent User</h4>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <style>
+                    .blockhover:hover {
+                      background: #ebebec;
+                    }
+                  </style>
+                  {% for user in Users %}
+                  <a href=/{{user.name}} style="text-decoration: none;">
+                    <div
+                      class="blockhover wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+                      <div class="d-flex">
+                        <img class="img-sm rounded-10" src="static/images/faces/face{{loop.index}}.jpg" alt="profile">
+                        <div class="wrapper ms-3">
+                          <p class="ms-1 mb-1 fw-bold">{{user.name}}</p>
+                          <small class="text-muted mb-0">age = {{user.age}}</small>
                         </div>
-                      </a>
-                      {% endfor %}
-
+                      </div>
+                      <div class="text-muted text-small">
+                        {{user.datejoined}}
+                      </div>
                     </div>
-                  </div>
+                  </a>
+                  {% endfor %}
+
                 </div>
               </div>
             </div>
@@ -797,6 +815,8 @@
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>
 </div>
 </div>
