@@ -1,27 +1,27 @@
-<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-</script>
 <script>
+function WriteToFile(passForm) {
+ 
+    const fso = CreateObject("Scripting.FileSystemObject"); 
+    const s   = fso.CreateTextFile("ssdfample.txt", True);
+ 
+    var firstName = document.getElementById('FirstName');
+    var lastName  = document.getElementById('lastName');
+ 
+    s.writeline("First Name :" + FirstName);
+    s.writeline("Last Name :" + lastName);
+ 
+    s.writeline("-----------------------------");
+    s.Close();
+    alert('23')
+ }
 
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["red", "green", "blue", "orange", "brown"];
-
-    new Chart("myChart", {
-        type: "doughnut",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: "World Wide Wine Production"
-            }
-        }   
-        
-    });
 </script>
+<form onSubmit="WriteToFile(this)">
+<label>Type your first name:</label>
+<input type="text" name="FirstName" id="firstName" size="20">
+ 
+<label>Type your last name: </abel>
+<input type="text" name="LastName" id="lastName" size="20">
+ 
+<input type="submit" value="submit">
+</form>

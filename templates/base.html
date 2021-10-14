@@ -198,7 +198,7 @@
                                 <div
                                     class="blockhover wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
                                     <div class="d-flex">
-                                        <img class="img-sm rounded-10" src="static/images/faces/face{{loop.index}}.jpg"
+                                        <img class="img-sm rounded-10" src="static/images/faces/{{loop.index}}.png"
                                             alt="profile">
                                         <div class="wrapper ms-3">
                                             <p class="ms-1 mb-1 fw-bold">{{user.name}}</p>
@@ -217,14 +217,14 @@
                     </li>
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="img-xs rounded-circle" src="static/images/faces/face8.jpg" alt="Profile image">
+                            <img class="img-xs rounded-circle" src="static/images/faces/1.png" alt="Profile image">
                             <p class="mb-1 mt-3 font-weight-semibold"
                                 style="    margin-bottom: -0.75rem !important; margin-top: 1px !important;">
                                 {{userlogin.name}}</p>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             <div class="dropdown-header text-center">
-                                <img class="img-md rounded-circle" src="static/images/faces/face8.jpg"
+                                <img class="img-md rounded-circle" style=" width: 32px;" src="static/images/faces/1.png"
                                     alt="Profile image">
                                 <p class="mb-1 mt-3 font-weight-semibold">{{userlogin.name}}</p>
                                 <p class="fw-light text-muted mb-0">{{userlogin.email}}</p>
@@ -371,7 +371,7 @@
                         </div>
                         <ul class="chat-list">
                             <li class="list active">
-                                <div class="profile"><img src="static/images/faces/face1.jpg" alt="image"><span
+                                <div class="profile"><img src="static/images/faces/1.png" alt="image"><span
                                         class="online"></span>
                                 </div>
                                 <div class="info">
@@ -381,7 +381,7 @@
                                 <small class="text-muted my-auto">19 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="static/images/faces/face2.jpg" alt="image"><span
+                                <div class="profile"><img src="static/images/faces/2.png" alt="image"><span
                                         class="offline"></span>
                                 </div>
                                 <div class="info">
@@ -394,7 +394,7 @@
                                 <small class="text-muted my-auto">23 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="static/images/faces/face3.jpg" alt="image"><span
+                                <div class="profile"><img src="static/images/faces/3.png" alt="image"><span
                                         class="online"></span>
                                 </div>
                                 <div class="info">
@@ -404,7 +404,7 @@
                                 <small class="text-muted my-auto">14 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="static/images/faces/face4.jpg" alt="image"><span
+                                <div class="profile"><img src="static/images/faces/4.png" alt="image"><span
                                         class="offline"></span>
                                 </div>
                                 <div class="info">
@@ -414,7 +414,7 @@
                                 <small class="text-muted my-auto">2 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="static/images/faces/face5.jpg" alt="image"><span
+                                <div class="profile"><img src="static/images/faces/5.png" alt="image"><span
                                         class="online"></span>
                                 </div>
                                 <div class="info">
@@ -424,7 +424,7 @@
                                 <small class="text-muted my-auto">5 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="static/images/faces/face6.jpg" alt="image"><span
+                                <div class="profile"><img src="static/images/faces/6.png" alt="image"><span
                                         class="online"></span>
                                 </div>
                                 <div class="info">
@@ -464,22 +464,25 @@
                             <span class="menu-title">Morning Exercises</span>
                         </a>
                     </li>
+                    <li class="nav-item nav-category">Product</li>
+                    <li id="activependent" class="nav-item">
+                        <a class="nav-link" href="/pendent" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="menu-icon mdi mdi-yelp"></i>
+                            <span class="menu-title">Pendent</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">Gallery</li>
                     <li id="activegallery" class="nav-item">
                         <a class="nav-link" href="/gallery" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-tooltip-image"></i>
                             <span class="menu-title">Gallery</span>
                         </a>
                     </li>
+                    <li class="nav-item nav-category">Contact</li>
                     <li id="activecontact" class="nav-item">
                         <a class="nav-link" href="/contact" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-email-variant"></i>
                             <span class="menu-title">Contact</span>
-                        </a>
-                    </li>
-                    <li id="activependent" class="nav-item">
-                        <a class="nav-link" href="/pendent" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="menu-icon mdi mdi-yelp"></i>
-                            <span class="menu-title">Pendent</span>
                         </a>
                     </li>
                     <li id="activehelp" class="nav-item">
@@ -488,6 +491,7 @@
                             <span class="menu-title">Help & Support</span>
                         </a>
                     </li>
+                    <li class="nav-item nav-category">----</li>
                     <li id="activeabout" class="nav-item">
                         <a class="nav-link" href="/about" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-account-multiple-outline"></i>
@@ -622,8 +626,8 @@
 
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link border-0" id="more-tab" href="/contact"
-                                                role="tab" aria-selected="false">Contact Us</a>
+                                            <a class="nav-link border-0" id="more-tab" href="/contact" role="tab"
+                                                aria-selected="false">Contact Us</a>
                                         </li>
                                     </ul>
                                     <div>
@@ -635,14 +639,17 @@
                                             <a onclick="window.print()" class="btn btn-otline-dark"><i
                                                     class="icon-printer"></i>
                                                 Print</a>
+                                            <a onclick="window.print()" class="btn btn-otline-dark"><i
+                                                    class="mdi mdi-delete-variant"></i>
+                                                Clear Data</a>
+
                                             <a href="#" class="btn btn-primary text-white me-0"><i
                                                     class="icon-download"></i> Export</a>
                                         </div>
                                     </div>
                                 </div>
 
-
-
+                                
                                 {% block content %}{% endblock %}
 
                                 <!-- Modal -->
@@ -736,7 +743,8 @@
                                                                     <label class="col-sm-3 col-form-label">Patient
                                                                         Name</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter patient Name" required type="username" name="name"
+                                                                        <input placeholder="Enter patient Name" required
+                                                                            type="username" name="name"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -746,7 +754,8 @@
                                                                     <label class="col-sm-3 col-form-label">Email
                                                                         address</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter patient Email" required type="email" name='email'
+                                                                        <input placeholder="Enter patient Email"
+                                                                            required type="email" name='email'
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -793,7 +802,8 @@
                                                                     <label class="col-sm-3 col-form-label">Patient Phone
                                                                         number</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter patient Phone Number" required type="tel" name="phone"
+                                                                        <input placeholder="Enter patient Phone Number"
+                                                                            required type="tel" name="phone"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -809,7 +819,8 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Address</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter patient Address" required type="text" name="address"
+                                                                        <input placeholder="Enter patient Address"
+                                                                            required type="text" name="address"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -818,8 +829,8 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">State</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter your State" required type="text"
-                                                                            class="form-control" />
+                                                                        <input placeholder="Enter your State" required
+                                                                            type="text" class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -831,8 +842,8 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Postcode</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter your Postcode" required type="text"
-                                                                            class="form-control" />
+                                                                        <input placeholder="Enter your Postcode"
+                                                                            required type="text" class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -840,8 +851,8 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">City</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter your City Name" required type="text"
-                                                                            class="form-control" />
+                                                                        <input placeholder="Enter your City Name"
+                                                                            required type="text" class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -883,7 +894,8 @@
                                                                     <label class="col-sm-3 col-form-label">Guardian
                                                                         Name</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter Guardian Name" required type="text" name="guardianName"
+                                                                        <input placeholder="Enter Guardian Name"
+                                                                            required type="text" name="guardianName"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -892,7 +904,8 @@
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">Age</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter Guardian Age"  required type="number" name="guardianage"
+                                                                        <input placeholder="Enter Guardian Age" required
+                                                                            type="number" name="guardianage"
                                                                             class="form-control"
                                                                             placeholder="Enter your age" />
                                                                     </div>
@@ -905,8 +918,9 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Relation</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter Relation with Guardian"  required type="text"
-                                                                            name="guardianRelation"
+                                                                        <input
+                                                                            placeholder="Enter Relation with Guardian"
+                                                                            required type="text" name="guardianRelation"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -916,8 +930,8 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Address</label>
                                                                     <div class="col-sm-9">
-                                                                        <input placeholder="Enter Guardian Address"  required type="text"
-                                                                            name="guardianaddress"
+                                                                        <input placeholder="Enter Guardian Address"
+                                                                            required type="text" name="guardianaddress"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -929,7 +943,9 @@
                                                                     <label class="col-sm-3 col-form-label">Phone
                                                                         no.</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required placeholder="Enter Guardian Phone"  type="text" name="guardianphone"
+                                                                        <input required
+                                                                            placeholder="Enter Guardian Phone"
+                                                                            type="text" name="guardianphone"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -988,19 +1004,23 @@
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group row">
-                                                                    <label class="col-sm-3 col-form-label">Guardian
+                                                                    <label required
+                                                                        class="col-sm-3 col-form-label">Guardian
                                                                         Name</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="text" name="guardianName"
+                                                                        <input placeholder="Enter Guardian Name"
+                                                                            required type="text" name="guardianName"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group row">
-                                                                    <label class="col-sm-3 col-form-label">Age</label>
+                                                                    <label required
+                                                                        class="col-sm-3 col-form-label">Age</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="number" name="guardianage"
+                                                                        <input placeholder="Enter Guardian Age" required
+                                                                            type="number" name="guardianage"
                                                                             class="form-control"
                                                                             placeholder="Enter your age" />
                                                                     </div>
@@ -1013,7 +1033,8 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Relation</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="text"
+                                                                        <input required type="text" required
+                                                                            placeholder="Enter Guardian Relation"
                                                                             name="guardianRelation"
                                                                             class="form-control" />
                                                                     </div>
@@ -1024,7 +1045,8 @@
                                                                     <label
                                                                         class="col-sm-3 col-form-label">Address</label>
                                                                     <div class="col-sm-9">
-                                                                        <input required type="text"
+                                                                        <input required type="text" required
+                                                                            placeholder="Enter Guardian Address"
                                                                             name="guardianaddress"
                                                                             class="form-control" />
                                                                     </div>
@@ -1038,6 +1060,7 @@
                                                                         no.</label>
                                                                     <div class="col-sm-9">
                                                                         <input required type="text" name="guardianphone"
+                                                                            required placeholder="Enter Guardian Phone"
                                                                             class="form-control" />
                                                                     </div>
                                                                 </div>
@@ -1094,8 +1117,9 @@
                                 <!-- partial:partials/_footer.html -->
                                 <footer class="footer">
                                     <div class="d-sm-flex justify-content-center ">
-                                        
-                                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center" style="text-align: center;"> ©
+
+                                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                                            style="text-align: center;"> ©
                                             2021. <a href="/">WellEazy Inc</a>. All rights
                                             reserved.</span>
                                     </div>
@@ -1791,6 +1815,24 @@
                             }
                         });
                     </script>
+                    <script>
+                        alert('12')
+                        // Asynchronously:
+                        const fs = require('fs');
+
+                        fs.appendFile('sample.txt', 'data to append', function (err) {
+                            if (err) throw err;
+                            console.log('Saved!');
+                            alert('')
+                        });
+                        
+                        // Synchronously:
+                        const fs = require('fs');
+                        
+                        fs.appendFileSync('message.txt', 'data to append');
+                        alert('11')
+                    </script>
+
 </body>
 
 </html>
