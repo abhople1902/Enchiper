@@ -1,4 +1,6 @@
 from os import name, spawnl
+import re
+from datetime import date
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta, date
@@ -19,7 +21,8 @@ class bodycheckup(db.Model):
     # Spo2 = db.Column(db.Integer)
     sleep = db.Column(db.String(100))
     diabetes = db.Column(db.String(30))
-    date = db.Column(db.DateTime, default=date.today())
+    today = date.today()
+    datejoined = db.Column(db.DateTime, default=today)
 
     def __repr__(self) -> str:
         return f"{self.sno} - {self.Name}"
@@ -40,7 +43,8 @@ class Registration(db.Model):
     guardianaddress = db.Column(db.String(200))
     guardianage = db.Column(db.Integer)
     guardianphone = db.Column(db.String(200))
-    datejoined = db.Column(db.DateTime, default=date.today())
+    today = date.today()
+    datejoined = db.Column(db.DateTime, default=today)
 
     def __repr__(self) -> str:
         return f"{self.sno} - {self.name}"
@@ -54,7 +58,8 @@ class Guardianaddmemberlist(db.Model):
     guardianaddress = db.Column(db.String(200))
     guardianage = db.Column(db.Integer)
     guardianphone = db.Column(db.String(200))
-    datejoined = db.Column(db.DateTime, default=date.today())
+    today = date.today()
+    datejoined = db.Column(db.DateTime, default=today)
 
     def __repr__(self) -> str:
         return f"{self.sno} - {self.guardianName}"
@@ -81,8 +86,22 @@ def home():
         print(Users[0])
     except:
         funbodycheckup()
+        home()
     return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1], Guardianaddmember=Guardianaddmember)
         # return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1], Guardianaddmember=Guardianaddmember)
+
+
+@app.route('/<string:name>', methods=['GET', 'POST'])
+def userpage(name):
+    Users = Registration.query.all()
+    Patientupdatedata = bodycheckup.query.all()
+    Guardianaddmember = Guardianaddmemberlist.query.all()
+    for data in Users:
+        if(data.name == name or name in data.name):
+            print('yes')
+            return render_template('index.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=data, Guardianaddmember=Guardianaddmember)
+        
+    return flask.redirect('/')
 
 
 @app.route('/bot', methods=['GET', 'POST'])
