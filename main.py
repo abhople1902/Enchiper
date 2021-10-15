@@ -34,19 +34,19 @@ class MainWindow(QMainWindow):
         # self.setStatusBar(self.status)
         # self.statusBar().setStyleSheet("background-color : blue")
 
-        # #Navbar
-        # navbar = QToolBar()
-        # self.addToolBar(navbar)
+        #Navbar
+        navbar = QToolBar()
+        self.addToolBar(navbar)
 
-        # BackBtn = QAction("←",self)
-        # BackBtn.triggered.connect(lambda:self.TabBar.currentWidget().back())
-        # BackBtn.setStatusTip("Go Back...")
-        # navbar.addAction(BackBtn)
+        BackBtn = QAction("←",self)
+        BackBtn.triggered.connect(lambda:self.TabBar.currentWidget().back())
+        BackBtn.setStatusTip("Go Back...")
+        navbar.addAction(BackBtn)
 
-        # FwdBtn = QAction("→",self)
-        # FwdBtn.triggered.connect(lambda:self.TabBar.currentWidget().forward())
-        # FwdBtn.setStatusTip("Go Forward...")
-        # navbar.addAction(FwdBtn)
+        FwdBtn = QAction("→",self)
+        FwdBtn.triggered.connect(lambda:self.TabBar.currentWidget().forward())
+        FwdBtn.setStatusTip("Go Forward...")
+        navbar.addAction(FwdBtn)
 
         # ReloadBtn = QAction("  ↻  ",self)
         # ReloadBtn.triggered.connect(lambda:self.TabBar.currentWidget().reload())

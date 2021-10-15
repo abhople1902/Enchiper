@@ -1,11 +1,23 @@
 from os import name, spawnl
-import re
+import time;
 import os
+from os import *
+import random
 from datetime import date
-from flask import Flask, request, redirect, url_for, render_template, send_from_directory, session,send_file
+from flask import Flask, request, redirect, url_for, render_template, send_from_directory, session, send_file
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta, date
 import flask
+from datetime import datetime, timedelta
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
+scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/spreadsheets',
+         "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
+creads = ServiceAccountCredentials.from_json_keyfile_name("creads.json", scope)
+client = gspread.authorize(creads)
+sheet = client.open('Welleazy Health Assistant Data').sheet1
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -132,20 +144,27 @@ def helpsupport():
     Patientupdatedata = bodycheckup.query.all()
     return render_template('helpsupport.html', Users=Users, lastcheckupdata=Patientupdatedata[-1], userlogin=Users[-1])
 
+import socket
 
-@app.route('/filedownload', methods=['GET', 'POST'])
+
+@app.route('/exportdata', methods=['GET', 'POST'])
 def filedownload():
-    f = open("sample.txt", "a+")
-    for i in range(1000):
-        f.write("qwerty\n")
-    return flask.redirect('/')
-    # return send_file('sample.txt', as_attachment=True)
+    for item in range(5):
+        
+        localtime = str(time.asctime( time.localtime(time.time())))
+        heartbeat = str(random.randint(65,85))
+        spo2 = str(random.randint(95, 100))
+        sleep = '7 hours'
+        insertrow = [localtime,heartbeat+"BPM", spo2+"%", sleep+" - Normal","--",'Normal',"None","",'','','','','',str(socket.gethostname())]
+        sheet.insert_row(insertrow, 2) 
+
+    return flask.redirect('https://docs.google.com/spreadsheets/d/167KmuzXIuDZRDB1meT5Gm-0QbA0sLHL-HE77wTiTyJ4/edit?usp=sharing')
+# return send_file('123.txt', as_attachment=True)
 
 
 @app.route('/clearfile', methods=['GET', 'POST'])
 def clearfile():
-    
-    os.remove("sample.txt")
+
     return flask.redirect('/')
 
 
