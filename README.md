@@ -1,7 +1,7 @@
 
 
 <h1>WellEazy - Your Personal Health Assistant</h1>
-Star Admin 2 Free is an open-source, admin dashboard template built with <a href="https://getbootstrap.com/" target="_blank">Bootstrap 5</a>  created by <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>.
+Welleazy a personal health assistant ensure adequate, qualitative, preventive & curative health updates. Timely reminders to patients as well as their guardians. Make patients aware of their optimal health status and many other objectives on <a href="https://welleazy.herokuapp.com/" target="_blank">Welleazy</a>  created by <a href="https://welleazy.herokuapp.com/" target="_blank">Enchiper</a>.
 
 <h2>Preview</h2>
 <a href="https://welleazy.herokuapp.com/" target="_blank"><img src="static\images\welleazy.jpg"></a>
