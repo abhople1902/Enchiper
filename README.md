@@ -1,4 +1,4 @@
-<h1>WellEazy - Your Personal Haealth Assistant</h1>
+<h1>WellEazy - Your Personal Health Assistant</h1>
 wellEazy a Virtual Health Assisant to ensure adequate, qualitative, preventive & curative health updates, Timely reminders to patients as well as their guardians, Make patients aware of their optimal health status and moreo on <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a> created by <a href="welleazy.herokuapp.com" target="_blank">Team Enchiper</a>.
 
 <h2>Preview</h2>
@@ -61,7 +61,7 @@ install manually <br>
 4 - Open your terminal (Run as Administrator) and run the python `app.py` first this will start the flask Framework.
 
   -  and then run `main.py` this will open the web application.
-  -  
+
 <br>OR<br>
 
   - Click the IP address form the Terminal OR Copy IP Address `127.0.0.1:5000` to the Default Browser.
