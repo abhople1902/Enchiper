@@ -60,10 +60,10 @@ install manually <br>
 
 4
 
-	-Open your terminal (Run as Administrator) and run the python `app.py` first this will start the flask framework and then `main.py` this will open the web application.
+ -Open your terminal (Run as Administrator) and run the python `app.py` first this will start the flask framework and then `main.py` this will open the web application.
 or
 
-	-Ignore the warning and copy the IP Address `127.0.0.1:5000` to the CromeBrowser or click the IP address form the Terminal.
+ -Ignore the warning and copy the IP Address `127.0.0.1:5000` to the CromeBrowser or click the IP address form the Terminal.
 
 
 Star Admin 2 Free is a free admin dashboard template built with Bootstrap 5. We took the original Star Admin Pro and gave it a design overhaul along with newly written code to create our best template yet. This is a modern-looking dashboard with a clean and elegant design. The template is well crafted, with all the components neatly and carefully designed and arranged within the template. Star Admin 2 Free comes with a clean and well-commented code that makes it easy to work with the template. Thus making it an ideal pick for jump-starting your project.
