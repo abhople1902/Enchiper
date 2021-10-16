@@ -61,7 +61,6 @@ install manually <br>
 4 - Open your terminal (Run as Administrator) and run the python `app.py` first this will start the flask Framework.
 
   -  and then run `main.py` this will open the web application.
-
 <br>OR<br>
 
   - Click the IP address form the Terminal OR Copy IP Address `127.0.0.1:5000` to the Default Browser.
