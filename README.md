@@ -1,13 +1,12 @@
 
 
-<h1>Star Admin2 Free Bootstrap Admin Template</h1>
+<h1>WellEazy - Your Personal Health Assistant</h1>
 Star Admin 2 Free is an open-source, admin dashboard template built with <a href="https://getbootstrap.com/" target="_blank">Bootstrap 5</a>  created by <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>.
 
 <h2>Preview</h2>
-<a href="https://www.bootstrapdash.com/demo/star-admin2-free/template/" target="_blank"><img src="screenshot.jpg"></a>
+<a href="https://welleazy.herokuapp.com/" target="_blank"><img src="static\images\welleazy.jpg"></a>
 
 <h2>Download and installation</h2>
-
 
 1 - Install node package. If you don’t know the installation steps, please click <a href="https://nodejs.org/en/">here</a>.
 
