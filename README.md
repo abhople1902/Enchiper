@@ -1,6 +1,6 @@
 
 
-<h1>WellEazyt - Your Personal Haealth Assistant</h1>
+<h1>WellEazy - Your Personal Haealth Assistant</h1>
 At <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a>, we develop a revolutionary healthcare device made for anyone and everyone. Our aim is to change the world by making lives better and healthier. The device is truly your health buddy. In this 21st century wherin life has become an expeditious one and over the years people have moved places for better job prospects of lifestyle but what they have left behind is their dear and near loved ones. Healthcare monitoring has henceforth emerged as a pivotal domain. We here believe to bring about a change in this healthcare monitoring sector with our revolutionary device. created by <a href="welleazy.herokuapp.com" target="_blank">Team Enchiper</a>.
 
 <h2>Preview</h2>
