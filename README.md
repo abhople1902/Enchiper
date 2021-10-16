@@ -58,7 +58,8 @@ install manually <br>
 
 3 - After the files have been downloaded you will get a folder with all the required files
 
-4 - Open your terminal (Run as Administrator) and run the python `app.py` first this will start the flask framework and then `main.py` this will open the web application.
+4
+  - Open your terminal (Run as Administrator) and run the python `app.py` first this will start the flask framework and then `main.py` this will open the web application.
 <br>OR<br>
   - Ignore the warning and copy the IP Address `127.0.0.1:5000` to the CromeBrowser or click the IP address form the Terminal.
 
