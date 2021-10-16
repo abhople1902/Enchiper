@@ -1,14 +1,13 @@
 
 
 <h1>WellEazy - Your Personal Health Assistant</h1>
-Welleazy a personal health assistant ensure adequate, qualitative, preventive & curative health updates. Timely reminders to patients as well as their guardians. Make patients aware of their optimal health status and many other objectives on <a href="https://welleazy.herokuapp.com/" target="_blank">Welleazy</a>  created by <a href="https://welleazy.herokuapp.com/" target="_blank">Enchiper</a>.
+Welleazy a personal health assistant ensure adequate, qualitative, preventive & curative health updates, Timely reminders to patients as well as their guardians, Make patients aware of their optimal health status and many other objectives on <a href="https://welleazy.herokuapp.com/" target="_blank">Welleazy</a>  created by <a href="https://welleazy.herokuapp.com/" target="_blank">Enchiper</a>.
 
 <h2>Preview</h2>
 <a href="https://welleazy.herokuapp.com/" target="_blank"><img src="static\images\welleazy.jpg"></a>
-
 <h2>Download and installation</h2>
 
-1 - Install node package. If you don’t know the installation steps, please click <a href="https://nodejs.org/en/">here</a>.
+	1 - Install node package. If you don’t know the installation steps, please click <a href="https://nodejs.org/en/">here</a>.
 
 2 - Click the Clone or Download button in GitHub and download as a ZIP file or you can enter the command git clone https://github.com/BootstrapDash/star-admin2-free-admin-template.git in your terminal to get a copy of this template.
 
