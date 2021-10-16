@@ -58,10 +58,10 @@ install manually <br>
 
 3 - After the files have been downloaded you will get a folder with all the required files
 
-4
-  - Open your terminal (Run as Administrator) and run the python `app.py` first this will start the flask framework and then `main.py` this will open the web application.
+4 - Open your terminal (Run as Administrator) and run the python `app.py` first this will start the flask Framework.
+  -  and then run `main.py` this will open the web application.
 <br>OR<br>
-  - Ignore the warning and copy the IP Address `127.0.0.1:5000` to the CromeBrowser or click the IP address form the Terminal.
+  - Click the IP address form the Terminal OR Copy IP Address `127.0.0.1:5000` to the Default Browser.
 
 
 At <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a>, we develop a revolutionary healthcare device made for anyone and everyone. Our aim is to change the world by making lives better and healthier. The device is truly your health buddy. In this 21st century wherin life has become an expeditious one and over the years people have moved places for better job prospects of lifestyle but what they have left behind is their dear and near loved ones. Healthcare monitoring has henceforth emerged as a pivotal domain. We here believe to bring about a change in this healthcare monitoring sector with our revolutionary device. created by <a href="welleazy.herokuapp.com" target="_blank">Team Enchiper</a>.
