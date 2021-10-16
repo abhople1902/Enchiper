@@ -15,7 +15,7 @@ At <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a>, we develop a r
 	
 or
 
-install manually
+install manually <br>
 `cachetools==4.2.4`
 `certifi==2021.10.8`
 `charset-normalizer==2.0.7`
@@ -52,11 +52,15 @@ install manually
 `Werkzeug==2.0.2`
 
 
-2 - Click the Clone or Download button in GitHub and download as a ZIP file or you can enter the command git clone https://github.com/ayushete2005/Enchiper.git in your terminal to get a copy of this project.
+2 - Click the Clone or Download button in GitHub and download as a ZIP file or you can enter the command git clone 
+
+	https://github.com/ayushete2005/Enchiper.git 
+
+in your terminal to get a copy of this project.
 
 3 - After the files have been downloaded you will get a folder with all the required files
 
-4 - Open your terminal (Run as Administrator) and run the python app.py and then main.py. Ignore the warning and copy the url link to the webpage. Paste the link in your browser and run it. You can also directly enter the specific IP address i.e., 127.0.0.1:5000 to view the project.
+4 - Open your terminal (Run as Administrator) and run the python app.py and then main.py. Ignore the warning and copy the url link to the webpage. Paste the link in your browser and run it. You can also directly enter the specific IP address i.e., `127.0.0.1:5000` to view the project.
 
 
 Star Admin 2 Free is a free admin dashboard template built with Bootstrap 5. We took the original Star Admin Pro and gave it a design overhaul along with newly written code to create our best template yet. This is a modern-looking dashboard with a clean and elegant design. The template is well crafted, with all the components neatly and carefully designed and arranged within the template. Star Admin 2 Free comes with a clean and well-commented code that makes it easy to work with the template. Thus making it an ideal pick for jump-starting your project.
