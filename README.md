@@ -11,6 +11,47 @@ At <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a>, we develop a r
 
 1 - Install all the modules in requirements.txt with given specific versions.
 
+	pip install -r requirements.txt
+	
+or
+
+install manually
+`cachetools==4.2.4`
+`certifi==2021.10.8`
+`charset-normalizer==2.0.7`
+`click==8.0.2`
+`colorama==0.4.4`
+`Flask==2.0.2`
+`Flask-SQLAlchemy==2.5.1`
+`google-auth==2.3.0`
+`google-auth-oauthlib==0.4.6`
+`greenlet==1.1.2`
+`gspread==4.0.1`
+`gunicorn==20.1.0`
+`httplib2==0.20.1`
+`idna==3.3`
+`itsdangerous==2.0.1`
+`Jinja2==3.0.2`
+`MarkupSafe==2.0.1`
+`oauth2client==4.1.3`
+`oauthlib==3.1.1`
+`pyasn1==0.4.8`
+`pyasn1-modules==0.2.8`
+`pyparsing==2.4.7`
+`PyQt5==5.15.4`
+`PyQt5-Qt5==5.15.2`
+`PyQt5-sip==12.9.0`
+`PyQtWebEngine==5.15.4`
+`PyQtWebEngine-Qt5==5.15.2`
+`requests==2.26.0`
+`requests-oauthlib==1.3.0`
+`rsa==4.7.2`
+`six==1.16.0`
+`SQLAlchemy==1.4.25`
+`urllib3==1.26.7`
+`Werkzeug==2.0.2`
+
+
 2 - Click the Clone or Download button in GitHub and download as a ZIP file or you can enter the command git clone https://github.com/ayushete2005/Enchiper.git in your terminal to get a copy of this project.
 
 3 - After the files have been downloaded you will get a folder with all the required files
