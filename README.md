@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/AOEpeople/Tagging.svg?branch=master)](https://travis-ci.org/AOEpeople/Tagging)
+[![Build Status](https://welleazy.herokuapp.com/)](https://welleazy.herokuapp.com/)
 
 <h1>WellEazy - Your Personal Haealth Assistant</h1>
 wellEazy a Virtual Health Assisant to ensure adequate, qualitative, preventive & curative health updates, Timely reminders to patients as well as their guardians, Make patients aware of their optimal health status and moreo on <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a> created by <a href="welleazy.herokuapp.com" target="_blank">Team Enchiper</a>.
