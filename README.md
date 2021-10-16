@@ -1,5 +1,3 @@
-[![Build Status](https://welleazy.herokuapp.com/)](https://welleazy.herokuapp.com/)
-
 <h1>WellEazy - Your Personal Haealth Assistant</h1>
 wellEazy a Virtual Health Assisant to ensure adequate, qualitative, preventive & curative health updates, Timely reminders to patients as well as their guardians, Make patients aware of their optimal health status and moreo on <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a> created by <a href="welleazy.herokuapp.com" target="_blank">Team Enchiper</a>.
 
@@ -56,12 +54,18 @@ install manually <br>
 
 	https://github.com/ayushete2005/Enchiper.git 
 
+
 3 - After the files have been downloaded you will get a folder with all the required files
 
+
 4 - Open your terminal (Run as Administrator) and run the python `app.py` first this will start the flask Framework.
+
   -  and then run `main.py` this will open the web application.
+  -  
 <br>OR<br>
+
   - Click the IP address form the Terminal OR Copy IP Address `127.0.0.1:5000` to the Default Browser.
+
 
 
 At <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a>, we develop a revolutionary healthcare device made for anyone and everyone. Our aim is to change the world by making lives better and healthier. The device is truly your health buddy. In this 21st century wherin life has become an expeditious one and over the years people have moved places for better job prospects of lifestyle but what they have left behind is their dear and near loved ones. Healthcare monitoring has henceforth emerged as a pivotal domain. We here believe to bring about a change in this healthcare monitoring sector with our revolutionary device. created by <a href="welleazy.herokuapp.com" target="_blank">Team Enchiper</a>.
