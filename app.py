@@ -14,10 +14,10 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/spreadsheets',
          "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
+
 creads = ServiceAccountCredentials.from_json_keyfile_name("creads.json", scope)
 client = gspread.authorize(creads)
 sheet = client.open('Welleazy Health Assistant Data').sheet1
-
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'

@@ -25,6 +25,14 @@ class MainWindow(QMainWindow):
         BackBtn.setStatusTip("Go Back...")
         navbar.addAction(BackBtn)
 
+        
+        ReloadBtn = QAction("  ↻  ",self)
+        ReloadBtn.triggered.connect(lambda:self.TabBar.currentWidget().reload())
+        ReloadBtn.setStatusTip("Reload Page...")
+        navbar.addAction(ReloadBtn)
+        HomeBtn = QAction("Home",self)
+        
+
         FwdBtn = QAction("→",self)
         FwdBtn.triggered.connect(lambda:self.TabBar.currentWidget().forward())
         FwdBtn.setStatusTip("Go Forward...")

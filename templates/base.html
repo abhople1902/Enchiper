@@ -35,6 +35,8 @@
     .mornignImage2,
     .mornignImage3,
     .mornignImage4,
+    .modalalconnect,
+    .modalalgetappoiement,
     .modaladdtodo {
         display: none;
         position: fixed;
@@ -82,6 +84,9 @@
     function newmember() {
         document.getElementsByClassName('modalnewmember')[0].style.display = 'block';
     }
+    function connectbluetoth() {
+        document.getElementsByClassName('modalalconnect')[0].style.display = 'block';
+    }
     function MorningImage1() {
         document.getElementsByClassName('mornignImage1')[0].style.display = 'block';
     }
@@ -97,11 +102,16 @@
     function addtodo() {
         document.getElementsByClassName('modaladdtodo')[0].style.display = 'block';
     }
+    function getappoiement() {
+        document.getElementsByClassName('modalalgetappoiement')[0].style.display = 'block';
+    }
     function Modalclose() {
         document.getElementsByClassName("modalregister")[0].style.display = "none";
         document.getElementsByClassName("modalcheck")[0].style.display = "none";
         document.getElementsByClassName("modalnewmember")[0].style.display = "none";
         document.getElementsByClassName('modaladdtodo')[0].style.display = 'none';
+        document.getElementsByClassName('modalalconnect')[0].style.display = 'none';
+        document.getElementsByClassName('modalalgetappoiement')[0].style.display = 'none';
         document.getElementsByClassName('mornignImage1')[0].style.display = 'none';
         document.getElementsByClassName('mornignImage2')[0].style.display = 'none';
         document.getElementsByClassName('mornignImage3')[0].style.display = 'none';
@@ -164,7 +174,7 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li href="/bot" class="nav-item dropdown d-none d-lg-block">
-                        <a class="mdi mdi-wechat" style="font-size: 40px;" href="/bot"></a>
+                        <a class="mdi mdi-wechat" style="font-size: 40px; text-decoration: none;" href="/bot"></a>
 
                     </li>
                     <li class="nav-item d-none d-lg-block">
@@ -509,7 +519,7 @@
                             <span class="menu-title">About</span>
                         </a>
                     </li>
-                   
+
                 </ul>
             </nav>
             <!-- partial -->
@@ -521,9 +531,7 @@
                                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab"
-                                                href="#overview" role="tab" aria-controls="overview"
-                                                aria-selected="true">Overview</a>
+                                            <a class="nav-link active ps-0" href="/">Overview</a>
                                         </li>
                                         <li class="nav-item">
                                             <a style="cursor: pointer;" class="nav-link" id="profile-tab"
@@ -535,8 +543,8 @@
 
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link border-0" id="more-tab" href="/contact" role="tab"
-                                                aria-selected="false">Contact Us</a>
+                                            <a style="cursor: pointer;" class="nav-link border-0"
+                                                onclick="getappoiement()">Get your appointment</a>
                                         </li>
                                     </ul>
                                     <div>
@@ -1014,8 +1022,105 @@
                                                                 placeholder="How long to take medicine">
                                                         </div>
                                                         <button type="submit" class="btn btn-primary me-2">Add</button>
-                                                        <a onclick="Modalclose()" class="btn btn-light">Cancel</a>
+                                                        <a onclick="Modalclose()" class="btn btn-light">Close</a>
                                                     </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    function connectyes() {
+                                        document.getElementById('connectdevice').innerHTML = 'yes';
+                                        Modalclose()
+                                    }
+                                </script>
+                                <div class="modalalconnect" style="z-index: 9999 !important;">
+                                    <div class="modal-content"
+                                        style=" background: #faebd700; border: none; height: initial;">
+
+                                        <div class="col-md-6 grid-margin stretch-card" style="margin: auto;">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <img src="static\images\bluetooth.gif" alt=""
+                                                        style=" width: -webkit-fill-available;">
+                                                    <a onclick="Modalclose()" class="btn btn-danger"
+                                                        style="margin-top: 20px;">Close</a>
+                                                    <a onclick="connectyes()" class="btn btn-success"
+                                                        style="margin-top: 20px;">Pair</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modalalgetappoiement" style="z-index: 9999 !important;">
+                                    <div class="modal-content"
+                                        style=" background: #faebd700; border: none; height: initial;">
+
+                                        <div class="col-md-6 grid-margin stretch-card" style="margin: auto;">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="tab-content tab-content-basic" style="padding: 10px;     border: none;">
+
+                                                        <div class="col-12 grid-margin stretch-card">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Take Appointment</h4>
+                                                                    <p class="card-description">
+                                                                        We will connect you with our Doctors team via Meets.
+                                                                    </p>
+                                                                    <form class="forms-sample">
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputName1">Name</label>
+                                                                            <input required type="username" 
+                                                                                class="form-control"
+                                                                                id="exampleInputName1"
+                                                                                placeholder="Name">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputName1">Choose your feasible date and time</label>
+                                                                            <input id="appiementdate" required type="datetime-local" required
+                                                                            name="meeting-time" value="2021-12-31  T23:59"
+                                                                                class="form-control"
+                                                                                id="exampleInputName1"
+                                                                                placeholder="Name">
+                                                                        </div>
+                                                                        
+                                                                        <div class="form-group">
+                                                                            <label>Upload your last prescription (if any)</label>
+                                                                            <input type="file" style="padding: 7px;" name="img[]"
+                                                                                class="file-upload-default">
+                                                                            <div class="input-group col-xs-12">
+                                                                                <input type="file"  style="padding: 7px;"
+                                                                                    class="form-control file-upload-info"
+                                                                                    placeholder="Screenshot if it is software based">
+                                                                                <span class="input-group-append">
+                                                                                    <button
+                                                                                        class="file-upload-browse btn btn-primary"
+                                                                                        type="file">Upload</button>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <script>
+                                                            function functionaddnewappoiement(params) {
+                                                                document.getElementById('newappoiement').style.display = 'block';
+                                                                var value = document.getElementById('appiementdate').innerHTML
+                                                                document.getElementById('newappoiementdate').innerHTML = '------ ----, --------';
+
+                                                                Modalclose()
+                                                            }
+                                                        </script>
+                                                        <button onclick="functionaddnewappoiement()" type="submit"
+                                                            class="btn btn-primary me-2">Submit</button>
+                                                            <a onclick="Modalclose()" class="btn btn-light">Close</a>
+                                                      
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1700,46 +1805,6 @@
 
                     </script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-                    </script>
-                    <script>
-
-                        var xValues = ["Fruits and Vegitable", "Fibre-rich Carbohydrate", "Protein", "Fats"];
-                        var yValues = [40, 25, 25, 10];
-                        var barColors = ["red", "green", "blue", "orange"];
-
-                        new Chart("mydoghnut", {
-                            type: "pie",
-                            data: {
-                                datasets: [{
-                                    backgroundColor: barColors,
-                                    data: yValues
-                                }],
-                                labels: xValues
-                            },
-                            options: {
-                                title: {
-                                    display: true,
-                                    text: "Balance Diet"
-                                }
-                            }
-                        });
-                    </script>
-                    <script>
-                        alert('12')
-                        // Asynchronously:
-                        const fs = require('fs');
-
-                        fs.appendFile('sample.txt', 'data to append', function (err) {
-                            if (err) throw err;
-                            console.log('Saved!');
-                            alert('')
-                        });
-
-                        // Synchronously:
-                        const fs = require('fs');
-
-                        fs.appendFileSync('message.txt', 'data to append');
-                        alert('11')
                     </script>
 
 </body>
