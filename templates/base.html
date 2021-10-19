@@ -36,6 +36,7 @@
     .mornignImage3,
     .mornignImage4,
     .modalalconnect,
+    .modaluploadringtone,
     .modalalgetappoiement,
     .modaladdtodo {
         display: none;
@@ -87,6 +88,9 @@
     function connectbluetoth() {
         document.getElementsByClassName('modalalconnect')[0].style.display = 'block';
     }
+    function modaluploadringtone() {
+        document.getElementsByClassName('modaluploadringtone')[0].style.display = 'block';
+    }
     function MorningImage1() {
         document.getElementsByClassName('mornignImage1')[0].style.display = 'block';
     }
@@ -112,6 +116,7 @@
         document.getElementsByClassName('modaladdtodo')[0].style.display = 'none';
         document.getElementsByClassName('modalalconnect')[0].style.display = 'none';
         document.getElementsByClassName('modalalgetappoiement')[0].style.display = 'none';
+        document.getElementsByClassName('modaluploadringtone')[0].style.display = 'none';
         document.getElementsByClassName('mornignImage1')[0].style.display = 'none';
         document.getElementsByClassName('mornignImage2')[0].style.display = 'none';
         document.getElementsByClassName('mornignImage3')[0].style.display = 'none';
@@ -1054,6 +1059,29 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modaluploadringtone" style="z-index: 9999 !important;">
+                                    <div class="modal-content"
+                                        style=" background: #faebd700; border: none; height: initial;">
+
+                                        <div class="col-md-6 grid-margin stretch-card" style="margin: auto;">
+                                            <div class="card">
+                                                <div class="card-body" style="text-align: center;">
+                                                    <input class="btn" type="file" id="upload" accept=".mp3" hidden />
+                                                    <label class="btn btn-primary"
+                                                        style="    height: max-content;border: 2px solid;font-size: 15px; margin: 100px; width: -webkit-fill-available;     margin-bottom: 0px;"
+                                                        for="upload">Change remind ringtone</label>
+                                                    <label class="btn btn-danger"
+                                                        style="    height: max-content;border: 2px solid;font-size: 15px; margin: 100px; width: -webkit-fill-available;    margin-top: 0px;"
+                                                        for="upload">Record your voice</label>
+                                                    <a onclick="Modalclose()" class="btn btn-success"
+                                                        style="margin-top: 20px;">Change</a>
+                                                    <a onclick="Modalclose()" class="btn btn-danger"
+                                                        style="margin-top: 20px;">Close</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="modalalgetappoiement" style="z-index: 9999 !important;">
                                     <div class="modal-content"
                                         style=" background: #faebd700; border: none; height: initial;">
@@ -1061,38 +1089,45 @@
                                         <div class="col-md-6 grid-margin stretch-card" style="margin: auto;">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <div class="tab-content tab-content-basic" style="padding: 10px;     border: none;">
+                                                    <div class="tab-content tab-content-basic"
+                                                        style="padding: 10px;     border: none;">
 
                                                         <div class="col-12 grid-margin stretch-card">
                                                             <div class="card">
                                                                 <div class="card-body">
                                                                     <h4 class="card-title">Take Appointment</h4>
                                                                     <p class="card-description">
-                                                                        We will connect you with our Doctors team via Meets.
+                                                                        We will connect you with our Doctors team via
+                                                                        Meets.
                                                                     </p>
                                                                     <form class="forms-sample">
                                                                         <div class="form-group">
                                                                             <label for="exampleInputName1">Name</label>
-                                                                            <input required type="username" 
+                                                                            <input required type="username"
                                                                                 class="form-control"
                                                                                 id="exampleInputName1"
                                                                                 placeholder="Name">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="exampleInputName1">Choose your feasible date and time</label>
-                                                                            <input id="appiementdate" required type="datetime-local" required
-                                                                            name="meeting-time" value="2021-12-31  T23:59"
+                                                                            <label for="exampleInputName1">Choose your
+                                                                                feasible date and time</label>
+                                                                            <input id="appiementdate" required
+                                                                                type="datetime-local" required
+                                                                                name="meeting-time"
+                                                                                value="2021-12-31  T23:59"
                                                                                 class="form-control"
                                                                                 id="exampleInputName1"
                                                                                 placeholder="Name">
                                                                         </div>
-                                                                        
+
                                                                         <div class="form-group">
-                                                                            <label>Upload your last prescription (if any)</label>
-                                                                            <input type="file" style="padding: 7px;" name="img[]"
+                                                                            <label>Upload your last prescription (if
+                                                                                any)</label>
+                                                                            <input type="file" style="padding: 7px;"
+                                                                                name="img[]"
                                                                                 class="file-upload-default">
                                                                             <div class="input-group col-xs-12">
-                                                                                <input type="file"  style="padding: 7px;"
+                                                                                <input type="file" style="padding: 7px;"
                                                                                     class="form-control file-upload-info"
                                                                                     placeholder="Screenshot if it is software based">
                                                                                 <span class="input-group-append">
@@ -1102,7 +1137,7 @@
                                                                                 </span>
                                                                             </div>
                                                                         </div>
-                                                                        
+
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -1118,8 +1153,8 @@
                                                         </script>
                                                         <button onclick="functionaddnewappoiement()" type="submit"
                                                             class="btn btn-primary me-2">Submit</button>
-                                                            <a onclick="Modalclose()" class="btn btn-light">Close</a>
-                                                      
+                                                        <a onclick="Modalclose()" class="btn btn-light">Close</a>
+
                                                     </div>
                                                 </div>
                                             </div>
