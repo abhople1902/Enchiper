@@ -1,3 +1,4 @@
+<a href="https://github.com/ayushete2005/Enchiper/blob/main/static/pdf/Encipher.pdf" class="image fit" ><img src="images/marr_pic.jpg" alt=""></a>
 <h1>WellEazy - Your Personal Health Assistant</h1>
 wellEazy a Virtual Health Assisant to ensure adequate, qualitative, preventive & curative health updates, Timely reminders to patients as well as their guardians, Make patients aware of their optimal health status and moreo on <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a> created by <a href="welleazy.herokuapp.com" target="_blank">Team Enchiper</a>.
 
