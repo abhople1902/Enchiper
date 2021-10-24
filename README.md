@@ -80,6 +80,7 @@ install manually <br>
   - End-to-end encryption between patients doctors and app.
 
 <h2>DESCRIPTION</h2>
+
   - A revolutionary wearable pendant that would integrate with the software and suitable for people for all age groups and genders.
   - Personalized voice alerts for medication.
   - Billingual bot to enhance the accessibility.
@@ -90,12 +91,13 @@ install manually <br>
   - Electroconvulsive therapy anytime anywhere whenever signs of sudden heart attack is detected.
 
 <h2>REQUIREMENTS</h2>
- - As an emerging technology IoT is one of the main requirements to properly synchronize the health data across all the devices using the application.
- - Artificial intelligence enhances the power to compute and present more accurate data.
- - The application should possess correct semantics to ensure it is more and more accessible, even to those who use screen readers or hearing aid.
- - Higher base connectivity to ensure that every single data is noted and processed is important to the core.
- - The aluminum cast body of the pendant makes it lighter in weight and feels more comfortable.
- - To check the feasibility of electroconvulsive therapy
+
+  - As an emerging technology IoT is one of the main requirements to properly synchronize the health data across all the devices using the application.
+  - Artificial intelligence enhances the power to compute and present more accurate data.
+  - The application should possess correct semantics to ensure it is more and more accessible, even to those who use screen readers or hearing aid.
+  - Higher base connectivity to ensure that every single data is noted and processed is important to the core.
+  - The aluminum cast body of the pendant makes it lighter in weight and feels more comfortable.
+  - To check the feasibility of electroconvulsive therapy
 
 
 At <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a>, we develop a revolutionary healthcare device made for anyone and everyone. Our aim is to change the world by making lives better and healthier. The device is truly your health buddy. In this 21st century wherin life has become an expeditious one and over the years people have moved places for better job prospects of lifestyle but what they have left behind is their dear and near loved ones. Healthcare monitoring has henceforth emerged as a pivotal domain. We here believe to bring about a change in this healthcare monitoring sector with our revolutionary device. created by <a href="welleazy.herokuapp.com" target="_blank">Team Enchiper</a>.
