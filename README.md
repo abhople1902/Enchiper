@@ -100,5 +100,5 @@ install manually <br>
 
   - Click the IP address form the Terminal OR Copy IP Address `127.0.0.1:5000` to the Default Browser.
 
-
+<h2></h2>
 At <a href="welleazy.herokuapp.com" target="_blank">WellEazy</a>, we develop a revolutionary healthcare device made for anyone and everyone. Our aim is to change the world by making lives better and healthier. The device is truly your health buddy. In this 21st century wherin life has become an expeditious one and over the years people have moved places for better job prospects of lifestyle but what they have left behind is their dear and near loved ones. Healthcare monitoring has henceforth emerged as a pivotal domain. We here believe to bring about a change in this healthcare monitoring sector with our revolutionary device. created by <a href="welleazy.herokuapp.com" target="_blank">Team Enchiper</a>.
